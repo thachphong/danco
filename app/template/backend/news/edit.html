@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Admin! | </title>
+
+    <%include 'include/header.html'%>
+    <%include 'include/editor.html'%>
+    <style>
+	.dvtinh{
+		margin-top: 7px;
+	    display: block;
+	}
+	.optionGroup {
+	    font-weight: bold;
+	    font-style: italic;
+	}
+	
+	</style>
+  </head>
+  <%assign var='login_info' value=ACWSession::get('user_info')%>
+  <body class="nav-md">
+  	<%include 'include/pho_ajax.html'%>
+    <div class="container body">
+      <div class="main_container">
+        <%include 'include/left.html'%>
+
+        <!-- top navigation -->
+        <div class="top_nav">
+          <%include 'include/menu.html'%>
+        </div>
+        <!-- /top navigation -->
+
+        <!-- page content -->
+        <div class="right_col" role="main" style="min-height: 600px">
+          <div class="">
+            <!--<div class="page-title">
+              <div class="title_left">
+                <h3>Quản lý danh mục </h3>
+              </div>
+
+              <div class="title_right">
+                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                  <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search for...">
+                    <span class="input-group-btn">
+                      <button class="btn btn-default" type="button">Go!</button>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>-->
+
+            <div class="clearfix"></div>
+
+            <div class="row">              
+			  <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Thêm Tin </h2>
+                    
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <div class="row">
+                    	<div class="col-md-12 col-sm-12 col-xs-12">
+                
+                  <div class="x_content">
+                    <br />
+                    <form id="form_ctg" action="" class="form-horizontal form-label-left" enctype="multipart/form-data">
+                      <div class="form-group">
+                        <label class="control-label col-md-2 col-sm-2 col-xs-12" for="news_name">Tiêu đề tin<span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="text" id="news_name" required="required" name="news_name" class="form-control col-md-7 col-xs-12" value="<%$news_name%>">                          
+                          <input type="hidden"  name="news_id" value="<%$news_id%>">                        
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label col-md-2 col-sm-2 col-xs-12" for="ctg_id">Danh mục<span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <select class="form-control" name="ctg_id" id="ctg_id">
+                          	 <option ></option>
+                          	 <%foreach $ctg_list as $ctg%>
+                          	 	<%if $ctg.cnt_child > 0%>
+                          	 		<option   class="optionGroup" value="<%$ctg.ctg_id%>" <%if $ctg.ctg_id == $ctg_id%>selected="selected"<%/if%>><%if $ctg.ctg_level == 2%>&nbsp;&nbsp;&nbsp;<%else if $ctg.ctg_level == 3%>&nbsp;&nbsp;&nbsp&nbsp;&nbsp<%/if%><%$ctg.ctg_name%></option>
+                          	 	<%else%>
+                          	 		<option   value="<%$ctg.ctg_id%>" <%if $ctg.ctg_id == $ctg_id%>selected="selected"<%/if%>><%if $ctg.ctg_level == 2%>&nbsp;&nbsp;&nbsp;<%else if $ctg.ctg_level == 3%>&nbsp;&nbsp;&nbsp&nbsp;&nbsp<%/if%><%$ctg.ctg_name%></option>
+                          	 	<%/if%>
+                          	 <%/foreach%>                          	 
+                          </select>                  
+                        </div>
+                      </div>
+                      <div class="form-group">                        
+                        <label class="control-label col-md-2 col-sm-2 col-xs-12" for="img_path">Hình Ảnh</label>
+                        <div class="col-md-4 col-sm-4 col-xs-12">
+                          <input type="text" id="img_path" name="img_path" class="form-control col-md-7 col-xs-12" value="<%$img_path%>">                          
+                        </div>
+                        <div class="col-md-1 col-sm-1 col-xs-12">
+                        	<button class="btn btn-primary" type="button" id="btn_upload">Upload</button>
+                        	<input  type="file" id="upload_file" style="display: none"/>
+                        	
+                        </div>
+                      </div>                      
+                      <div class="form-group">
+                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Hiện/Ẩn</label>
+                        <div class="col-md-2 col-sm-2 col-xs-12">
+                          <select class="form-control" name="del_flg">
+                          	 <option value="0" <%if $del_flg == 0%>selected="selected"<%/if%>>Hiện</option>
+                          	 <option value="1" <%if $del_flg == 1%>selected="selected"<%/if%>>Ẩn</option>
+                          </select>                          
+                        </div>
+                      </div> 
+                      <div class="form-group">                        
+                        <label class="control-label col-md-2 col-sm-2 col-xs-12" for="img_path">Trích dẫn</label>
+                        <div class="col-md-10 col-sm-10 col-xs-12">
+                          <textarea type="text" id="des" name="des" class="form-control col-md-7 col-xs-12" style="height:90px"><%$des%></textarea>                          
+                        </div>                        
+                      </div>
+                      <div class="form-group">                        
+                        <!--<label class="control-label col-md-2 col-sm-2 col-xs-12" for="ctg_name">Nội dung</label>-->
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                          <textarea  id="pro_content" name="content"><%$content%></textarea>
+                        </div>
+                      </div>                    
+                      <div class="ln_solid"></div>
+                      <div class="form-group">
+                        <div class="col-md-12 col-sm-12" style="text-align: center">
+                          <a class="dialog_close btn btn-primary" href="<%$smarty.const.ACW_BASE_URL%>news">Thoát</a>
+                          <button class="btn btn-success" id="btn_save" type="button">Cập nhật</button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+                    </div>
+					
+                    
+                    
+                    </div>
+					</div>
+					
+                  </div>
+                </div>
+              </div>
+            	
+            </div>
+         <!-- </div>-->
+        
+        </div>
+        <!-- /page content -->
+		
+        <!-- footer content -->
+        <%include 'include/footer.html'%>
+        <!-- /footer content -->
+        
+      </div>
+    </div>
+	
+<script>
+	$(document).ready(function() {
+		$('#pro_content').froalaEditor({
+		theme: 'royal',
+		language: 'vi',
+		imageUploadURL:"<%$smarty.const.ACW_BASE_URL%>phofile/upload"
+	  });
+		        
+        
+        $(document).off('blur','.number_format'); 
+        $(document).on('blur','.number_format',function(event){
+        	var val = $(this).val();
+        	if($.isNumeric( val) == false){
+        		$(this).val("");
+        		return;
+        	}
+        	$(this).val( parseFloat($(this).val().replace(/,/g, ""))
+		                   // .toFixed(2)
+		                    .toString()
+		                    .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+		                    );
+        });
+		$(document).off('click','#btn_save'); 
+        $(document).on('click','#btn_save',function(event){
+        	var msg = check_validate_update();
+        	if(msg !=""){
+        		Pho_message_box_error("Lỗi",msg);
+        		return;
+        	}
+        	var arr = $('#form_ctg').serializeArray();
+			Pho_json_ajax('POST',"<%$smarty.const.ACW_BASE_URL%>news/update" ,arr,function(datas){
+				if(datas.status =="OK"){
+					//Pho_modal_close("modal1");
+					//Pho_message_box("Thông báo",datas.msg);
+					Pho_direct("<%$smarty.const.ACW_BASE_URL%>news");
+				}else{
+					Pho_message_box_error("Lỗi",datas.msg);
+				}
+                
+            });
+        });
+        var check_validate_update = function(){
+        	if($('#news_name').val()==''){
+        		return "Bạn chưa nhập tiêu đề tin !";
+        	} 
+        	if($('#ctg_id').val()==''){
+        		return "Bạn chưa chọn danh mục !";
+        	} 
+        	if($('#img_path').val()==''){
+        		return "Bạn chưa upload ảnh !";
+        	}      	
+        	return "";
+        };
+        $(document).off('click','#btn_upload'); 
+        $(document).on('click','#btn_upload',function(event){
+        	$('#upload_file').click();
+        });	
+        $(document).off('change','#upload_file'); 
+        $(document).on('change','#upload_file',function(event){
+        	var corractpath = $(this).val();
+        	//var filename = corractpath.replace(/^.*[\\\/]/, '')        	
+        	
+        	var file_data=$(this).prop("files")[0];
+        	//console.log(file_data);	
+        	var form_data=new FormData(this);
+            form_data.append("file",file_data);
+            var base_url= "<%$smarty.const.ACW_BASE_URL_DATA%>";
+            //console.log(form_data);	
+        	Pho_upload("<%$smarty.const.ACW_BASE_URL%>phofile/upload" ,form_data,function(datas){
+				//if(datas.status =="OK"){
+					 //console.log(datas);
+				var file_name = datas.link.replace(base_url,"");	
+				$('#img_path').val(file_name);				
+				//}else{
+					//Pho_message_box_error("Lỗi",datas.msg);
+				//}
+                
+            });
+        });	
+
+        
+		
+    });
+</script>
+     
+    
+	
+</body>
+</html>

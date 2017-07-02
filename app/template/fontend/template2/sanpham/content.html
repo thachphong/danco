@@ -1,0 +1,155 @@
+<div id="shopify-section-product" class="shopify-section">
+   <div itemscope="" itemtype="http://schema.org/Product">
+      <meta itemprop="url" content="<%$smarty.const.ACW_BASE_URL%>sanpham/v/<%$pro.pro_no%>">
+      <meta itemprop="image" content="<%$smarty.const.ACW_BASE_URL_DATA%><%$imglist[0]['img_path']%>">
+      <div id="content">
+         <div class="container" data-section-id="product" data-section-type="product-page-section">
+            <input id="product-handle" type="hidden" value="cavernous-roasting-pan"> <!--  using for JS -->
+            <ol class="breadcrumb" style="margin-top: 5px;">
+               <li><a href="/" title="Home">Trang chủ</a></li>
+               <li><a href="<%$smarty.const.ACW_BASE_URL%>danhmuc/ds/<%$pro.ctg_no%>" title="Home"><%$pro.ctg_name%></a></li>
+            </ol>
+            <div class="title clearfix">
+               <h1 itemprop="name"><%$pro.pro_name%></h1>
+               <div class="title_right">
+                  <div class="next-prev">
+                  </div>
+               </div>
+            </div>
+            <div class="pro_main_c">
+               <div class="row">
+                  <div class="col-lg-6 col-md-7 col-sm-6 animated  animation-done bounceInLeft" data-animation="bounceInLeft">
+                     <div class="slider_1 clearfix" data-featured="797432443" data-image="">
+                        <div id="image-block" data-zoom="true">
+                           <div class="flexslider product_gallery product_images" id="product-342736279-gallery">
+                              <img src="<%$smarty.const.ACW_BASE_URL_DATA%><%$imglist[0]['img_path']%>" alt="<%$pro.pro_name%>"  class="featured_image" id="img_main_zoom">
+                              <ol class="flex-control-nav flex-control-thumbs">                                 
+                                 <%foreach $imglist as $img%>
+                                 <li><img src="<%$smarty.const.ACW_BASE_URL_DATA%><%$img.img_path%>" onclick="chang_img(this)"></li>
+                                 <%/foreach%>
+                              </ol>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col-lg-6 col-md-5 col-sm-6 animated animation-done  bounceInRight" data-animation="bounceInRight">
+                     <div itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
+                        <meta itemprop="priceCurrency" content="USD">
+                        <link itemprop="availability" href="http://schema.org/InStock">
+                        <form class="form-add-to-cart form-horizontal" action="<%$smarty.const.ACW_BASE_URL%>cart/add" method="post" enctype="multipart/form-data" id="addToCartForm">
+                           <div class="desc_blk">
+                              <h5>Thông tin sản phẩm</h5>
+                              <!-- variations section  -->
+                              <div class="variations mt15">
+                                 
+                                 <input type="hidden" name="pro_id" value="<%$pro.pro_id%>">
+                              </div>
+                              <div class="desc_blk_bot clearfix">
+                                 <div class="qty product-page-qty"> <a class="minus_btn" onclick="qty_add(<%$pro.pro_id%>,-1)"></a>
+                                    <input type="text" id="qty_<%$pro.pro_id%>" name="quantity" class="txtbox" value="1" min="1">
+                                    <a class="plus_btn" onclick="qty_add(<%$pro.pro_id%>,1)"></a> 
+                                 </div>
+                                 <div class="price">
+                                    <span id="productPrice" class="" itemprop="price" content="<%$pro.price_new%>"><%Sanpham_model::currency_format($pro.price_new)%> VNĐ</span>
+                                    <span id="comparePrice" class=""><%Sanpham_model::currency_format($pro.price_old)%> VNĐ</span>
+                                 </div>
+                                 <input type="submit" name="add" class="btn_c" id="addToCart" value="Đặt hàng">
+                                 <div class="maximum-in-stock-error">Maximum quantity available reached.</div>
+                              </div>
+                              <!-- cart section end -->
+                              <div class="rte" itemprop="description">
+                                 <%$pro.content%>
+                              </div>
+                             
+                              <div class="review_row clearfix">
+                                
+                                 <div class="share">
+                                    <div class="social-sharing">
+                                       <ul>
+                                          <li><a target="_blank" href="//www.facebook.com/sharer/sharer.php?u=<%$smarty.const.ACW_BASE_URL%>sanpham/v/<%$pro.pro_no%>"><i class="fa fa-facebook"></i></a></li>
+                                          <li><a target="_blank" href="//twitter.com/intent/tweet?url=<%$smarty.const.ACW_BASE_URL%>sanpham/v/<%$pro.pro_no%>&amp;via=shopify&amp;text=Cavernous Roasting Pan"><i class="fa fa-twitter"></i></a></li>
+                                          <li><a target="_blank" href="//plusone.google.com/_/+1/confirm?hl=en&amp;url=<%$smarty.const.ACW_BASE_URL%>sanpham/v/<%$pro.pro_no%>"><i class="fa fa-google-plus"></i></a></li>
+                                          <li><a href="javascript:void((function()%7Bvar%20e=document.createElement('script');e.setAttribute('type','text/javascript');e.setAttribute('charset','UTF-8');e.setAttribute('src','//assets.pinterest.com/js/pinmarklet.js?r='+Math.random()*99999999);document.body.appendChild(e)%7D)());"><i class="fa fa-pinterest"></i></a></li>
+                                       </ul>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </form>
+                     </div>
+                  </div>
+               </div>
+               
+               <div class="h_row_4 animated  fadeInUp animation-done" data-animation="fadeInUp">
+                  <div class="clearfix">
+                     <h3>Sản phẩm liên quan</h3>
+                  </div>
+                  <div class="carosel product_c mb30" id="products-1487357103383">
+                           <!--<div class="product_c">-->
+                              <div class="collection-grid view-grid animated  fadeInUp animation-done" data-animation="fadeInUp">                             
+                              	<%foreach $relates as $key=>$item%>
+                                 <div class="col-md-3 col-sm-6 element mb30 "><!--col-xs-6 -->
+		                           <div class="main_box quick-view-overlay " style="height: 356px;">
+		                              <div class="box_1">
+		                              <%if $item.price_old > $item.price_new%>
+		                                 <div class="on-sale">Sale</div>
+		                              <%/if%>
+		                                 <div class="product-image">
+		                                    <a href="<%$smarty.const.ACW_BASE_URL%>sanpham/v/<%$item.pro_no%>"><img src="<%$smarty.const.ACW_BASE_URL_DATA%><%$item.img_thumb%>" alt="<%$item.pro_name%>"></a>
+		                                 </div>
+		                                 <div class="overlay hidden-sm hidden-xs">
+		                                    <a class="popup-text quick-view-btn btn_c cart_btn_1" href="<%$smarty.const.ACW_BASE_URL%>sanpham/v/<%$item.pro_no%>" data-effect="mfp-move-from-top" data-toggle="tooltip" data-placement="top" title="Quick View">Đặt hàng</a>
+		                                 </div>
+		                              </div>
+		                              <div class="desc">
+		                                 <h5><a href="<%$smarty.const.ACW_BASE_URL%>sanpham/v/<%$item.pro_no%>"><%$item.pro_name%></a></h5>
+		                                 <!--<p>Kitchen Decor</p>-->
+		                                 <div class="price"><span class=""> <span class="money" data-currency-usd="<%$item.price_new%>" data-currency="USD"><%Sanpham_model::currency_format($item.price_new)%> VNĐ</span> </span>
+		                                 <%if $item.price_old > $item.price_new%>
+		                                 <span class="compare-price"><span class="money" data-currency-usd="<%$item.price_old%>" data-currency="USD"><%Sanpham_model::currency_format($item.price_old)%> VNĐ</span></span>
+		                                 <%/if%>
+		                                 </div>
+		                              </div>
+		                           </div>
+		                        </div>
+                                 <%/foreach%>                                 
+                              </div>
+                           <!--</div>-->
+                        </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+<script>
+   $('#img_main_zoom').elevateZoom({
+       zoomType: "inner",
+   	cursor: "crosshair",
+   	zoomWindowFadeIn: 491,
+   	zoomWindowFadeOut: 832
+      }); 
+      function chang_img(elem){
+      		var src = $(elem).attr('src');
+      		$('#img_main_zoom').attr('src',src);
+      		$('#img_main_zoom').elevateZoom({
+   		    zoomType: "inner",
+   			cursor: "crosshair",
+   			zoomWindowFadeIn: 491,
+   			zoomWindowFadeOut: 832
+   		   }); 
+   		$('.flex-control-thumbs').find('img').each(function(){
+   			$(this).removeClass('flex-active');
+   		});
+   		$(elem).addClass('flex-active');
+      }
+   
+	function qty_add(id,qty){
+		var val = parseInt($("#qty_"+id).val());
+		var quantity = val + qty;
+		if((quantity) == 0){
+			return;
+		}
+		$("#qty_"+id).val(quantity);
+	}
+</script>

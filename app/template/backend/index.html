@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Admin! | </title>
+
+    <%include 'include/header.html'%>
+   
+  </head>
+  <%assign var='login_info' value=ACWSession::get('user_info')%>
+  <body class="nav-md">
+  	<%include 'include/pho_ajax.html'%>
+    <div class="container body">
+      <div class="main_container">
+        <%include 'include/left.html'%>
+
+        <!-- top navigation -->
+        <div class="top_nav">
+          <%include 'include/menu.html'%>
+        </div>
+        <!-- /top navigation -->
+
+        <!-- page content -->
+        <div class="right_col" role="main" style="min-height: 600px">
+          <div class="">            
+            <div class="clearfix"></div>
+
+            <div class="row">              
+			  <div class="col-md-12 col-sm-12 col-xs-12">               
+                  </div>
+                </div>
+              </div>
+            	
+            </div>
+          </div>
+        
+        </div>
+        <!-- /page content -->
+
+        <!-- footer content -->
+        <%include 'include/footer.html'%>
+        <!-- /footer content -->
+        
+      </div>
+    </div>
+	
+
+     
+    
+	
+</body>
+</html>

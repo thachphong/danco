@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Admin! | </title>
+
+    <%include 'include/header.html'%>
+    <%include 'include/editor.html'%>
+    <style>
+	.dvtinh{
+		margin-top: 7px;
+	    display: block;
+	}
+	.optionGroup {
+	    font-weight: bold;
+	    font-style: italic;
+	}
+	table.list_file tr td{
+		padding: 5px 10px 5px 5px;
+		border-bottom: 1px solid #ddd;
+	}
+	table.list_file{
+		margin-bottom: 10px;
+	}
+	
+	
+		
+	
+	
+	</style>
+  </head>
+  <%assign var='login_info' value=ACWSession::get('user_info')%>
+  <body class="nav-md">
+  	<%include 'include/pho_ajax.html'%>
+    <div class="container body">
+      <div class="main_container">
+        <%include 'include/left.html'%>
+
+        <!-- top navigation -->
+        <div class="top_nav">
+          <%include 'include/menu.html'%>
+        </div>
+        <!-- /top navigation -->
+
+        <!-- page content -->
+        <div class="right_col" role="main" style="min-height: 600px">
+          <div class="">
+            <!--<div class="page-title">
+              <div class="title_left">
+                <h3>Quản lý danh mục </h3>
+              </div>
+
+              <div class="title_right">
+                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                  <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search for...">
+                    <span class="input-group-btn">
+                      <button class="btn btn-default" type="button">Go!</button>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>-->
+
+            <div class="clearfix"></div>
+
+            <div class="row">              
+			  <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Thêm sản phẩm</h2>
+                    
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <div class="row">
+                    	<div class="col-md-12 col-sm-12 col-xs-12">
+                
+                  <div class="x_content">
+                    <br />
+                    <form id="form_ctg" action="" class="form-horizontal form-label-left" enctype="multipart/form-data">
+                      <div class="form-group">
+                        <label class="control-label col-md-2 col-sm-2 col-xs-12" for="pro_name">Tên Sản phẩm<span class="required">*</span>
+                        </label>
+                        <div class="col-md-4 col-sm-4 col-xs-12">
+                          <input type="text" id="pro_name" required="required" name="pro_name" class="form-control col-md-7 col-xs-12" value="<%$pro_name%>">                          
+                          <input type="hidden"  name="pro_id" value="<%$pro_id%>">                        
+                        </div>
+                        <label class="control-label col-md-2 col-sm-2 col-xs-12" for="ctg_id">Danh mục<span class="required">*</span>
+                        </label>
+                        <div class="col-md-4 col-sm-4 col-xs-12">
+                          <!--<input type="text" id="ctg_id" required="required" name="ctg_id" class="form-control col-md-7 col-xs-12" value="<%$ctg_id%>">-->
+                           <select class="form-control" name="ctg_id" id="ctg_id">
+                          	 <option ></option>
+                          	 <%foreach $ctg_list as $ctg%>
+                          	 	<%if $ctg.cnt_child > 0%>
+                          	 		<option   class="optionGroup" value="<%$ctg.ctg_id%>" <%if $ctg.ctg_id == $ctg_id%>selected="selected"<%/if%>><%if $ctg.ctg_level == 2%>&nbsp;&nbsp;&nbsp;<%else if $ctg.ctg_level == 3%>&nbsp;&nbsp;&nbsp&nbsp;&nbsp<%/if%><%$ctg.ctg_name%></option>
+                          	 	<%else%>
+                          	 		<option   value="<%$ctg.ctg_id%>" <%if $ctg.ctg_id == $ctg_id%>selected="selected"<%/if%>><%if $ctg.ctg_level == 2%>&nbsp;&nbsp;&nbsp;<%else if $ctg.ctg_level == 3%>&nbsp;&nbsp;&nbsp&nbsp;&nbsp<%/if%><%$ctg.ctg_name%></option>
+                          	 	<%/if%>
+                          	 <%/foreach%>                          	 
+                          </select>                          
+                        </div>
+                      </div>
+                                           
+                      <div class="form-group">
+                        <!-- <label class="control-label col-md-2 col-sm-2 col-xs-12">Giá cũ
+                        </label>
+                        <div class="col-md-2 col-sm-2 col-xs-12">
+                          <input type="text" id="price_old" name="price_old" class="form-control col-md-7 col-xs-12 number_format" value="<%Sanpham_model::currency_format($price_old)%>" style="width: 82%">
+                          <span class="dvtinh">VNĐ</span>                          
+                        </div>
+                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Giá mới</label>
+                        <div class="col-md-2 col-sm-2 col-xs-12">
+                          <input type="text" id="price_new" name="price_new" class="form-control col-md-7 col-xs-12 number_format" value="<%Sanpham_model::currency_format($price_new)%>" style="width: 82%">
+                          <span class="dvtinh">VNĐ</span>
+                          </div>  -->
+                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Trạng thái</label>
+                        <div class="col-md-2 col-sm-2 col-xs-12">
+                          <select class="form-control" name="status">
+                          	 <option value="0" <%if $status == 0%>selected="selected"<%/if%>>Còn hàng</option>
+                          	 <option value="1" <%if $status == 1%>selected="selected"<%/if%>>Hết hàng</option>
+                          </select>
+                        </div>
+                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Hiện/Ẩn</label>
+                        <div class="col-md-2 col-sm-2 col-xs-12">
+                          <select class="form-control" name="del_flg">
+                             <option value="0" <%if $del_flg == 0%>selected="selected"<%/if%>>Hiện</option>
+                             <option value="1" <%if $del_flg == 1%>selected="selected"<%/if%>>Ẩn</option>
+                          </select>                          
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <div class="col-md-2 col-sm-2 col-xs-12">
+                          <a class="btn btn-primary" type="button" id="btn_add_size" style="float: right">Thêm kích thước</a>
+                        </div>
+                        <div class="col-md-8 col-sm-8 col-xs-12">
+                          <table class="list_file" id="list_size">
+                            <%if $new_flg ==1%> 
+                            <tr>
+                              <td>Kích thước</td>
+                              <td><input type="text" name="pro_size[]" class="form-control size_format"></td>
+                              <td>Giá</td>
+                              <td><input type="text" name="price_new[]" class="form-control number_format" value=""></td>
+                            </tr>
+                            <%/if%>
+                            <%foreach $price_list as $pri%>                           
+                            <tr>
+                              <td>Kích thước</td>
+                              <td><input type="text" name="pro_size[]" class="form-control size_format" value="<%$pri.size%>"></td>
+                              <td>Giá</td>
+                              <td><input type="text" name="price_new[]" class="form-control number_format" value="<%Sanpham_model::currency_format($pri.price_new)%>"></td>
+                            </tr>
+                            <%/foreach%>
+                          </table>
+                        </div>                          
+                      </div>                    
+                     
+                      <div class="form-group">
+                      	<div class="col-md-2 col-sm-2 col-xs-12">
+                      		<a class="btn btn-primary" type="button" id="btn_upload" style="float: right">Thêm Ảnh</a>
+                        	
+                        	<input  type="file" id="upload_file" multiple="true" style="display: none" accept=".JPG,.PNG,.GIF"/>
+                      	</div>
+                      	<div class="col-md-8 col-sm-8 col-xs-12">
+                      		<table class="list_file" id="list_file">
+                      			<%foreach $img_list as $img%>                      			
+                      			<tr id="tr_<%$img.pro_img_id%>">                      				
+                      				<td><img class="img-rounded" id="img_<%$img.pro_img_id%>" height="60" src="<%$smarty.const.ACW_BASE_URL_DATA%><%$img.img_thumb%>">                      					
+                      				</td>
+                      				<td>
+                      					<a class="btn btn-danger btn-xs btn_del_img" id="del_<%$img.pro_img_id%>" type="button">Xóa hình</a>
+                      				</td>
+                      				<td><label><input type="radio" name="chk" value="0" id="radio_<%$img.pro_img_id%>" <%if $img.avata_flg ==1%>checked="true"<%/if%> >làm ảnh đại diện</label>                      					
+                      				</td>
+                      			
+                      			</tr>
+                      			<%/foreach%>
+                      		</table>
+                      	</div>                      		
+                      </div>
+                      
+                      <div class="form-group">                        
+                        <!--<label class="control-label col-md-2 col-sm-2 col-xs-12" for="ctg_name">Nội dung</label>-->
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                          <textarea  id="pro_content" name="content"><%$content%></textarea>
+                        </div>
+                      </div>                    
+                      <div class="ln_solid"></div>
+                      <div class="form-group">
+                        <div class="col-md-12 col-sm-12" style="text-align: center">
+                          <a class="dialog_close btn btn-primary" href="<%$smarty.const.ACW_BASE_URL%>product">Thoát</a>
+                          <a class="btn btn-success" id="btn_save" >Cập nhật</a>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+                    </div>
+					
+                    
+                    
+                    </div>
+					</div>
+					
+                  </div>
+                </div>
+              </div>
+            	
+            </div>
+         <!-- </div>-->
+        
+        </div>
+        <!-- /page content -->
+		
+        <!-- footer content -->
+        <%include 'include/footer.html'%>
+        <!-- /footer content -->
+        
+      </div>
+    </div>
+	
+<script>
+	$(document).ready(function() {
+		var cnt_add = 0;
+		$('#pro_content').froalaEditor({
+		theme: 'royal',
+		language: 'vi',
+		imageUploadURL:"<%$smarty.const.ACW_BASE_URL%>phofile/upload"
+	  });
+		        
+        
+        $(document).off('blur','.number_format'); 
+        $(document).on('blur','.number_format',function(event){
+        	var val = $(this).val().replace(',','');
+        	if($.isNumeric( val) == false){
+        		$(this).val("");
+        		return;
+        	}
+        	$(this).val( parseFloat($(this).val().replace(/,/g, ""))
+		                   // .toFixed(2)
+		                    .toString()
+		                    .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+		                    );
+        });
+		$(document).off('click','#btn_save'); 
+        $(document).on('click','#btn_save',function(event){
+        	var msg = check_validate_update();
+        	if(msg !=""){
+        		Pho_message_box_error("Lỗi",msg);
+        		return;
+        	}
+        	var arr = $('#form_ctg').serializeArray();
+        	console.log(get_avata_id());
+        	arr.push({name:'avata_id',value:get_avata_id()});
+        	//arr.append('avata_id',get_avata_id());
+        	console.log(arr);
+			Pho_json_ajax('POST',"<%$smarty.const.ACW_BASE_URL%>product/update" ,arr,function(datas){
+				if(datas.status =="OK"){
+					//Pho_modal_close("modal1");
+					//Pho_message_box("Thông báo",datas.msg);
+					Pho_direct("<%$smarty.const.ACW_BASE_URL%>product");
+				}else{
+					Pho_message_box_error("Lỗi",datas.msg);
+				}
+                
+            });
+        });
+        var check_validate_update = function(){
+        	if($('#pro_name').val()==''){
+        		return "Bạn chưa nhập tên sản phẩm !";
+        	}
+        	if($('#ctg_id').val()==''){
+        		return "Bạn chưa chọn danh mục !";
+        	}
+        	if($('#price_new').val()==''){
+        		return "Bạn chưa nhập giá mới!";
+        	}
+        	if($("#list_file").find('img').length==0){
+        		return "Bạn chưa upload ảnh cho sản phẩm!";
+        	}
+          var msg ="";
+          $('#list_size').find('tr').each(function(){
+              var size_input = $(this).find('.size_format')[0];
+              var price_input = $(this).find('.number_format')[0];
+              console.log(size_input);
+              var size_vl = $(size_input).val();
+              console.log(size_vl);
+              var price_vl = $(price_input).val();
+              console.log(price_vl);
+              if((size_vl + price_vl).length >0 ){
+                  if(size_vl.length == 0){
+                      msg = "Bạn phải nhập kích thước cho giá: "+ price_vl;    
+                      return false;                 
+                  }
+                  if(price_vl.length == 0){
+                      msg = "Bạn phải nhập giá cho size: "+ size_vl;   
+                      return false;                  
+                  }
+              }
+              // if(msg !=""){
+              //    break;
+              // }
+          });
+        	return msg;
+        };
+        $(document).off('click','#btn_upload'); 
+        $(document).on('click','#btn_upload',function(event){
+        	$('#upload_file').click();
+        });	
+        $(document).off('change','#upload_file'); 
+        $(document).on('change','#upload_file',function(event){
+        	//var corractpath = $(this).val();
+        	//var filename = corractpath.replace(/^.*[\\\/]/, '')        	
+        	
+        	var file_data=$(this).prop("files");
+        	//console.log(file_data);	
+        	if(file_data.length == 0){
+        		return;
+        	}
+        	var form_data=new FormData(this);
+        	for(var i=0;i<file_data.length;i++){
+        		form_data.append(i,file_data[i]);
+        	}        	
+            
+            var base_url= "<%$smarty.const.ACW_BASE_URL%>";
+            //console.log(form_data);	
+        	Pho_upload("<%$smarty.const.ACW_BASE_URL%>phofile/uplproduct" ,form_data,function(datas){
+				if(datas.status =="OK"){
+					//console.log(datas);					
+                   // var cnt_add = $("#list_file").find('.add_img').length;  			
+					for(var i=0;i<datas.link.length;i++){
+		        		//form_data.append(i,file_data[i]);
+		        		cnt_add++;
+		        		var html_tr= '<tr id="tr_add_'+cnt_add+'"><td><img class="img-rounded" height="60" src="'+datas.link[i]+'" id="img_add_'+cnt_add+'"></td><td><a class="btn btn-danger btn-xs btn_del_img" id="del_add_'+cnt_add+'">Xóa hình</a></td><td><label><input type="radio" name="chk" value="1" id="radio_add_'+cnt_add+'">Chọn làm ảnh đại diện </label><input type="hidden" name="img_add['+cnt_add+']" value="'+datas.link[i]+'"></td></tr>';
+		        		$("#list_file").append(html_tr);		        		
+		        	}
+		        	if(get_avata_id()==""){
+		        		$("#radio_add_1").prop('checked',true);	
+		        	}
+					//var file_name = datas.link.replace(base_url,"");	
+					//$('#img_path').val(file_name);				
+				}else{
+					Pho_message_box_error("Lỗi",datas.msg);
+				}
+                
+            });
+        });	
+		$(document).off('click','.btn_del_img'); 
+    $(document).on('click','.btn_del_img',function(){
+        	var id = $(this).attr('id');
+        	//console.log(id);
+        	//id ="del_add_1";
+        	id = id.toString().replace('del_','');
+        	//id = str_replace(id,"sdel_","");
+        	//console.log(1);
+        	var img_path = $('#img_'+id).attr('src');
+        	//console.log(2);
+        	$('#tr_'+id).remove();
+        	//$("#list_file").remove($('#tr_'+id));
+        	//console.log(3);
+        	$("#list_file").append('<input type="hidden" name="img_del[]" value="'+img_path+'">');
+        	//console.log(4);
+    });
+    $(document).off('click','#btn_add_size'); 
+    $(document).on('click','#btn_add_size',function(event){
+          var html='<tr><td>Kích thước</td><td><input type="text" name="pro_size[]" class="form-control size_format" value=""></td><td>Giá</td><td><input type="text" name="price_new[]" class="form-control number_format" value="" ></td></tr>';
+          $('#list_size').append(html);
+    });    
+		var get_avata_id =  function(){
+			var list_ra = $("#list_file").find('input[type="radio"]');
+			var avata_id ="";
+			list_ra.each(function(){
+				//console.log($(this).prop('checked'));
+				if($(this).prop('checked')){					
+					avata_id = $(this).attr('id').replace('radio_','');
+					return avata_id;
+				}
+			});
+			return avata_id;
+		}
+    });
+    function str_replace(str,str_find,str_rep){
+    	return str.replace(str_find,str_rep);
+    }
+</script>
+     
+    
+	
+</body>
+</html>

@@ -1,0 +1,254 @@
+<!--<script src="<%$smarty.const.ACW_BASE_URL%>filemanager/js/ckeditor/ckeditor.js"></script>
+<script src="<%$smarty.const.ACW_BASE_URL%>filemanager/sample.js"></script>
+<link href="<%$smarty.const.ACW_BASE_URL%>filemanager/sample.css" rel="stylesheet" type="text/css" />-->
+
+<style>
+.dvtinh{
+	margin-top: 7px;
+    display: block;
+}
+.optionGroup {
+    font-weight: bold;
+    font-style: italic;
+}
+.cke_dialog_ui_button{
+	padding-left: 5px;
+}
+</style>
+<div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                  <!--<div class="x_title">
+                    <h2>Sản Phẩm</h2>
+                    <ul class="nav navbar-right panel_toolbox">-->
+                      <!--<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                      </li>
+                      <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                        <ul class="dropdown-menu" role="menu">
+                          <li><a href="#">Settings 1</a>
+                          </li>
+                          <li><a href="#">Settings 2</a>
+                          </li>
+                        </ul>
+                      </li>-->
+                      <!--<li>
+                      	<button class="btn btn-success" id="btn_save" type="button">Cập nhật</button>
+                      </li>
+                      <li>
+                      	<button class="dialog_close btn btn-primary" type="button">Thoát</button>
+                      </li>-->
+                      
+                      <!--<li style="float: right"><a class="dialog_close" ><i class="fa fa-close"></i></a>
+                      </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                  </div>-->
+                  <div class="x_content">
+                    <br />
+                    <form id="form_ctg" action="" class="form-horizontal form-label-left" enctype="multipart/form-data">
+                      <div class="form-group">
+                        <label class="control-label col-md-2 col-sm-2 col-xs-12" for="pro_name">Tên Sản phẩm<span class="required">*</span>
+                        </label>
+                        <div class="col-md-4 col-sm-4 col-xs-12">
+                          <input type="text" id="pro_name" required="required" name="pro_name" class="form-control col-md-7 col-xs-12" value="<%$pro_name%>">                          
+                          <input type="hidden"  name="pro_id" value="<%$pro_id%>">                        
+                        </div>
+                        <label class="control-label col-md-2 col-sm-2 col-xs-12" for="ctg_id">Danh mục<span class="required">*</span>
+                        </label>
+                        <div class="col-md-4 col-sm-4 col-xs-12">
+                          <!--<input type="text" id="ctg_id" required="required" name="ctg_id" class="form-control col-md-7 col-xs-12" value="<%$ctg_id%>">-->
+                           <select class="form-control" name="ctg_id" id="ctg_id">
+                          	 <option ></option>
+                          	 <%foreach $ctg_list as $ctg%>
+                          	 	<%if $ctg.cnt_child > 0%>
+                          	 		<option   class="optionGroup" value="<%$ctg.ctg_id%>" <%if $ctg.ctg_id == $ctg_id%>selected="selected"<%/if%>><%if $ctg.ctg_level == 2%>&nbsp;&nbsp;&nbsp;<%else if $ctg.ctg_level == 3%>&nbsp;&nbsp;&nbsp&nbsp;&nbsp<%/if%><%$ctg.ctg_name%></option>
+                          	 	<%else%>
+                          	 		<option   value="<%$ctg.ctg_id%>" <%if $ctg.ctg_id == $ctg_id%>selected="selected"<%/if%>><%if $ctg.ctg_level == 2%>&nbsp;&nbsp;&nbsp;<%else if $ctg.ctg_level == 3%>&nbsp;&nbsp;&nbsp&nbsp;&nbsp<%/if%><%$ctg.ctg_name%></option>
+                          	 	<%/if%>
+                          	 <%/foreach%>                          	 
+                          </select>                          
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Hiệu xe</label>
+                        <div class="col-md-2 col-sm-2 col-xs-12">
+                          <input type="text" id="hieu_xe" name="hieu_xe" class="form-control col-md-7 col-xs-12" value="<%$hieu_xe%>">                          
+                        </div>
+                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Đời xe
+                        </label>
+                        <div class="col-md-2 col-sm-2 col-xs-12">
+                          <input type="text" id="doi_xe" name="doi_xe" class="form-control col-md-7 col-xs-12" value="<%$doi_xe%>">                         
+                        </div>
+                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Màu xe
+                        </label>
+                        <div class="col-md-2 col-sm-2 col-xs-12">
+                          <input type="text" id="mau_xe" name="mau_xe" class="form-control col-md-7 col-xs-12" value="<%$mau_xe%>">                          
+                        </div>
+                      </div>                      
+                      <div class="form-group">                        
+                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Kiểu xe</label>
+                        <div class="col-md-2 col-sm-2 col-xs-12">
+                          <input type="text" id="kieu_xe" name="kieu_xe" class="form-control col-md-7 col-xs-12" value="<%$kieu_xe%>">
+                        </div>
+                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Giá thuê ngày
+                        </label>
+                        <div class="col-md-2 col-sm-2 col-xs-12">
+                          <input type="text" id="giathue_ngay" name="giathue_ngay" class="form-control col-md-7 col-xs-12 number_format" value="<%$giathue_ngay%>" style="width: 84%">
+                          <span class="dvtinh">VNĐ</span>                          
+                        </div>
+                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Giá thuê tháng</label>
+                        <div class="col-md-2 col-sm-2 col-xs-12">
+                          <input type="text" id="giathue_thang" name="giathue_thang" class="form-control col-md-7 col-xs-12 number_format" value="<%$giathue_thang%>" style="width: 84%">
+                          <span class="dvtinh">VNĐ</span>
+                          </div> 
+                      </div>
+                      <div class="form-group">                        
+                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Xe đi nội thành</label>
+                        <div class="col-md-2 col-sm-2 col-xs-12">
+                          <input type="text" id="xedi_noithanh" name="xedi_noithanh" class="form-control col-md-7 col-xs-12 number_format" value="<%$xedi_noithanh%>">
+                        </div>
+                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Phụ trội ngoài giờ
+                        </label>
+                        <div class="col-md-2 col-sm-2 col-xs-12">
+                          <input type="text" id="phutroi_ngoaigio" name="phutroi_ngoaigio" class="form-control col-md-7 col-xs-12 number_format" value="<%$phutroi_ngoaigio%>" style="width: 84%">
+                          <span class="dvtinh">Đ/h</span>                          
+                        </div>
+                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Phụ trội quá km</label>
+                        <div class="col-md-2 col-sm-2 col-xs-12">                                                  
+                          <input type="text" id="phutroi_quakm" pattern="[0-9]*" class="form-control col-md-7 col-xs-12 number_format" name="phutroi_quakm" value="<%$phutroi_quakm%>" style="width: 80%">
+                          <span class="dvtinh">Đ/Km</span>
+                          </div> 
+                      </div>
+                      <div class="form-group">                        
+                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Số ngày sử dụng</label>
+                        <div class="col-md-2 col-sm-2 col-xs-12">
+                          <input type="text" id="songay_sudung" name="songay_sudung" class="form-control col-md-7 col-xs-12 number_format" value="<%$songay_sudung%>">
+                        </div>
+                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Sử dụng cuối tuần
+                        </label>
+                        <div class="col-md-2 col-sm-2 col-xs-12">
+                          <input type="text" id="sudung_cuoituan" name="sudung_cuoituan" class="form-control col-md-7 col-xs-12 number_format" value="<%$sudung_cuoituan%>" style="width: 84%">    
+                          <span class="dvtinh">VNĐ</span>                      
+                        </div>
+                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Lễ</label>
+                        <div class="col-md-2 col-sm-2 col-xs-12">
+                          <input type="text" id="sudung_le" name="sudung_le" class="form-control col-md-7 col-xs-12 number_format" value="<%$sudung_le%>" style="width: 90%"><span class="dvtinh">%</span>
+                          </div> 
+                      </div>
+                      <div class="form-group">                        
+                        <label class="control-label col-md-2 col-sm-2 col-xs-12" for="img_path">Hình Ảnh</label>
+                        <div class="col-md-4 col-sm-4 col-xs-12">
+                          <input type="text" id="img_path" name="img_path" class="form-control col-md-7 col-xs-12" value="<%$img_path%>">                          
+                        </div>
+                        <div class="col-md-1 col-sm-1 col-xs-12">
+                        	<button class="btn btn-primary" type="button" id="btn_upload">Upload</button>
+                        	<input  type="file" id="upload_file" style="display: none"/>
+                        </div>
+                        <label class="control-label col-md-1 col-sm-1 col-xs-12"">Video
+                        </label>
+                        <div class="col-md-4 col-sm-4 col-xs-12">
+                          <input type="text" id="video_path" name="video_path" class="form-control col-md-7 col-xs-12" value="<%$video_path%>">                          
+                        </div>
+                        
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Hiện/Ẩn</label>
+                        <div class="col-md-2 col-sm-2 col-xs-12">
+                          <select class="form-control" name="del_flg">
+                          	 <option value="0" <%if $del_flg == 0%>selected="selected"<%/if%>>Hiện</option>
+                          	 <option value="1" <%if $del_flg == 1%>selected="selected"<%/if%>>Ẩn</option>
+                          </select>                          
+                        </div>
+                      </div> 
+                      <div class="form-group">                        
+                        <!--<label class="control-label col-md-2 col-sm-2 col-xs-12" for="ctg_name">Nội dung</label>-->
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                          <textarea  id="pro_content"><%$content%></textarea>
+                        </div>
+                      </div>                    
+                      <div class="ln_solid"></div>
+                      <div class="form-group">
+                        <div class="col-md-12 col-sm-12" style="text-align: center">
+                          <button class="dialog_close btn btn-primary" type="button" data-dismiss="modal">Thoát</button>
+                          <button class="btn btn-success" id="btn_save" type="button">Cập nhật</button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+          </div>
+<script>
+	/*CKEDITOR.replace( 'pro_content', {
+			height: 300,
+
+			// Configure your file manager integration. This example uses CKFinder 3 for PHP.
+			filebrowserBrowseUrl: '/ckfinder/ckfinder.html',
+			filebrowserImageBrowseUrl: '/ckfinder/ckfinder.html?type=Images',
+			filebrowserUploadUrl: '/product/upload?command=QuickUpload&type=Files',
+			filebrowserImageUploadUrl: '<%$smarty.const.ACW_BASE_URL%>product/upload?command=QuickUpload&type=Images'
+		} );*/
+	/*CKEDITOR.replace( 'pro_content',
+                {
+                	height: 400,
+                    filebrowserBrowseUrl :'<%$smarty.const.ACW_BASE_URL%>filemanager/js/ckeditor/filemanager/browser/default/browser.html?Connector=<%$smarty.const.ACW_BASE_URL%>filemanager/js/ckeditor/filemanager/connectors/php/connector.php',
+                    filebrowserImageBrowseUrl : '<%$smarty.const.ACW_BASE_URL%>filemanager/js/ckeditor/filemanager/browser/default/browser.html?Type=Image&Connector=<%$smarty.const.ACW_BASE_URL%>filemanager/js/ckeditor/filemanager/connectors/php/connector.php',
+                    filebrowserFlashBrowseUrl :'<%$smarty.const.ACW_BASE_URL%>filemanager/js/ckeditor/filemanager/browser/default/browser.html?Type=Flash&Connector=<%$smarty.const.ACW_BASE_URL%>filemanager/js/ckeditor/filemanager/connectors/php/connector.php',
+					filebrowserUploadUrl  :'<%$smarty.const.ACW_BASE_URL%>filemanager/js/ckeditor/filemanager/connectors/php/upload.php?Type=File',
+					filebrowserImageUploadUrl : '<%$smarty.const.ACW_BASE_URL%>filemanager/js/ckeditor/filemanager/connectors/php/upload.php?Type=Image',
+					filebrowserFlashUploadUrl : '<%$smarty.const.ACW_BASE_URL%>filemanager/js/ckeditor/filemanager/connectors/php/upload.php?Type=Flash'
+				});*/
+	
+      $('#pro_content').froalaEditor({
+		theme: 'royal',
+		language: 'vi'
+	  });
+  
+	$(document).ready(function() {
+		$(document).off('blur','.number_format'); 
+        $(document).on('blur','.number_format',function(event){
+        	var val = $(this).val();
+        	if($.isNumeric( val) == false){
+        		$(this).val("");
+        		return;
+        	}
+        	$(this).val( parseFloat($(this).val().replace(/,/g, ""))
+		                   // .toFixed(2)
+		                    .toString()
+		                    .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+		                    );
+        });
+		$(document).off('click','#btn_save'); 
+        $(document).on('click','#btn_save',function(event){
+        	var arr = $('#form_ctg').serializeArray();	
+        	var data_content = CKEDITOR.instances.pro_content.getData();
+        	/*console.log(data_content);
+        	var obt_content = { content:data_content};
+        	console.log(data_content);*/
+			arr.push({name: 'content', value: data_content}  );
+			Pho_json_ajax('POST',"<%$smarty.const.ACW_BASE_URL%>product/update" ,arr,function(datas){
+				if(datas.status =="OK"){
+					Pho_modal_close("modal1");
+					//Pho_message_box("Thông báo",datas.msg);
+					//Pho_direct("<%$smarty.const.ACW_BASE_URL%>product");
+				}else{
+					Pho_message_box_error("Lỗi",datas.msg);
+				}
+                
+            });
+        });
+        $(document).off('click','#btn_upload'); 
+        $(document).on('click','#btn_upload',function(event){
+        	$('#upload_file').click();
+        });	
+        $(document).off('change','#upload_file'); 
+        $(document).on('change','#upload_file',function(event){
+        	var corractpath = $(this).val();
+        	var filename = corractpath.replace(/^.*[\\\/]/, '')        	
+        	$('#img_path').val(filename);
+        });	
+        	
+	});
+	
+</script>

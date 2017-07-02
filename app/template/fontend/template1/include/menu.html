@@ -1,0 +1,126 @@
+
+      <div class="row header_top">
+         <div class="container" id="header">
+            <div class="row"  > 
+               <div class="link-cart">
+                  <a href="<%$smarty.const.ACW_BASE_URL%>cart">
+                     <span class="icon"></span>
+                     <span class="count">(0)</span><br/>
+                     <span class="text">Giỏ Hàng</span>
+                  </a>
+               </div>
+               <ul class="nav_top">
+                  <li>
+                     <a href="<%$smarty.const.ACW_BASE_URL%>trang-chu"> TRANG CHỦ</a>
+                  </li>
+                  <li>
+                     <a href="<%$smarty.const.ACW_BASE_URL%>giơi-thieu"> GIỚI THIỆU</a>
+                  </li>
+                  <li>
+                     <a href="<%$smarty.const.ACW_BASE_URL%>lien-he">LIÊN HỆ</a>
+                  </li>
+               </ul>
+                   		  
+            </div>
+            <div class="row">
+
+               <div class="col-md-6" style="float: left">
+                  <img src="<%$smarty.const.ACW_BASE_URL_TEMPLATE%>/images/logo.png">
+               </div>
+               <div class="col-md-6" style="padding-right: 0px">
+                  <div class="row">
+                  <form class="search" >
+                    <input type="" name="" placeholder="Tìm sản phẩm .." class="search_input">  
+                    <input type="submit" value="" style="width: 1px;height: 1px;opacity: 0;padding: 0px;border: none">
+                  </form>
+                  </div>
+                  <div class="row">                     
+                     <div class="hotline-top">
+                            <span class="icon"></span>
+                            <span>Hotline: <span>(844)91 332 5588</span></span>
+                     </div>          
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="row" style="background: #e98348;">
+         <div class="container" >
+            <%assign var="menus" value=Menu_model::get_menus()%> 			
+            <div id="menu_top">
+               <ul class="dropDownMenu">
+                  <%foreach $menus as $key=>$item%>                                         <%if $item.child_flg > 0%> 				 
+                  <li>
+                     <a href="<%if strlen($item.link)>0%><%$smarty.const.ACW_BASE_URL%><%if $item.page_flg==1%>page/v/<%$item.link%><%else if $item.page_flg==2%>danhmuc/ds/<%$item.link%><%else if $item.page_flg==3%>tintuc/ds/<%$item.link%><%/if%><%else%>#<%/if%>"><%$item.menu_name%></a> 					
+                     <ul>
+                        <%foreach $item.child as $sub1%>                     	<%if $sub1.child_flg > 0%>					 						
+                        <li>
+                           <a href="<%if strlen($item.link)>0%><%$smarty.const.ACW_BASE_URL%><%if $sub1.page_flg==1%>page/v/<%$sub1.link%><%else if $sub1.page_flg==2%>danhmuc/ds/<%$sub1.link%><%else if $sub1.page_flg==3%>tintuc/ds/<%$sub1.link%><%/if%><%else%>#<%/if%>"><%$sub1.menu_name%></a> 							
+                           <ul>
+                              <%foreach $sub1.child as $sub2%> 									
+                              <li><a href="<%$smarty.const.ACW_BASE_URL%><%if $sub2.page_flg==1%>page/v/<%$sub2.link%><%else if $sub2.page_flg==2%>danhmuc/ds/<%$sub2.link%><%else if $sub2.page_flg==3%>tintuc/ds/<%$sub2.link%><%/if%>"><%$sub2.menu_name%></a></li>
+                              <%/foreach%> 							
+                           </ul>
+                        </li>
+                        <%else%> 							
+                        <li><a href="<%$smarty.const.ACW_BASE_URL%><%if $sub1.page_flg==1%>page/v/<%$sub1.link%><%else if $sub1.page_flg==2%>danhmuc/ds/<%$sub1.link%><%else if $sub1.page_flg==3%>tintuc/ds/<%$sub1.link%><%/if%>"><%$sub1.menu_name%></a></li>
+                        <%/if%> 					<%/foreach%> 					
+                     </ul>
+                  </li>
+                  <%else%> 					 
+                  <li><a href="<%$smarty.const.ACW_BASE_URL%><%if $item.page_flg==1%>page/v/<%$item.link%><%else if $item.page_flg==2%>danhmuc/ds/<%$item.link%><%else if $item.page_flg==3%>tintuc/ds/<%$item.link%><%/if%>"><%$item.menu_name%></a></li>
+                  <%/if%> 			<%/foreach%>
+               </ul>
+            </div>
+            <span data-toggle="collapse" data-target="#nav-menu" class="glyphicon glyphicon-menu-hamburger menu_mobi"></span>
+            <div id="nav-menu" class="collapse">
+               <ul class="vertical_bar">
+                  <%foreach $menus as $key=>$item%>                                         
+                  <%if $item.child_flg > 0%>            
+                  <li>
+                     <a href="<%if strlen($item.link)>0%><%$smarty.const.ACW_BASE_URL%><%if $item.page_flg==1%>page/v/<%$item.link%><%else if $item.page_flg==2%>danhmuc/ds/<%$item.link%><%else if $item.page_flg==3%>tintuc/ds/<%$item.link%><%/if%><%else%>#<%/if%>"><%$item.menu_name%></a>                
+                     <ul>
+                        <%foreach $item.child as $sub1%>
+                        <%if $sub1.child_flg > 0%>                               
+                        <li>
+                           <a href="<%if strlen($item.link)>0%><%$smarty.const.ACW_BASE_URL%><%if $sub1.page_flg==1%>page/v/<%$sub1.link%><%else if $sub1.page_flg==2%>danhmuc/ds/<%$sub1.link%><%else if $sub1.page_flg==3%>tintuc/ds/<%$sub1.link%><%/if%><%else%>#<%/if%>"><%$sub1.menu_name%></a>                      
+                           <ul>
+                              <%foreach $sub1.child as $sub2%>                            
+                              <li><a href="<%$smarty.const.ACW_BASE_URL%><%if $sub2.page_flg==1%>page/v/<%$sub2.link%><%else if $sub2.page_flg==2%>danhmuc/ds/<%$sub2.link%><%else if $sub2.page_flg==3%>tintuc/ds/<%$sub2.link%><%/if%>"><%$sub2.menu_name%></a></li>
+                              <%/foreach%>                     
+                           </ul>
+                        </li>
+                        <%else%>                      
+                        <li><a href="<%$smarty.const.ACW_BASE_URL%><%if $sub1.page_flg==1%>page/v/<%$sub1.link%><%else if $sub1.page_flg==2%>danhmuc/ds/<%$sub1.link%><%else if $sub1.page_flg==3%>tintuc/ds/<%$sub1.link%><%/if%>"><%$sub1.menu_name%></a></li>
+                        <%/if%>              
+                        <%/foreach%>               
+                     </ul>
+                  </li>
+                  <%else%>                 
+                  <li><a href="<%$smarty.const.ACW_BASE_URL%><%if $item.page_flg==1%>page/v/<%$item.link%><%else if $item.page_flg==2%>danhmuc/ds/<%$item.link%><%else if $item.page_flg==3%>tintuc/ds/<%$item.link%><%/if%>"><%$item.menu_name%></a></li>
+                  <%/if%>        <%/foreach%>
+               </ul>
+            </div>
+         </div>
+      </div>
+      <div class="row">
+         <div class="container text_top">
+            <div class="col-md-3 col-sm-6">
+                            <span class="icon icon1"></span>
+                                <span class="text">Hoàn tiền 100% nếu không <br> hài lòng về sản phẩm </span>
+                        </div>
+                        <div class="col-md-3 col-sm-6">
+                            <span class="icon icon2"></span>
+                                <span class="text">Giao hàng <br> toàn quốc</span>
+                        </div>
+                        <div class="col-md-3 col-sm-6">
+                            <span class="icon icon3"></span>
+                                <span class="text">Thanh toán khi <br> nhận hàng </span>
+                        </div>
+                        <div class="col-md-3 col-sm-6">
+                            <span class="icon icon4"></span>
+                            <span class="text">Mua hàng nhanh <br>  18001566</span>
+                        </div>
+         </div>                                
+      </div>
+      

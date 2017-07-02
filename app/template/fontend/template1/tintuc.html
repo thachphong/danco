@@ -1,0 +1,27 @@
+<html>
+   <head>      
+      <%include 'include/header.html'%>
+      <link rel="stylesheet" href="<%$smarty.const.ACW_BASE_URL%>/froala/css/froala_style.css">
+   </head>
+   <body>
+      <%include 'include/menu.html'%>
+      <div class="row">
+         <div class="container" id="content">
+            
+            <div class="col-sm-9 content-main">
+               <section class="list-product">
+                  <div class="heading heading-section">
+                     <span class="title"><%$post.news_name%></span>
+                  </div>
+                  <div class="fr-element fr-view">
+                     <%$post.content%>
+                  </div>      
+               </section>
+            </div> 
+            <%include 'include/left.html'%>           
+         </div>
+      </div>
+      <%include 'include/footer.html'%>
+      
+   </body>
+</html>

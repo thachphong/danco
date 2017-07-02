@@ -1,0 +1,117 @@
+<div class="col-md-9 col-md-push-3 col-sm-8 col-sm-push-4">
+   <div class="sfbox box-page animated rollIn animation-done" data-animation="rollIn">
+   	  <div class="row">
+            <div class="col-sm-12 text-center">
+               <h3 class="title_page">GIỎ HÀNG</h3>
+               <hr style="border-top: 6px double #9b7d7d;">               
+            </div>
+      </div>
+      <div class="menu_c cart_menu">
+         <div class="menu_title clearfix">
+            <h4>Thông tin đặt hàng</h4>
+         </div>
+         <form action="<%$smarty.const.ACW_BASE_URL%>cart/pay" method="post" novalidate="">
+            <div class="cart_row">
+               <ul>
+                  <li>Ảnh</li>
+                  <li>Tên</li>
+                  <li>Giá</li>
+                  <li>Số lượng</li>
+                  <li>Thành tiền</li>
+               </ul>
+               <%foreach $carts as $item%>
+               <ul>
+                  <li>
+                     <div class="thumb"><a href="<%$smarty.const.ACW_BASE_URL%>sanpham/v/<%$item.pro_no%>"><img src="<%$smarty.const.ACW_BASE_URL_DATA%><%$item.img_thumb%>" alt="<%$item.pro_name%>"></a></div>
+                  </li>
+                  <li>
+                     <h5><a href="<%$smarty.const.ACW_BASE_URL%>sanpham/v/<%$item.pro_no%>" class="item-name"><%$item.pro_name%></a></h5>
+                     <!--<p class="product-type">Small / Plastic</p>-->
+                     <a href="#" data-id="795362367" class="remove_item_button">Xóa</a>
+                  </li>
+                  <li>
+                     <p class="mobile-label-price">Giá</p>
+                     <span class="money price" id="price_<%$item.pro_id%>"><%Sanpham_model::currency_format($item.price_new)%> VNĐ</span>
+                  </li>
+                  <li>
+                  	 <input type="hidden" name="pro_id[]" value="<%$item.pro_id%>">
+                     <p class="mobile-label-quantity">Số lượng</p>
+                     <a class="minus_btn" onclick="qty_add(<%$item.pro_id%>,-1)"></a><input type="text" name="quantity[]" class="txtbox" min="0" id="qty_<%$item.pro_id%>" value="<%$item.qty%>"><a class="plus_btn" onclick="qty_add(<%$item.pro_id%>,1)"></a>
+                     <div class="ajaxcart__errors text-center ajaxcart__item__795362367__errors">All available stock is in cart</div>
+                  </li>
+                  <li>
+                     <p class="mobile-label-total">Thành tiền</p>
+                     <span class="money price" id="amount_<%$item.pro_id%>"><%Sanpham_model::currency_format($item.amount)%> VNĐ</span>
+                  </li>
+               </ul>
+               <%/foreach%>
+               <!--<ul>
+                  <li>
+                     <div class="thumb"><a href="/products/cavernous-roasting-pan?variant=795366727"><img src="https://cdn.shopify.com/s/files/1/0608/2877/products/product20_0c1f801e-da05-4d2e-ac25-01e23f9551c1_small.jpg?v=1408555398" alt="Cavernous Roasting Pan"></a></div>
+                  </li>
+                  <li>
+                     <h5><a href="/products/cavernous-roasting-pan?variant=795366727" class="item-name">Cavernous Roasting Pan</a></h5>
+                     <p class="product-type"></p>
+                     <a href="#" data-id="795366727" class="remove_item_button">REMOVE</a>
+                  </li>
+                  <li>
+                     <p class="mobile-label-price">Price</p>
+                     <span class="money price">$169.99</span>
+                  </li>
+                  <li>
+                     <p class="mobile-label-quantity">Quantity</p>
+                     <a class="minus_btn"></a><input type="text" name="updates[]" class="txtbox" min="0" id="updates_795366727" data-id="795366727" value="1"><a class="plus_btn"></a>
+                     <div class="ajaxcart__errors text-center ajaxcart__item__795366727__errors">All available stock is in cart</div>
+                  </li>
+                  <li>
+                     <p class="mobile-label-total">Total</p>
+                     <span class="money price">$169.99</span>
+                  </li>
+               </ul>-->
+            </div>
+            <div class="total_row clearfix">
+               <ul>
+                  <li>
+                     <span class="total_val">Tổng tiền:</span><span class="total-price" id="total_amount"><%Sanpham_model::currency_format($total_amount)%> VNĐ</span>
+                  </li>
+               </ul>
+            </div>
+            <!--<div class="clearfix order_notes">
+               <label for="cartSpecialInstructions" class="sr-only">Order Notes:</label>
+               <textarea name="note" id="cartSpecialInstructions" placeholder="Order Notes"></textarea>
+            </div>-->
+            <div class="checkout_row clearfix">
+               <button type="submit" name="checkout" value="Check Out" class="btn_c">Thanh toán</button>
+               <a href="javascript:void(0)" class="info_btn"><span class="fa fa-chevron-left"></span>Tiếp tục mua hàng</a>
+            </div>
+            <div id="additional-checkout-block" class="text-right"></div>
+         </form>
+      </div>
+   </div>
+</div>
+<script>
+function qty_add(id,qty){
+	var val = parseInt($("#qty_"+id).val());
+	var quantity = val + qty;
+	if((quantity) == 0){
+		return;
+	}
+	$("#qty_"+id).val(quantity);
+	var price = $('#price_'+id).text().replace(/\./g,'').replace(' VNĐ','');
+	console.log('--');
+	console.log(price);
+	var amt_old = $('#amount_'+id).text().replace(/\./g,'').replace(' VNĐ','');
+	var tot_old = $('#total_amount').text().replace(/\./g,'').replace(' VNĐ','');
+	console.log('amt_old:'+amt_old);
+	console.log('tot_old:'+tot_old);
+	var  amount = quantity*parseInt(price);
+	console.log('amount:'+amount);
+	$('#amount_'+id).text(currency_format(amount) + ' VNĐ');
+	var tot_new =parseInt(tot_old) + (amount - parseInt(amt_old));
+	console.log('tot_new:'+tot_new);
+	$('#total_amount').text(currency_format(tot_new) + ' VNĐ');
+}
+function currency_format(n) {
+    return n.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1.");
+}
+</script>

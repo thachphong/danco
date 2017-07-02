@@ -1,0 +1,7 @@
+RewriteEngine on
+RewriteBase /danco
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_URI} !^(.*\.(png|jpg|jpeg|gif|bmp|ico|css|js))$ [NC]
+RewriteRule ^(.*)$ index.php?acw_url_cmd=$1 [QSA,L]
+

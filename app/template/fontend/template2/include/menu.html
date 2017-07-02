@@ -1,0 +1,284 @@
+<style>
+	#header #nav .navbar-nav > li > a:hover{
+		color: #37bbec;
+	}
+	.ol{
+		background: url(<%$smarty.const.ACW_BASE_URL_TEMPLATE%>/images/ol.png) no-repeat left center;
+	    height: 25px;
+	    line-height: 25px;
+	    padding-left: 20px;
+	    color: #fff;
+	    float: right;
+    }
+    .tuan{
+		background: url(<%$smarty.const.ACW_BASE_URL_TEMPLATE%>/images/tuan.png) no-repeat left center;
+	    height: 25px;
+	    line-height: 25px;
+	    padding-left: 20px;
+	    color: #fff;
+	    float: right;
+    }
+    .thang{
+		background: url(<%$smarty.const.ACW_BASE_URL_TEMPLATE%>/images/thang.png) no-repeat left center;
+	    height: 25px;
+	    line-height: 25px;
+	    padding-left: 20px;
+	    color: #fff;
+	    float: right;
+    }
+	.tong{
+		background: url(<%$smarty.const.ACW_BASE_URL_TEMPLATE%>/images/tong.png) no-repeat left center;
+	    height: 25px;
+	    line-height: 25px;
+	    padding-left: 20px;
+	    color: #fff;
+	    float: right;
+    }
+    .title_page{
+    	font-size: 15px;
+    	font-family: Tahoma,Arial,Times New Roman;
+    }    
+    .footer_ul li{
+    	height: 25px;
+	    line-height: 30px;
+	    color: #fff;
+    }
+    .footer_ul li a{    	
+	    color: #fff !important;
+    }
+    .footer_ul li a:hover{    	
+	    color: #fff101 !important;
+    }
+    .ol_text{
+    	width: 88px;
+    	display: inline-block;
+    }
+    .ol_num{
+    	width: 60px;
+    	display: inline-block;
+    	text-align: right;
+    }
+    .f_mid{
+    	background:#008DD0 !important;
+    }
+    .f_mid h4{
+    	color: #fff !important;
+    }
+    .ticker_con{
+    	width:70%;
+    	display: inline-block;
+    	text-align: center;    	
+    	overflow: hidden;
+    	padding-left:31px
+    }
+    .ticker-wrap {
+			/*position: fixed;
+			bottom: 0;*/
+			width: 100%;
+			overflow: hidden;
+			height: 4rem;
+			/*background-color: rgba(51, 51, 51, 0.5);*/
+			padding-left: 100%; // offsets items to begin
+		}
+
+		.ticker {
+			display: inline-block;
+			height: 4rem;
+			line-height: 4rem;
+			white-space: nowrap;
+			padding-right: 100%; // taken from container as display inline-block
+		}
+
+		.ticker__item {
+			display: inline-block;
+			padding: 0 2rem;
+			font-size: 2rem;
+			color: #fff101;
+			font-family: Tahoma,arial;
+		}
+		@keyframes ticker {
+			0% {
+				-webkit-transform: translate3d(0, 0, 0);
+						transform: translate3d(0, 0, 0);
+
+			}
+			100% {
+				-webkit-transform: translate3d(-970px, 0, 0);
+				        transform: translate3d(-970px, 0, 0);
+			}
+		}
+		.ticker {
+			animation-name: ticker;
+			animation-iteration-count: infinite;
+			animation-timing-function: linear;
+			animation-duration: 10s; // tweak based on number of items/desired speed
+		}
+</style>
+<div id="header" data-section-id="header" data-section-type="header-section">
+   <div class="header_top" style="    background: #243659;">
+	   <div class="container"> 
+	      <!--<div class="top_menu">
+	         <a  href="<%$smarty.const.ACW_BASE_URL_TEMPLATE%>" itemprop="url">
+                     <img src="<%$smarty.const.ACW_BASE_URL_TEMPLATE%>/images/logo.png" alt="namtanbuu" itemprop="logo">
+                     </a>                    
+	      </div>-->
+	      <!--<div class="hed_right">
+	         <ul>
+	            <li><a href="tel:800.555.5555"><span class="fa fa-phone"></span>800.555.5555</a></li>
+	         </ul>
+	     </div>-->
+	         <div class="social" style="float: left">
+                              <ul>                              	
+                                 
+                                 <li class="facebook">
+                                    <a href="https://facebook.com/" target="_blank" title="Facebook"><span class="fa fa-facebook"></span></a>
+                                 </li>
+                                 <li class="google">
+                                    <a href="https://plus.google.com/" target="_blank" title="Pinterest"><span class="fa fa-google-plus"></span></a>
+                                 </li>
+                                 <li class="twitter">
+                                    <a href="https://twitter.com/" target="_blank" title="Twitter"><span class="fa fa-twitter"></span></a>
+                                 </li>
+                                 <li class="pinterest">
+                                    <a href="https://www.pinterest.com//" target="_blank" title="Pinterest"><span class="fa fa-pinterest"></span></a>
+                                 </li>
+                                 
+                                 <li class="instagram">
+                                    <a href="https://instagram.com/" target="_blank" title="Instagram"><span class="fa fa-instagram"></span></a>
+                                 </li>                                 
+                                 <li class="youtube">
+                                    <a href="https://www.youtube.com/user/" target="_blank" title="YouTube"><span class="fa fa-youtube"></span></a>
+                                 </li>
+                                 
+                              </ul>
+                           </div>
+                <div class="ticker_con">
+                	<div class="ticker-wrap">
+					    <div class="ticker">
+					        <div class="ticker__item">Hotline: 0907.238.166</div>
+					    </div>
+					</div>
+                	<!--<h5 style="color:#fff;font-size:18px;color:#fff101; ">Hotline: 0907.238.166</h5>-->
+                </div>
+            <div id="nav" style="width: 80px; float: right;">
+               <nav class="navbar">
+	      	<ul class="hidden-xs nav navbar-nav navbar-right" id="ul_cart">
+                     <li class="dropdown-grid no-open-arrow">
+                        <a  href="<%$smarty.const.ACW_BASE_URL%>cart" class="dropdown-toggle " >
+                        	<%assign var='carts' value=count(ACWSession::get("cart_info"))%>
+                           <div class="cart-icon"><span class="count <%if $carts==0%>hidden<%/if%>"><%$carts%></span><i class="fa fa-shopping-cart"></i></div>
+                        </a>                       
+                     </li>                     
+                     <li class="dropdown-grid no-open-arrow">
+                        <a data-toggle="dropdown" href="javascript:;" class="dropdown-toggle" aria-expanded="false"><span class="icons"><i class="fa fa-search"></i></span></a>
+                        <div class="dropdown-grid-wrapper" role="menu">
+                           <div class="dropdown-menu fixed_menu col-sm-4 col-lg-3 animated fadeInDown pl-pr-15 animation-done" style="width: 200px;">
+                              <form action="<%$smarty.const.ACW_BASE_URL%>danhmuc/tim" method="get" role="search">
+                                 <div class="menu_c search_menu">
+                                    <div class="search_box">
+                                       <input type="hidden" name="type" value="product">
+                                       <input type="search" name="txt" value="" class="txtbox" placeholder="Search" aria-label="Search">
+                                       <button class="btn btn-link" type="submit" value="Search"><span class="fa fa-search"></span></button>
+                                    </div>
+                                 </div>
+                              </form>
+                           </div>
+                        </div>
+                     </li>
+                  </ul>
+	         </nav>
+	         </div>
+	      
+	   </div>
+	</div>
+   <div class="header_bot  enabled-sticky-menu " > <!--sticky-->
+      <div class="header_content">
+         <div class="container">
+            <div id="nav">
+               <nav class="navbar" role="navigation">
+                  <div class="navbar-header">
+                     <a href="#" class="visible-ms visible-xs pull-right navbar-cart" id="wsnavtoggle">
+                        <div class="cart-icon"><i class="fa fa-bars"></i></div>
+                     </a>
+                     
+                     
+                     <a href="javascript:void(0);" data-href="/cart" class="visible-ms visible-xs pull-right navbar-cart cart-popup">
+                        <div class="cart-icon"><span class="count hidden">0</span><i class="fa fa-shopping-cart"></i></div>
+                     </a>
+                     <a href="/search" class="visible-ms visible-xs pull-right navbar-cart">
+                        <div class="cart-icon"><i class="fa fa-search"></i></div>
+                     </a>
+                     <!--<div class="visible-ms visible-xs">
+                        <a class="navbar-brand" href="/" itemprop="url">
+                        <img src="//cdn.shopify.com/s/files/1/0787/9973/files/logo_550x.png?v=1487270357" alt="FurnishTime" itemprop="logo">
+                        </a>
+                     </div>-->
+                     <!-- ./visible-ms visible-xs -->
+                     <a class="navbar-brand" href="<%$smarty.const.ACW_BASE_URL_TEMPLATE%>" itemprop="url">
+                     <img src="<%$smarty.const.ACW_BASE_URL_TEMPLATE%>/images/logo.png" alt="namtanbuu" itemprop="logo">
+                     </a>
+                  </div>
+                  <!-- code here -->
+                  <%assign var='menus' value=Menu_model::get_menus()%>
+                  <nav class="wsmenu clearfix multi-drop" style="float: right;margin-top:12px">
+                     <ul class="mobile-sub wsmenu-list">
+                     <%foreach $menus as $key=>$item%>                        
+                        <%if $item.child_flg > 0%>
+                        <li class="has-submenu">
+                           <span class="wsmenu-click"><i class="wsmenu-arrow fa fa-angle-down"></i></span><a href="<%if strlen($item.link)>0%><%$smarty.const.ACW_BASE_URL%><%if $item.page_flg==1%>page/v/<%$item.link%><%else if $item.page_flg==2%>danhmuc/ds/<%$item.link%><%else if $item.page_flg==3%>tintuc/ds/<%$item.link%><%/if%><%else%>#<%/if%>"><%$item.menu_name%><span class="arrow"></span></a>
+                           <ul class="wsmenu-submenu">
+                           <%foreach $item.child as $sub1%>
+                           	  <%if $sub1.child_flg > 0%>	
+                              <li class="has-submenu-sub">
+                                 <span class="wsmenu-click02"><i class="wsmenu-arrow fa fa-angle-down"></i></span><a href="<%if strlen($item.link)>0%><%$smarty.const.ACW_BASE_URL%><%if $sub1.page_flg==1%>page/v/<%$sub1.link%><%else if $sub1.page_flg==2%>danhmuc/ds/<%$sub1.link%><%else if $sub1.page_flg==3%>tintuc/ds/<%$sub1.link%><%/if%><%else%>#<%/if%>"><%$sub1.menu_name%><span class="left-arrow"></span></a>
+                                 <ul class="wsmenu-submenu-sub">
+                                 <%foreach $sub1.child as $sub2%>                                    
+                                    <li><a href="<%$smarty.const.ACW_BASE_URL%><%if $sub2.page_flg==1%>page/v/<%$sub2.link%><%else if $sub2.page_flg==2%>danhmuc/ds/<%$sub2.link%><%else if $sub2.page_flg==3%>tintuc/ds/<%$sub2.link%><%/if%>"><%$sub2.menu_name%></a></li>
+                                 <%/foreach%>
+                                 </ul>
+                              </li>
+                              <%else%>
+                              <li class=""><a href="<%$smarty.const.ACW_BASE_URL%><%if $sub1.page_flg==1%>page/v/<%$sub1.link%><%else if $sub1.page_flg==2%>danhmuc/ds/<%$sub1.link%><%else if $sub1.page_flg==3%>tintuc/ds/<%$sub1.link%><%/if%>"><%$sub1.menu_name%></a></li>
+                              <%/if%>
+                              
+                           <%/foreach%> 
+                           </ul>
+                        </li>
+                        <%else%>
+                        	<li><a href="<%$smarty.const.ACW_BASE_URL%><%if $item.page_flg==1%>page/v/<%$item.link%><%else if $item.page_flg==2%>danhmuc/ds/<%$item.link%><%else if $item.page_flg==3%>tintuc/ds/<%$item.link%><%/if%>"><%$item.menu_name%></a></li>
+                        <%/if%>
+                        
+                     <%/foreach%> 
+                     </ul>
+                      
+                  </nav>
+                  <!--<ul class="hidden-xs nav navbar-nav navbar-right">
+                     <li class="dropdown-grid no-open-arrow">
+                        <a  href="<%$smarty.const.ACW_BASE_URL%>cart" class="dropdown-toggle " >
+                        	<%assign var='carts' value=count(ACWSession::get("cart_info"))%>
+                           <div class="cart-icon"><span class="count <%if $carts==0%>hidden<%/if%>"><%$carts%></span><i class="fa fa-shopping-cart"></i></div>
+                        </a>                       
+                     </li>                     
+                     <li class="dropdown-grid no-open-arrow">
+                        <a data-toggle="dropdown" href="javascript:;" class="dropdown-toggle" aria-expanded="false"><span class="icons"><i class="fa fa-search"></i></span></a>
+                        <div class="dropdown-grid-wrapper" role="menu">
+                           <div class="dropdown-menu fixed_menu col-sm-4 col-lg-3 animated fadeInDown pl-pr-15 animation-done">
+                              <form action="<%$smarty.const.ACW_BASE_URL%>danhmuc/tim" method="get" role="search">
+                                 <div class="menu_c search_menu">
+                                    <div class="search_box">
+                                       <input type="hidden" name="type" value="product">
+                                       <input type="search" name="txt" value="" class="txtbox" placeholder="Search" aria-label="Search">
+                                       <button class="btn btn-link" type="submit" value="Search"><span class="fa fa-search"></span></button>
+                                    </div>
+                                 </div>
+                              </form>
+                           </div>
+                        </div>
+                     </li>
+                  </ul>-->
+               </nav>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>

@@ -1,0 +1,54 @@
+<div class="col-md-9 col-md-push-3 col-sm-8 col-sm-push-4">
+   <div class="sfbox box-page animated rollIn animation-done" data-animation="rollIn">
+   	  <div class="row">
+            <div class="col-sm-12 text-center">
+               <h3 class="title_page"><%$ctg_name%></h3>
+               <hr style="border-top: 6px double #9b7d7d;">
+               
+            </div>
+      </div>	
+      <div class="rte">
+         
+         <div class="row">
+            <div class="col-sm-12">
+            <%foreach $tintucs as $item%>               
+               <div class="row">
+                  <div class="col-sm-4"><img src="<%$smarty.const.ACW_BASE_URL_DATA%><%$item.img_path%>" alt="<%$item.news_name%>" class="img-responsive"></div>
+                  <div class="col-sm-8">
+                     <h3><%$item.news_name%></h3>
+                     <p><%$item.des%></p>
+                     <a href="<%$smarty.const.ACW_BASE_URL%>tintuc/v/<%$item.news_no%>" class="btn_c">Xem Thêm</a>
+                  </div>
+               </div>               
+               <hr>
+            <%/foreach%>
+               
+               <!--<div class="row">
+                  <div class="col-sm-12 text-center">
+                     <h2>Tin liên quan</h2>
+                     <hr>
+                  </div>
+                  <div class="col-sm-6">
+                     <ul>
+                        <li>Beautiful responsive design built on the Bootstrap 3 framework</li>
+                        <li>Extensive options panel makes it easy to setup your site</li>
+                        <li>Comprehensive color options</li>                        
+                        <li>Fully customizable home page with slider, promotion images, featured products, and more!</li>
+                        
+                     </ul>
+                  </div>
+                  <div class="col-sm-6">
+                     <ul>
+                        <li>Eye-catching animation for site elements (optional)</li>
+                        <li>Custom entry popup - engage your customers as soon as they enter your site</li>
+                        <li>Font-Awesome web icon font included</li>
+                        <li>Variant images support</li>
+                        <li>MailChimp newsletter support</li>
+                     </ul>
+                  </div>
+               </div>-->
+            </div>
+         </div>
+      </div>      
+   </div>  
+</div>

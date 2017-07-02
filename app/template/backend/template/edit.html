@@ -1,0 +1,84 @@
+<div class="row" style="width: 700px">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                
+                  <div class="x_content">
+                    <br />
+                    <form id="form_ctg" action="" class="form-horizontal form-label-left" enctype="multipart/form-data">
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="ctg_name">Template no<span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="text" id="template_no" required="required" name="template_no" class="form-control col-md-7 col-xs-12" value="<%$template_no%>">
+                          <input type="hidden"  name="template_id" value="<%$template_id%>" >                          
+                        </div>                        
+                      </div>  
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="ctg_name">Template name<span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="text" id="template_name" required="required" name="template_name" class="form-control col-md-7 col-xs-12" value="<%$template_name%>">                         
+                        </div>                        
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Active</label>
+                        <div class="col-md-3 col-sm-3 col-xs-12">
+                          <select class="form-control" name="active">
+                          	 <option value="0" <%if $active == 0%>selected="selected"<%/if%>>Không</option>
+                          	 <option value="1" <%if $active == 1%>selected="selected"<%/if%>>Có</option>
+                          </select>                          
+                        </div>
+                      </div>                      
+                      <div class="ln_solid"></div>
+                      <div class="form-group">
+                        <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3" style="text-align: center">
+                          <button class="dialog_close btn btn-primary" type="button">Thoát</button>
+                          <button class="btn btn-success" id="btn_save" type="button">Cập nhật</button>
+                        </div>
+                      </div>
+
+                    </form>
+                  </div>
+                </div>
+              </div>
+           <!-- </div>-->
+<script>
+	
+	
+	$(document).ready(function() {
+		
+		
+		$(document).off('change','#page_flg'); 
+        $(document).on('change','#page_flg',function(event){
+        	var val = $(this).val();
+        	//change_option(val);
+        });
+        $(document).off('click','#btn_upload'); 
+        $(document).on('click','#btn_upload',function(event){
+        	$('#upload_file').click();
+        });	
+        $(document).off('change','#upload_file'); 
+        $(document).on('change','#upload_file',function(event){
+        	var corractpath = $(this).val();
+        	//var filename = corractpath.replace(/^.*[\\\/]/, '')        	
+        	
+        	var file_data=$(this).prop("files")[0];
+        	//console.log(file_data);	
+        	var form_data=new FormData(this);
+            form_data.append("file",file_data);
+            var base_url= "<%$smarty.const.ACW_BASE_URL%>";
+            //console.log(form_data);	
+        	Pho_upload("<%$smarty.const.ACW_BASE_URL%>phofile/uploadslides" ,form_data,function(datas){
+				//if(datas.status =="OK"){
+					 //console.log(datas);
+				var file_name = datas.link.replace(base_url,"");	
+				$('#img_path').val(file_name);	
+				$('#img_disp').attr('src',datas.link);			
+				//}else{
+					//Pho_message_box_error("Lỗi",datas.msg);
+				//}
+                
+            });
+        });
+	});
+	
+</script>

@@ -1,0 +1,25 @@
+<html>
+   <head>      
+      <%include 'include/header.html'%>
+   </head>
+   <body>
+      <%include 'include/menu.html'%>
+      <div class="row">
+         <div class="container" id="content">            
+            <div class="col-sm-9 content-main">
+               <section class="list-product">
+                  <div class="heading heading-section">
+                     <span class="title"><%$page_name%></span>
+                  </div>
+                  <div>
+                     <%$content%>
+                  </div>      
+               </section>
+            </div>
+            <%include 'include/left.html'%>            
+         </div>
+      </div>
+      <%include 'include/footer.html'%>
+      
+   </body>
+</html>

@@ -1,0 +1,80 @@
+<%assign var='slides' value=Slides_model::get_slides()%>
+<div id="shopify-section-slideshow" class="shopify-section" style="margin-top: 31px">
+               <div data-section-id="slideshow" id="flexslider-slideshow" class="flexslider home-slider mt-30 " data-section-type="slideshow-section" >
+                  <ul class="slides">
+                     <!-- new slide -->  
+                     <%foreach $slides as $key=>$item%>
+                     <li id="slide-slideshow-<%$key%>" data-index="0" style="width: 100%; float: left; margin-right: -100%; position: relative; opacity: 1; display: block; transition: opacity 0.6s ease; z-index: 2;" class="flex-active-slide">
+                        <a href="<%$smarty.const.ACW_BASE_URL%>">
+                        <img src="<%$smarty.const.ACW_BASE_URL%><%$item.img_path%>" width="850" height="450" draggable="false">
+                        </a>
+                        <div class="flex-caption center" style="background:rgba(0,0,0,0.4);">
+                           <div class="banner">
+                              <div class="banner_overlay">
+                                 <!--<h2>Shop Cutlery</h2>
+                                 <div class="line_1"></div>
+                                 <h4>
+                                    <p>Big discounts on kitchen essentials.</p>
+                                 </h4>
+                                 <h5>
+                                    <p>Now through Friday, you can save up to 60%!</p>
+                                 </h5>-->
+                                 <!--<a class="btn_c" href="https://cooktime.myshopify.com/collections/cutlery">Shop Now</a>-->
+                              </div>
+                           </div>
+                        </div>
+                     </li>
+                     <%/foreach%>  
+                     <!-- end of slide -->	      
+                     <!-- new slide -->  
+                     <!--<li id="slide-slideshow-1" data-index="1" style="width: 100%; float: left; margin-right: -100%; position: relative; opacity: 0; display: block; transition: opacity 0.6s ease; z-index: 1;" class="">
+                        <a href="https://cooktime.myshopify.com/collections">
+                        <img src="<%$smarty.const.ACW_BASE_URL_TEMPLATE%>/images/slideshow_3_1400x.jpg" width="1600" height="800" draggable="false">
+                        </a>
+                        <div class="flex-caption center" style="background:rgba(0,0,0,0.4);">
+                           <div class="banner">
+                              <div class="banner_overlay">
+                                 <h2>The Essentials</h2>
+                                 <div class="line_1"></div>
+                                 <h4>
+                                    <p>Everything you need is right here!</p>
+                                 </h4>
+                                 <h5>
+                                    <p>Durable, affordable kitchen utensils.</p>
+                                 </h5>
+                                 <a class="btn_c" href="https://cooktime.myshopify.com/collections">Go Shopping</a>
+                              </div>
+                           </div>
+                        </div>
+                     </li>-->
+                     <!-- end of slide -->	      
+                     <!-- new slide -->  
+                     <!--<li id="slide-slideshow-2" data-index="2" style="width: 100%; float: left; margin-right: -100%; position: relative; opacity: 0; display: block; transition: opacity 0.6s ease; z-index: 1;" class="">
+                        <a href="https://cooktime.myshopify.com/collections">
+                        <img src="<%$smarty.const.ACW_BASE_URL_TEMPLATE%>/images/slideshow_2_1400x.jpg" width="1600" height="800" draggable="false">
+                        </a>
+                        <div class="flex-caption center" style="background:rgba(0,0,0,0.2);">
+                           <div class="banner">
+                              <div class="banner_overlay">
+                                 <h2>The Perfect Dining Experience</h2>
+                                 <div class="line_1"></div>
+                                 <h4>
+                                    <p>The right place settings make all the difference</p>
+                                 </h4>
+                                 <h5>
+                                    <p>Save up to 75% through Monday!</p>
+                                 </h5>
+                                 <a class="btn_c" href="https://cooktime.myshopify.com/collections">Shop Dining Decor</a>
+                              </div>
+                           </div>
+                        </div>
+                     </li>-->
+                     <!-- end of slide -->	      
+                  </ul>
+                  <ul class="flex-direction-nav">
+                     <li><a class="flex-prev" href="">Previous</a></li>
+                     <li><a class="flex-next" href="">Next</a></li>
+                  </ul>
+               </div>
+               <!--SLIDER END -->
+            </div>

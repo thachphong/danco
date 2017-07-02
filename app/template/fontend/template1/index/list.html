@@ -1,0 +1,43 @@
+<section class="list-product">
+   <div class="heading heading-section">
+      <span class="title"><%$ctg_name%></span>
+      <a href="<%$smarty.const.ACW_BASE_URL%>danhmuc/ds/<%$ctg_no%>" class="xem-them"></a>
+   </div>
+   <div class="owl-sp-hot owl-carousel owl-theme" style="opacity: 1; display: block;">
+      <div class="owl-wrapper-outer">
+         <div class="owl-wrapper" style="width: 5600px; left: 0px; display: block;">
+         <%foreach $list_sanpham as $key=>$pro%> 
+            <div class="owl-item" style="width: 280px;">
+               <div class="item-product">
+                  <div class="img-product" style="height: 183px;">
+                     <a href="<%$smarty.const.ACW_BASE_URL%>sanpham/v/<%$pro.pro_no%>">
+                     <img width="600"  src="<%$smarty.const.ACW_BASE_URL_DATA%><%$pro.img_thumb%>" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="<%$pro.pro_name%>"  sizes="(max-width: 600px) 100vw, 600px"></a>
+                  </div>
+                  <div class="caption">
+                     <a href="<%$smarty.const.ACW_BASE_URL%>sanpham/v/<%$pro.pro_no%>" class="name-product"><%$pro.pro_name%><span class="label-product"></span></a>
+                     <div class="clearfix">
+                        <div class="price">
+                           <span class="amount"><%Sanpham_model::currency_format($pro.price_new)%>₫</span>
+                        </div>
+                        <a href="/checkout?add-to-cart=188" class="btn-cart"></a>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         <%/foreach%>                      
+         </div>
+      </div>
+      <div class="owl-controls">
+         <div class="owl-pagination">
+            <div class="owl-page active"><span class=""></span></div>
+            <div class="owl-page"><span class=""></span></div>
+            <div class="owl-page"><span class=""></span></div>
+            <div class="owl-page"><span class=""></span></div>
+         </div>
+         <div class="owl-buttons">
+            <div class="owl-prev"></div>
+            <div class="owl-next"></div>
+         </div>
+      </div>
+   </div>
+</section>

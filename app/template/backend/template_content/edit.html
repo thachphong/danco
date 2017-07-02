@@ -1,0 +1,124 @@
+<div class="row" style="width: 700px">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                
+                  <div class="x_content">
+                    <br />
+                    <form id="form_ctg" action="" class="form-horizontal form-label-left" enctype="multipart/form-data">
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="section_id">Section id<span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <select class="form-control" name="section_id">
+                          	<option value=""></option>
+                          	<option value="section_1" <%if $section_id == 'section_1'%>selected="selected"<%/if%>>Section 1</option>
+                          	<option value="section_2" <%if $section_id == 'section_2'%>selected="selected"<%/if%>>Section 2</option>
+                          	<option value="section_3" <%if $section_id == 'section_3'%>selected="selected"<%/if%>>Section 3</option>
+                          	<option value="section_4" <%if $section_id == 'section_4'%>selected="selected"<%/if%>>Section 4</option>
+                          	<option value="section_5" <%if $section_id == 'section_5'%>selected="selected"<%/if%>>Section 5</option>
+                          	<option value="footer" <%if $section_id == 'footer'%>selected="selected"<%/if%>>Footer</option>
+                          </select>
+                          <input type="hidden"  name="con_id" value="<%$con_id%>" >                          
+                        </div>                        
+                      </div>  
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="column_id">Conlumn id<span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <select class="form-control" name="column_id">
+                          	<option value=""></option>
+                          	<option value="col_1" <%if $column_id == 'col_1'%>selected="selected"<%/if%>>Column 1</option>
+                          	<option value="col_2" <%if $column_id == 'col_2'%>selected="selected"<%/if%>>Column 2</option>
+                          	<option value="col_3" <%if $column_id == 'col_3'%>selected="selected"<%/if%>>Column 3</option>
+                          	<option value="col_4" <%if $column_id == 'col_4'%>selected="selected"<%/if%>>Column 4</option>
+                          	<option value="col_5" <%if $column_id == 'col_5'%>selected="selected"<%/if%>>Column 5</option>
+                          </select>              
+                        </div>                        
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Content name</label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input class="form-control" name="con_name" value="<%$con_name%>">                         
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Module outner</label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <select class="form-control" name="mod_outner_id">
+                          	 <option value=""></option>	
+                          	 <%foreach $module_list as $item%>
+                          	 		<option value="<%$item.mod_id%>" <%if $mod_outner_id == $item.mod_id%>selected="selected"<%/if%>><%$item.mod_name%></option>	
+                          	 <%/foreach%>
+                          </select>                          
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Module inner</label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <select class="form-control" name="mod_inner_id">
+                          	 <option value=""></option>	
+                          	 <%foreach $module_list as $item%>
+                          	 		<option value="<%$item.mod_id%>" <%if $mod_inner_id == $item.mod_id%>selected="selected"<%/if%>><%$item.mod_name%></option>	
+                          	 <%/foreach%>
+                          </select>                          
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Thứ tự hiển thị</label>
+                        <div class="col-md-3 col-sm-6 col-xs-12">
+                          <input class="form-control" name="sort" value="<%$sort%>" type="number">                         
+                        </div>
+                      </div>                      
+                      <div class="ln_solid"></div>
+                      <div class="form-group">
+                        <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3" style="text-align: center">
+                          <button class="dialog_close btn btn-primary" type="button">Thoát</button>
+                          <button class="btn btn-success" id="btn_save" type="button">Cập nhật</button>
+                        </div>
+                      </div>
+
+                    </form>
+                  </div>
+                </div>
+              </div>
+           <!-- </div>-->
+<script>
+	
+	
+	$(document).ready(function() {
+		
+		
+		$(document).off('change','#page_flg'); 
+        $(document).on('change','#page_flg',function(event){
+        	var val = $(this).val();
+        	//change_option(val);
+        });
+        $(document).off('click','#btn_upload'); 
+        $(document).on('click','#btn_upload',function(event){
+        	$('#upload_file').click();
+        });	
+        $(document).off('change','#upload_file'); 
+        $(document).on('change','#upload_file',function(event){
+        	var corractpath = $(this).val();
+        	//var filename = corractpath.replace(/^.*[\\\/]/, '')        	
+        	
+        	var file_data=$(this).prop("files")[0];
+        	//console.log(file_data);	
+        	var form_data=new FormData(this);
+            form_data.append("file",file_data);
+            var base_url= "<%$smarty.const.ACW_BASE_URL%>";
+            //console.log(form_data);	
+        	Pho_upload("<%$smarty.const.ACW_BASE_URL%>phofile/uploadslides" ,form_data,function(datas){
+				//if(datas.status =="OK"){
+					 //console.log(datas);
+				var file_name = datas.link.replace(base_url,"");	
+				$('#img_path').val(file_name);	
+				$('#img_disp').attr('src',datas.link);			
+				//}else{
+					//Pho_message_box_error("Lỗi",datas.msg);
+				//}
+                
+            });
+        });
+	});
+	
+</script>

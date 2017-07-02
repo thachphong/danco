@@ -1,0 +1,53 @@
+               <div class="col-md-9 col-md-push-3 col-sm-8 col-sm-push-4">             
+                  <div class="product_c">
+                     <div class="row">
+				            <div class="col-sm-12 text-center">
+				               <h3 class="title_page"><%$ctg_name%></h3>
+				               <hr style="border-top: 6px double #9b7d7d;">               
+				            </div>
+				      </div>
+                     <div class="collection-grid view-grid animated  fadeInUp animation-done" data-animation="fadeInUp">
+                     
+                     	<%foreach $sanphams as $item%>
+                        <div class="col-md-4 col-sm-6 element mb30"><!--col-xs-6 -->
+                           <div class="main_box quick-view-overlay " style="height: 356px;">
+                              <div class="box_1">
+                              <%if $item.price_old > $item.price_new%>
+                                 <div class="on-sale">Sale</div>
+                              <%/if%>
+                                 <div class="product-image">
+                                    <a href="<%$smarty.const.ACW_BASE_URL%>sanpham/v/<%$item.pro_no%>"><img src="<%$smarty.const.ACW_BASE_URL_DATA%><%$item.img_thumb%>" alt="<%$item.pro_name%>"></a>
+                                 </div>
+                                 <div class="overlay hidden-sm hidden-xs">
+                                    <a class="popup-text quick-view-btn btn_c cart_btn_1" href="<%$smarty.const.ACW_BASE_URL%>sanpham/v/<%$item.pro_no%>" data-effect="mfp-move-from-top" data-toggle="tooltip" data-placement="top" title="Quick View">Đặt hàng</a>
+                                 </div>
+                              </div>
+                              <div class="desc">
+                                 <h5><a href="<%$smarty.const.ACW_BASE_URL%>sanpham/v/<%$item.pro_no%>"><%$item.pro_name%></a></h5>
+                                 <!--<p>Kitchen Decor</p>-->
+                                 <div class="price"><span class=""> <span class="money" data-currency-usd="<%$item.price_new%>" data-currency="USD"><%Sanpham_model::currency_format($item.price_new)%> VNĐ</span> </span>
+                                 <%if $item.price_old > $item.price_new%>
+                                 <span class="compare-price"><span class="money" data-currency-usd="<%$item.price_old%>" data-currency="USD"><%Sanpham_model::currency_format($item.price_old)%> VNĐ</span></span>
+                                 <%/if%>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                        <%/foreach%>                                               
+                     </div>
+                     <%if $total_page > 1%>
+                     <div class="page_c clearfix red5">
+                        <a href="<%$smarty.const.ACW_BASE_URL%>danhmuc/ds/<%$ctg_no%>?page=<%($page-1)%>" class="prev<%if $page==1%>disabled<%/if%>"><span class="fa fa-chevron-left"></span>Trước</a>
+                        <ul>
+                        <%for $i=0; $i< $total_page;$i++ %>                          
+                           <li <%if $page==$i%>class="active"<%/if%>>
+                              <a href="<%$smarty.const.ACW_BASE_URL%>danhmuc/ds/<%$ctg_no%>?page=<%$i%>" title=""><%$i%></a>
+                           </li>
+                        <%/for%>
+                        </ul>
+                        <a href="<%$smarty.const.ACW_BASE_URL%>danhmuc/ds/<%$ctg_no%>?page=<%($page+1)%>" title="Next »" class="next <%if $page>= $total_page%>disabled<%/if%>">Sau<span class="fa fa-chevron-right"></span></a>
+                     </div>
+                     <%/if%>
+                  </div>
+               </div>
+               

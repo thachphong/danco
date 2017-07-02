@@ -1,0 +1,44 @@
+<div id="shopify-section-1487357103383" class="shopify-section">
+               <div data-section-id="1487357103383" data-section-type="featured-products-section">
+                  <div class="container">
+                     <div class="h_row_content h_row_4 featured-products" data-animation="fadeInUp">
+                        <!--<div class="clearfix">
+                           <h3>Featured Products</h3>
+                        </div>-->
+                        <div class="carosel product_c mb30" id="products-1487357103383">
+                           <!--<div class="product_c">-->
+                              <div class="collection-grid view-grid animated  fadeInUp animation-done" data-animation="fadeInUp">
+                              	<%assign var='sanphams' value=Sanpham_model::get_sanpham_home()%>
+                              	<%foreach $sanphams as $key=>$item%>
+                                 <div class="col-md-3 col-sm-6 element mb30 "><!--col-xs-6 -->
+		                           <div class="main_box quick-view-overlay " style="height: 356px;">
+		                              <div class="box_1">
+		                              <%if $item.price_old > $item.price_new%>
+		                                 <div class="on-sale">Sale</div>
+		                              <%/if%>
+		                                 <div class="product-image">
+		                                    <a href="<%$smarty.const.ACW_BASE_URL%>sanpham/v/<%$item.pro_no%>"><img src="<%$smarty.const.ACW_BASE_URL_DATA%><%$item.img_thumb%>" alt="<%$item.pro_name%>"></a>
+		                                 </div>
+		                                 <div class="overlay hidden-sm hidden-xs">
+		                                    <a class="popup-text quick-view-btn btn_c cart_btn_1" href="<%$smarty.const.ACW_BASE_URL%>sanpham/v/<%$item.pro_no%>" >Đặt hàng</a>
+		                                 </div>
+		                              </div>
+		                              <div class="desc">
+		                                 <h5><a href="<%$smarty.const.ACW_BASE_URL%>sanpham/v/<%$item.pro_no%>"><%$item.pro_name%></a></h5>
+		                                 <!--<p>Kitchen Decor</p>-->
+		                                 <div class="price"><span class=""> <span class="money" data-currency-usd="<%$item.price_new%>" data-currency="USD"><%Sanpham_model::currency_format($item.price_new)%> VNĐ</span> </span>
+		                                 <%if $item.price_old > $item.price_new%>
+		                                 <span class="compare-price"><span class="money" data-currency-usd="<%$item.price_old%>" data-currency="USD"><%Sanpham_model::currency_format($item.price_old)%> VNĐ</span></span>
+		                                 <%/if%>
+		                                 </div>
+		                              </div>
+		                           </div>
+		                        </div>
+                                 <%/foreach%>                                 
+                              </div>
+                           <!--</div>-->
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>

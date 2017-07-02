@@ -1,0 +1,252 @@
+<style>
+.side_box_1 li{
+	border-bottom:1px solid rgba(27, 25, 25, 0.19);
+	background: rgba(55, 187, 236, 0.22) !important;	
+}
+.side_box_2 li{
+	border-bottom:1px solid rgba(27, 25, 25, 0.19);
+	background: #fff !important;
+}
+.side_box_1 li a{
+	color: #000 !important;
+	text-decoration: none !important;
+	padding: 7px 25px;
+}
+.side_box_1 li a:hover,.side_box_2 li a:hover{    	
+	color: #37bbec !important;
+}
+.fa-chevron-right {
+    position: relative;
+}
+.sidebar_1 h5 a{
+	    font-family: Tahoma,Arial,Times New Roman;
+}
+/*replace the content value with the
+corresponding value from the list below*/
+ 
+.fa-chevron-right:before {
+    content: "\f054";
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: inherit;
+/*--adjust as necessary--*/
+   /* color: #000;  */  
+    padding-right: 0.5em;
+    left: 0;
+}
+.fa-caret-right {
+    content: "\f0da";
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: inherit;
+/*--adjust as necessary--*/
+   /* color: #000;  */  
+    padding-right: 0.5em;
+    left: 0;
+}
+.fa-plus-circle{
+	content: "\f055";
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: inherit;
+    padding-right: 0.5em;
+    /*left: 0;*/
+    float: right;
+}
+.fa-minus-circle{
+	content: "\f056";
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: inherit;
+    padding-right: 0.5em;
+    /*left: 0;*/
+    float: right;
+}
+
+.vertical_menu ul.submenu{
+	display: none;
+}
+ul.vertical_menu li{
+	padding: 0px !important;
+}
+ul.vertical_menu li a{
+	padding: 0px !important;
+	padding: 7px 25px !important;
+	width: 100%;
+}
+ul.vertical_menu li ul.submenu{
+	background:#fff;
+	border-top:1px solid rgba(27, 25, 25, 0.19);	
+}
+ul.vertical_menu li ul.submenu li{
+	background: rgba(55, 187, 236, 0.14) !important;
+	padding-left: 15px !important;;
+}
+ul.vertical_menu li ul.submenu li a{
+	padding: 0px !important;
+	padding: 7px 25px !important;
+}
+</style>
+<div class="col-md-3 col-md-pull-9 col-sm-4 col-sm-pull-8">
+				<div class="sidebar sidebar_1">
+                     
+                     
+                     <div class="side_box side_box_1 red5">
+                        <h5><a href="#" class="tgl_btn">Thông tin</a></h5>
+                        <%assign var='menusleft' value=Menu_model::get_menus_left()%>
+                        
+                        <ul class="tgl_c vertical_menu">
+                        <%foreach $menusleft as $item%>
+                           <li>
+                              <a href="<%if strlen($item.link)>0%><%$smarty.const.ACW_BASE_URL%><%if $item.page_flg==1%>page/v/<%$item.link%><%else if $item.page_flg==2%>danhmuc/ds/<%$item.link%><%else if $item.page_flg==3%>tintuc/ds/<%$item.link%><%else%>#<%/if%><%else%>#<%/if%>" title="<%$item.menu_name%>" <%if $item.child_flg > 0%>class="item_parent_menu"<%/if%>><span class="fa-chevron-right"></span><%$item.menu_name%><%if $item.child_flg > 0%><span class="show_icon  fa-plus-circle"></span><%/if%></a>
+                              <%if $item.child_flg > 0%>
+                              <ul class="submenu">
+                              	<%foreach $item.child as $sub1%>
+                              		<li><a href="<%$smarty.const.ACW_BASE_URL%><%if $sub1.page_flg==1%>page/v/<%$sub1.link%><%else if $sub1.page_flg==2%>danhmuc/ds/<%$sub1.link%><%else if $sub1.page_flg==3%>tintuc/ds/<%$sub1.link%><%else%>#<%/if%>"><span class="fa-caret-right"></span><%$sub1.menu_name%></a></li>
+                              	<%/foreach%>
+                              </ul>
+                              <%/if%>
+                           </li>                           
+                        <%/foreach%>
+                           <!--<li>
+                              <a href="<%$smarty.const.ACW_BASE_URL%>page/v/thong-bao" title=""><span class="fa-chevron-right"></span>Thông báo</a>
+                           </li>                       
+                           <li>
+                              <a href="#" title="" class="item_parent_menu"><span class="fa-chevron-right"></span>Hình ảnh hoạt động</a>
+                              <ul class="submenu">
+                              	<li><a><span class="fa-caret-right"></span>sssssssssssss</a></li>
+                              	<li><a>ssssssssss</a></li>                            
+                              </ul>
+                           </li>
+                           <li>
+                              <a href="<%$smarty.const.ACW_BASE_URL%>page/v/giay-chung-nhan,-cong-bo-sp" title=""><span class="fa-chevron-right"></span>Giấy chứng nhận công bố SP</a>
+                           </li>
+                           <li>
+                              <a href="<%$smarty.const.ACW_BASE_URL%>page/v/lien-he" title=""><span class="fa-chevron-right"></span>Liên hệ</a>
+                           </li>-->                           
+                       
+                        </ul>
+                 </div>	
+                  <div class="sidebar sidebar_1">
+                     <%assign var='ctglist' value=Menu_model::get_menus_sp()%>
+                     
+                     <div class="side_box side_box_1 red5">
+                        <h5><a href="#" class="tgl_btn">Sản phẩm</a></h5>
+                        <ul class="tgl_c vertical_menu">
+                        <%foreach $ctglist as $item%>
+                           <li>
+                              <a href="<%if strlen($item.link)>0%><%$smarty.const.ACW_BASE_URL%><%if $item.page_flg==1%>page/v/<%$item.link%><%else if $item.page_flg==2%>danhmuc/ds/<%$item.link%><%else if $item.page_flg==3%>tintuc/ds/<%$item.link%><%else%>#<%/if%><%else%>#<%/if%>" title="<%$item.menu_name%>" <%if $item.child_flg > 0%>class="item_parent_menu"<%/if%>><span class="fa-chevron-right"></span><%$item.menu_name%><%if $item.child_flg > 0%><span class="show_icon  fa-plus-circle"></span><%/if%></a>
+                              <%if $item.child_flg > 0%>
+                              <ul class="submenu">
+                              	<%foreach $item.child as $sub1%>
+                              		<li><a href="<%$smarty.const.ACW_BASE_URL%><%if $sub1.page_flg==1%>page/v/<%$sub1.link%><%else if $sub1.page_flg==2%>danhmuc/ds/<%$sub1.link%><%else if $sub1.page_flg==3%>tintuc/ds/<%$sub1.link%><%else%>#<%/if%>"><span class="fa-caret-right"></span><%$sub1.menu_name%></a></li>
+                              	<%/foreach%>
+                              </ul>
+                              <%/if%>
+                           </li>                           
+                        <%/foreach%>
+                        </ul>
+                     </div>
+                    <%assign var='sanphams' value=Sanpham_model::get_sanpham_goodsell()%>                    
+                     <div class="side_box side_box_2 red5">
+                        <h5><a href="#" class="tgl_btn">Sản phẩm bán chạy</a></h5>
+                        <ul class="tgl_c">
+                        <%foreach $sanphams as $key=>$pro%>
+                           <li>
+                              <div class="post_img">
+                                 <a href="<%$smarty.const.ACW_BASE_URL%>sanpham/v/<%$pro.pro_no%>"><img src="<%$smarty.const.ACW_BASE_URL_DATA%><%$pro.img_thumb%>" alt="<%$pro.pro_name%>"></a>
+                              </div>
+                              <div class="post_detail">
+                                 <a href="<%$smarty.const.ACW_BASE_URL%>sanpham/v/<%$pro.pro_no%>"><%$pro.pro_name%></a>
+                                 <br>
+                                 <span class="price">
+                                 <span class="money" data-currency-usd="<%Sanpham_model::currency_format($pro.price_new)%>" data-currency="USD"><%Sanpham_model::currency_format($pro.price_new)%>VNĐ</span>
+                                 </span>
+                                 <%if $pro.price_old > $pro.price_new%>
+                                 <br>
+                                 <span class="compare-price"><span class="money" data-currency-usd="<%Sanpham_model::currency_format($pro.price_old)%>" data-currency="USD"><%Sanpham_model::currency_format($pro.price_old)%>VNĐ</span></span>
+                                 <%/if%>
+                              </div>
+                           </li>
+                        <%/foreach%>
+                           <!--<li>
+                              <div class="post_img">
+                                 <a href="/products/huge-boiling-pot"><img src="//cdn.shopify.com/s/files/1/0608/2877/products/product22_6deb2200-13f7-484e-967d-537001e00196_300x.jpg?v=1408560658" alt="Huge Boiling Pot"></a>
+                              </div>
+                              <div class="post_detail">
+                                 <a href="/products/huge-boiling-pot">Huge Boiling Pot</a>
+                                 <br>
+                                 <span class="price">
+                                 <span class="money" data-currency-usd="$169.99" data-currency="USD">$169.99</span>
+                                 </span>
+                              </div>
+                           </li>
+                           <li>
+                              <div class="post_img">
+                                 <a href="/products/plain-jane-knife-block"><img src="//cdn.shopify.com/s/files/1/0608/2877/products/product02_0a36d715-0eec-4381-835f-d02a0e9ae288_300x.jpg?v=1408561756" alt="Plain Jane Knife Block"></a>
+                              </div>
+                              <div class="post_detail">
+                                 <a href="/products/plain-jane-knife-block">Plain Jane Knife Block</a>
+                                 <br>
+                                 <span class="price">
+                                 <span class="money" data-currency-usd="$129.99" data-currency="USD">$129.99</span>
+                                 </span>
+                                 <br>
+                                 <span class="compare-price"><span class="money" data-currency-usd="$249.99" data-currency="USD">$249.99</span></span>
+                              </div>
+                           </li>
+                           <li>
+                              <div class="post_img">
+                                 <a href="/products/stainless-wok-pan"><img src="//cdn.shopify.com/s/files/1/0608/2877/products/product18_6cd16ada-eeb2-402f-bfa6-854089e6c508_300x.jpg?v=1408562068" alt="Stainless Wok Pan"></a>
+                              </div>
+                              <div class="post_detail">
+                                 <a href="/products/stainless-wok-pan">Stainless Wok Pan</a>
+                                 <br>
+                                 <span class="price">
+                                 <span class="money" data-currency-usd="$119.99" data-currency="USD">$119.99</span>
+                                 </span>
+                                 <br>
+                                 <span class="compare-price"><span class="money" data-currency-usd="$249.99" data-currency="USD">$249.99</span></span>
+                              </div>
+                           </li>-->
+                        </ul>
+                     </div>
+                  </div>
+               </div>
+<script>
+jQuery(document).ready(function () {
+	$('.item_parent_menu').click(function(){
+		//alert('aa');
+		var child = $(this).parent().find('ul')[0];	
+		var icon = $(this).parent().find('.show_icon')[0];	
+		if($(child).is(':hidden')){
+			$(child).show();
+			$(icon).removeClass('fa-plus-circle');
+			$(icon).addClass('fa-minus-circle');
+		}else{
+			$(child).hide();
+			$(icon).addClass('fa-plus-circle');
+			$(icon).removeClass('fa-minus-circle');
+		}
+				
+		
+	});
+    /*clickNav();
+
+    function clickNav() {
+        	$('.vertical_menu ul .submenu').parent().click(function (e) {
+            if ($(this).children('.submenu').is(':hidden')) {
+                $(this).children('.submenu').show();
+            } else {
+                $(this).children('.submenu').hide();
+            }
+            
+            e.preventDefault();
+        });
+    }*/
+});
+</script>

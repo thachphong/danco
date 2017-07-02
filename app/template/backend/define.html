@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Admin! | </title>
+
+    <%include 'include/header.html'%>
+  </head>
+  <%assign var='login_info' value=ACWSession::get('user_info')%>
+  <body class="nav-md">
+  	<%include 'include/pho_ajax.html'%>
+    <div class="container body">
+      <div class="main_container">
+        <%include 'include/left.html'%>
+
+        <!-- top navigation -->
+        <div class="top_nav">
+          <%include 'include/menu.html'%>
+        </div>
+        <!-- /top navigation -->
+
+        <!-- page content -->
+        <div class="right_col" role="main" style="min-height: 600px">
+          <div class="">
+            <!--<div class="page-title">
+              <div class="title_left">
+                <h3>Quản lý danh mục </h3>
+              </div>
+
+              <div class="title_right">
+                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                  <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search for...">
+                    <span class="input-group-btn">
+                      <button class="btn btn-default" type="button">Go!</button>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>-->
+
+            <div class="clearfix"></div>
+
+            <div class="row">              
+			  <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2><%$define_name%></h2>
+                    <ul class="nav navbar-rigth panel_toolbox" style="min-width: auto;">
+                      
+                    </ul>
+                    <div class="clearfix"></div>
+                  </div>
+                  	<div class="x_content">
+                    <div class="row">
+                    	<div class="col-sm-6">
+                    	</div>
+                    	
+                    </div>
+						<form id="form_define" action="" class="form-horizontal form-label-left" enctype="multipart/form-data">     
+							<div class="form-group">
+		                        <label class="control-label col-md-2 col-sm-2 col-xs-12" ><%$define_name%><span class="required">*</span>
+		                        </label>
+		                        <div class="col-md-6 col-sm-4 col-xs-12">
+		                          <input type="text" required="required" name="define_val" id="define_val" class="form-control col-md-7 col-xs-12" value="<%$define_val%>" alt="<%$define_name%>">                          
+		                          <input type="hidden" name="define_key" value="<%$define_key%>">
+		                          <input type="hidden" name="define_name" value="<%$define_name%>">
+		                          <input type="hidden" name="define_id" value="<%$define_id%>">                  
+		                        </div>
+		                        <div class="col-md-4 col-sm-4 col-xs-12">
+		                        	<input type="button" value="Cập nhật" class="btn btn-success" id="btn_save">
+		                        </div> 
+		                      </div>             
+                    	</form>
+                    </div>
+					</div>
+					
+                  </div>
+                </div>
+              </div>
+            	
+            </div>
+          </div>
+        
+        </div>
+        <!-- /page content -->
+		
+        <!-- footer content -->
+        <%include 'include/footer.html'%>
+        <!-- /footer content -->
+        
+      </div>
+    </div>
+	
+<script>
+	$(document).ready(function() {
+		
+		$(document).off('click','#btn_save'); 
+        $(document).on('click','#btn_save',function(event){
+        	//$('#form_define').checkValidity();
+        	var msg = check_validate_update();
+        	if(msg !=""){
+        		Pho_message_box_error("Lỗi",msg);
+        		return;
+        	}
+        	var arr = $('#form_define').serializeArray();
+        	
+			Pho_json_ajax('POST',"<%$smarty.const.ACW_BASE_URL%>define/update" ,arr,function(datas){
+				if(datas.status =="OK"){					
+					Pho_message_box("Thông báo",datas.msg);					
+				}else{
+					Pho_message_box_error("Lỗi",datas.msg);
+				}
+                
+            });
+        });
+		var check_validate_update = function(){
+			
+        	if($('#define_val').val()==''){
+        		return "Bạn chưa nhập "+$('#define_val').attr('alt')+" !";
+        	}
+        	
+        	return "";
+        };
+	 	
+
+        
+    });
+</script>
+     
+    
+	
+</body>
+</html>

@@ -1,0 +1,72 @@
+<div class="col-sm-3 sidebar-left" style="padding-left: 0">
+               <div class="panel panel-danh-muc">
+                  <div class="panel-heading">
+                      <span>Danh Mục Sản Phẩm</span>
+                  </div>
+                  
+      <%assign var='menusleft' value=Category_model::get_ctg_menu()%>
+                        
+                        <ul class="list-group">
+                        <%foreach $menusleft as $item%>
+                           <li class="list-group-item menu-lv1">
+                              <a href="<%if $item.cnt_child==0%><%$smarty.const.ACW_BASE_URL%>danhmuc/ds/<%$item.ctg_no%><%else%>#<%/if%>" title="<%$item.ctg_name%>" ><%$item.ctg_name%></a>
+                              <%if $item.cnt_child > 0%>
+                              <div class="mega-menu">
+                              <ul class="list-unstyled list-sup-lv2">
+                                <%foreach $item.child as $sub1%>
+                                  <li class="laptop list-group-item menu-lv2"><a href="<%$smarty.const.ACW_BASE_URL%>danhmuc/ds/<%$sub1.ctg_no%>"><%$sub1.ctg_name%></a></li>
+                                <%/foreach%>
+                              </ul>
+                              </div>
+                              <%/if%>
+                           </li>                           
+      <%/foreach%>
+    </div>
+
+    <div class="panel panel-hotline">
+            <div class="panel-body">
+                <div class="mua-nhanh">HOTLINE</div>
+                <div class="phone">(844)91 332 5588</div>
+                <a href="#"><div class="mua-nhanh2">Chuyên cung cấp sỉ</div></a>
+                <div class="phone2">(844)91 332 5588 </div>
+            </div>
+    </div>
+    <div class="panel form-face">
+        <div class="fb-page" data-href="https://www.facebook.com/NDNoithatkhachsan/" data-tabs="timeline" data-height="350" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/NDNoithatkhachsan/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/NDNoithatkhachsan/">Danco Hotel Supplies - Sản phẩm vải khách sạn</a></blockquote></div>
+    </div>
+    <div class="panel banner-sidebar">
+            <div class="panel-body">
+                <a href="http://tentenwordpress2.top/danh-muc/sofa-va-ghe-phong-khach"><img alt="QC1" src="http://tentenwordpress2.top/wp-content/uploads/2016/12/quang-cao-10.jpg"></a>
+            </div>
+    </div>
+    <div class="panel panel-icon lien-he-nhanh">
+            <div class="panel-heading">
+                <span>Liên Hệ Nhanh</span>
+            </div>
+            <div class="panel-body">
+                <p class="phone"><span>(844)91 332 5588</span></p>
+                <p class="email"> <span>noithatngocdan@gmail.com</span></p>
+            </div>
+    </div>
+    <div class="panel panel-cam-ket">
+            <div class="panel-heading">
+                <span>Cam Kết với khách Hàng</span>
+            </div>
+            <div class="panel-body">
+                <ul>
+                    <li>
+                        Mua hàng chính hãng với giá tốt nhất
+                    </li>
+                    <li>
+                        Được đổi trả nếu không thích hợp
+                    </li>
+                    <li>
+                        Dịch vụ giao hàng nhanh chóng
+                    </li>
+                    <li>
+                        Chính sách bảo hành phù hợp
+                    </li>
+                </ul>
+            </div>
+    </div>
+</div>

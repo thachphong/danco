@@ -1,0 +1,140 @@
+<div id="shopify-section-1487356467314" class="shopify-section">
+               <div class="container" data-count="5" data-section-id="1487356467314" data-section-type="featured-images-section">
+                  <!--<div class="h_row_content h_row_1 ideas-hover section-1487356467314">
+                     <div class="row">
+                        <div class="col-sm-6 animated animation-done rollIn" data-animation="rollIn">
+                           <a href="https://cooktime.myshopify.com/collections" class="div-link">
+                              <div class="box box_1 red5 feature_1">
+                                 <figure class="effect-chico">
+                                    <img alt="Fun Breakfast Ideas" src="<%$smarty.const.ACW_BASE_URL_TEMPLATE%>/images/promo-1_800x.jpg">
+                                    <figcaption> </figcaption>
+                                 </figure>
+                                 <div class="box_inn">
+                                    <div class="promo-overlay">
+                                       <h2>
+                                          <p>Fun Breakfast Ideas</p>
+                                       </h2>
+                                       <p>Breakfast can be rushed. &nbsp;Bring more fun to your morning routine.</p>
+                                    </div>
+                                 </div>
+                              </div>
+                           </a>
+                        </div>
+                        <div class="col-sm-6 animated animation-done bounceInRight" data-animation="bounceInRight">
+                           <a href="https://cooktime.myshopify.com/collections" class="div-link">
+                              <div class="box box_2 red5 feature_2">
+                                 <figure class="effect-chico">
+                                    <img alt="Baking at Home" src="<%$smarty.const.ACW_BASE_URL_TEMPLATE%>/images/promo-2_800x.jpg">
+                                    <figcaption> </figcaption>
+                                 </figure>
+                                 <div class="box_inn">
+                                    <div class="promo-overlay">
+                                       <h2>
+                                          <p>Baking at Home</p>
+                                       </h2>
+                                       <p>Follow our easy-to-ready recipes to spice up any occasion.</p>
+                                    </div>
+                                 </div>
+                              </div>
+                           </a>
+                        </div>
+                     </div>
+                  </div>-->
+                  <%assign var='pagelist' value=Page_model::get_page_home()%>
+                  
+                  <div class="h_row_content h_row_2 ideas-hover section-1487356467314">
+                     <div class="row">
+                     	<%foreach $pagelist as $key=>$item%>
+                        <div class="col-sm-4  animated animation-done rollIn" data-animation="rollIn">
+                           <a href="<%$smarty.const.ACW_BASE_URL%>page/v/<%$item.page_no%>" class="div-link">
+                              <div class="box box_1 red5 feature_3">
+                                 <figure class="effect-chico ">
+                                    <img alt="<%$item.page_name%>" src="<%$smarty.const.ACW_BASE_URL_DATA%><%$item.img_path%>">
+                                    <figcaption> </figcaption>
+                                 </figure>
+                                 <div class="box_inn">
+                                    <div class="promo-overlay">
+                                       <h5>
+                                          <p><%$item.page_name%></p>
+                                       </h5>
+                                       <!--<p>Flexible shelving can transform your kitchen!</p>-->
+                                    </div>
+                                 </div>
+                              </div>
+                           </a>
+                        </div>
+                        <%/foreach%>
+                        <!--<div class="col-sm-4  animated animation-done fadeInUpBig" data-animation="fadeInUpBig">
+                           <a href="https://cooktime.myshopify.com/collections/utensils" class="div-link">
+                              <div class="box box_2 red5 feature_4">
+                                 <figure class="effect-chico ">
+                                    <img alt="Wooden Utensils" src="<%$smarty.const.ACW_BASE_URL_TEMPLATE%>/images/promo-4_800x.jpg">
+                                    <figcaption> </figcaption>
+                                 </figure>
+                                 <div class="box_inn">
+                                    <div class="promo-overlay">
+                                       <h5>
+                                          <p>Wooden Utensils</p>
+                                       </h5>
+                                       <p>Wooden utensils are functional and beautiful.</p>
+                                    </div>
+                                 </div>
+                              </div>
+                           </a>
+                        </div>
+                        <div class="col-sm-4 animated animation-done bounceInRight" data-animation="bounceInRight">
+                           <a href="https://cooktime.myshopify.com/collections/cookware" class="div-link">
+                              <div class="box box_3 red5 feature_5">
+                                 <figure class="effect-chico ">
+                                    <img alt="Colorful Cookware" src="<%$smarty.const.ACW_BASE_URL_TEMPLATE%>/images/promo-5_800x.jpg">
+                                    <figcaption> </figcaption>
+                                 </figure>
+                                 <div class="box_inn">
+                                    <div class="promo-overlay">
+                                       <h5>
+                                          <p>Colorful Cookware</p>
+                                       </h5>
+                                       <p>Your cookware doesn't have to be boring.</p>
+                                    </div>
+                                 </div>
+                              </div>
+                           </a>
+                        </div>-->
+                     </div>
+                  </div>
+               </div>
+               <style>
+                  #content .h_row_1.section-1487356467314 .box_1 .box_inn {
+                  bottom:5% !important;
+                  }
+                  #content .h_row_1.section-1487356467314 .box_2 .box_inn {
+                  bottom:5% !important;
+                  }
+                  #content .h_row_1.section-1487356467314 .box_3 .box_inn {
+                  bottom:5% !important;
+                  }
+                  #content .h_row_2.section-1487356467314 {
+                  padding:0;
+                  }
+                  #content .h_row_2.section-1487356467314 .box_1 .box_inn {
+                  bottom:5%;
+                  }
+                  #content .h_row_2.section-1487356467314 .box_2 .box_inn {
+                  bottom:5%;
+                  }
+                  #content .h_row_2.section-1487356467314 .box_3 .box_inn {
+                  bottom:5%;
+                  } 
+                  @media (max-width: 768px) {
+                  #content .box_2 {
+                  margin-bottom:0 !important;
+                  }
+                  #content .box_3 {
+                  margin-bottom:0 !important;
+                  }
+                  #content .feature_4 {
+                  margin-bottom:20px !important;
+                  }
+                  }
+               </style>
+            </div>

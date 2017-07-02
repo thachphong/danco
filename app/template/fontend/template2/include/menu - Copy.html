@@ -1,0 +1,197 @@
+<%assign var='menus' value=Menu_model::get_menus()%>
+<div id="header" data-section-id="header" data-section-type="header-section">               
+               <div class="header_bot  enabled-sticky-menu sticky">
+                  <div class="header_content">
+                     <div class="container">
+                        <div id="nav">
+                           <nav class="navbar" role="navigation">
+                              <div class="navbar-header">
+                                 <a href="#" class="visible-ms visible-xs pull-right navbar-cart" id="wsnavtoggle">
+                                    <div class="cart-icon"><i class="fa fa-bars"></i></div>
+                                 </a>
+                                 <a href="javascript:void(0);" data-href="/cart" class="visible-ms visible-xs pull-right navbar-cart cart-popup">
+                                    <div class="cart-icon"><span class="count hidden">0</span><i class="fa fa-shopping-cart"></i></div>
+                                 </a>
+                                 <a href="https://cooktime.myshopify.com/search" class="visible-ms visible-xs pull-right navbar-cart">
+                                    <div class="cart-icon"><i class="fa fa-search"></i></div>
+                                 </a>
+                                 <a class="navbar-brand" href="https://cooktime.myshopify.com/" itemprop="url">
+                                 <img src="./index_files/logo_71db7bcc-2b8e-442e-9586-b7037c5a148a_550x.png" alt="CookTime" itemprop="logo">
+                                 </a>
+                              </div>
+                              <!-- main menu -->
+                              <nav class="wsmenu">
+                                 <ul class="mobile-sub mega_menu wsmenu-list">
+                                 <%*foreach $menus as $key=>$item*%>
+                                    <li><a href="https://cooktime.myshopify.com/">Home</a></li>
+                                    <li>
+                                       <span class="wsmenu-click"><i class="wsmenu-arrow fa fa-angle-down"></i></span><a href="https://cooktime.myshopify.com/collections/all" class="twin">Catalog<span class="arrow"></span></a>
+                                       <div class="megamenu clearfix">
+                                          <ul class="wsmenu-sub-list">
+                                             <li class="col-lg-3 col-md-3 col-sm-3 mb20d link-list">
+                                                <span class="wsmenu-click02"><i class="wsmenu-arrow fa fa-angle-down"></i></span>
+                                                <h5><a href="https://cooktime.myshopify.com/collections">Categories</a></h5>
+                                                <ul style="">
+                                                   <li class="col-lg-12 col-md-12 col-sm-12 link-list"><a href="https://cooktime.myshopify.com/collections/barbecue">Barbecue</a>
+                                                   </li>
+                                                   <li class="col-lg-12 col-md-12 col-sm-12 link-list"><a href="https://cooktime.myshopify.com/collections/cookware">Cookware</a>
+                                                   </li>
+                                                   <li class="col-lg-12 col-md-12 col-sm-12 link-list"><a href="https://cooktime.myshopify.com/collections/cutlery">Cutlery</a>
+                                                   </li>
+                                                   <li class="col-lg-12 col-md-12 col-sm-12 link-list"><a href="https://cooktime.myshopify.com/collections/kitchen-decor">Kitchen Decor</a>
+                                                   </li>
+                                                   <li class="col-lg-12 col-md-12 col-sm-12 link-list"><a href="https://cooktime.myshopify.com/collections/utensils">Utensils</a>
+                                                   </li>
+                                                </ul>
+                                             </li>
+                                             <li class="col-lg-3 col-md-3 col-sm-3 mb20d link-list">
+                                                <span class="wsmenu-click02"><i class="wsmenu-arrow fa fa-angle-down"></i></span>
+                                                <h5><a href="https://cooktime.myshopify.com/collections/all">Top Brands</a></h5>
+                                                <ul style="">
+                                                   <li class="col-lg-12 col-md-12 col-sm-12 link-list"><a href="https://cooktime.myshopify.com/collections/vendors?q=Asfalio">Asfalio</a>
+                                                   </li>
+                                                   <li class="col-lg-12 col-md-12 col-sm-12 link-list"><a href="https://cooktime.myshopify.com/collections/vendors?q=Flenefor">Flenefor</a>
+                                                   </li>
+                                                   <li class="col-lg-12 col-md-12 col-sm-12 link-list"><a href="https://cooktime.myshopify.com/collections/vendors?q=Garbini">Garbini</a>
+                                                   </li>
+                                                   <li class="col-lg-12 col-md-12 col-sm-12 link-list"><a href="https://cooktime.myshopify.com/collections/vendors?q=Opaquio">Opaquio</a>
+                                                   </li>
+                                                   <li class="col-lg-12 col-md-12 col-sm-12 link-list"><a href="https://cooktime.myshopify.com/collections/vendors?q=Varadini">Varadini</a>
+                                                   </li>
+                                                </ul>
+                                             </li>
+                                             <li class="col-lg-3 col-md-3 col-sm-3 mb20d link-list">
+                                                <span class="wsmenu-click02"><i class="wsmenu-arrow fa fa-angle-down"></i></span>
+                                                <h5><a href="https://cooktime.myshopify.com/collections/all">By Color</a></h5>
+                                                <ul style="">
+                                                   <li class="col-lg-12 col-md-12 col-sm-12 link-list"><a href="https://cooktime.myshopify.com/">White</a>
+                                                   </li>
+                                                   <li class="col-lg-12 col-md-12 col-sm-12 link-list"><a href="https://cooktime.myshopify.com/">Green</a>
+                                                   </li>
+                                                   <li class="col-lg-12 col-md-12 col-sm-12 link-list"><a href="https://cooktime.myshopify.com/">Red</a>
+                                                   </li>
+                                                   <li class="col-lg-12 col-md-12 col-sm-12 link-list"><a href="https://cooktime.myshopify.com/">Blue</a>
+                                                   </li>
+                                                   <li class="col-lg-12 col-md-12 col-sm-12 link-list"><a href="https://cooktime.myshopify.com/">Black</a>
+                                                   </li>
+                                                </ul>
+                                             </li>
+                                             <li class="col-lg-3 col-md-3 col-sm-3 mb20d link-list">
+                                                <span class="wsmenu-click02"><i class="wsmenu-arrow fa fa-angle-down"></i></span>
+                                                <h5><a href="https://cooktime.myshopify.com/collections/kitchen-decor">Just Arrived</a></h5>
+                                                <ul style="">
+                                                   <li class="col-lg-12 col-md-12 col-sm-12 link-list"><a href="https://cooktime.myshopify.com/products/cast-iron-griddle-pan">Cast Iron Griddle</a>
+                                                   </li>
+                                                   <li class="col-lg-12 col-md-12 col-sm-12 link-list"><a href="https://cooktime.myshopify.com/products/cheery-placemats">Cheery Placemats</a>
+                                                   </li>
+                                                   <li class="col-lg-12 col-md-12 col-sm-12 link-list"><a href="https://cooktime.myshopify.com/products/decorative-bowl">Decorative Bowl</a>
+                                                   </li>
+                                                   <li class="col-lg-12 col-md-12 col-sm-12 link-list"><a href="https://cooktime.myshopify.com/products/blue-bowl-with-handle">Blue Bowl with Handle</a>
+                                                   </li>
+                                                   <li class="col-lg-12 col-md-12 col-sm-12 link-list"><a href="https://cooktime.myshopify.com/products/multi-color-table-cloth">Multi-Color Table Cloth</a>
+                                                   </li>
+                                                </ul>
+                                             </li>
+                                          </ul>
+                                       </div>
+                                    </li>
+                                    <li>
+                                       <span class="wsmenu-click"><i class="wsmenu-arrow fa fa-angle-down"></i></span><a href="https://cooktime.myshopify.com/pages/theme-features" class="twin">Features<span class="arrow"></span></a>
+                                       <ul class="wsmenu-submenu">
+                                          <li><a data-delay="500" href="https://cooktime.myshopify.com/pages/theme-features">Full Feature List</a></li>
+                                          <li><a data-delay="500" href="http://showtime-furniture.myshopify.com/">FurnishTime Demo</a></li>
+                                          <li><a data-delay="500" href="http://fashiontime-theme.myshopify.com/">FashionTime Demo</a></li>
+                                          <li><a data-delay="500" href="https://cooktime.myshopify.com/pages/faq">FAQ</a></li>
+                                          <li><a data-delay="500" href="https://support.milehighthemes.com/hc/en-us/categories/201955243-ShowTime-Theme">Theme Documentation</a></li>
+                                          <li><a data-delay="500" href="https://support.milehighthemes.com/hc/en-us/categories/201955243-ShowTime-Theme">Theme Support</a>                                          	
+                                          </li>
+                                          <li class="has-submenu-sub">
+<span class="wsmenu-click02"><i class="wsmenu-arrow fa fa-angle-down"></i></span><a href="#">By Room<span class="left-arrow"></span></a>
+              <ul class="wsmenu-submenu-sub">
+                
+                   
+                
+                <li class=""><a href="/collections/living-room">Living Room</a></li>
+                 
+                
+                   
+                
+                <li class=""><a href="/collections/bedroom">Bedroom</a></li>
+                 
+                
+                   
+                
+                <li><a href="/collections/dining-room">Dining Room</a></li>
+                 
+                
+              </ul>
+            </li>
+                                       </ul>
+                                    </li>
+                                    <li><a href="https://cooktime.myshopify.com/blogs/news">Blog</a></li>
+                                    <li><a href="https://cooktime.myshopify.com/pages/about-us">About</a></li>
+                                    <li><a href="https://cooktime.myshopify.com/pages/contact-us">Contact</a></li>
+                                 <%*/foreach*%> 
+                                 </ul>
+                              </nav>
+                              <ul class="hidden-xs nav navbar-nav navbar-right">
+                                 <li class="dropdown-grid no-open-arrow ">
+                                    <a data-toggle="dropdown" data-href="/cart" href="javascript:void(0);" class="dropdown-toggle cart-popup" aria-expanded="true">
+                                       <div class="cart-icon"><span class="count hidden">0</span><i class="fa fa-shopping-cart"></i></div>
+                                    </a>
+                                    <div class="dropdown-grid-wrapper hidden">
+                                       <div class="dropdown-menu no-padding animated fadeInDown col-xs-12 col-sm-9 col-md-7 animation-done" role="menu">
+                                          <div class="menu_c cart_menu">
+                                             <div class="menu_title clearfix">
+                                                <h4>Shopping Cart</h4>
+                                             </div>
+                                             <div class="cart_row">
+                                                <div class="empty-cart">Your cart is currently empty.</div>
+                                                <p><a href="javascript:void(0)" class="btn_c btn_close">Continue Shopping</a></p>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </li>
+                                 <li class="dropdown-grid no-open-arrow">
+                                    <a data-toggle="dropdown" href="javascript:;" class="dropdown-toggle" aria-expanded="true"><span class="icons"><i class="fa fa-user"></i></span></a>
+                                    <div class="dropdown-grid-wrapper">
+                                       <div class="dropdown-menu no-padding animated fadeInDown col-xs-12 col-sm-5 col-md-4 col-lg-3 animation-done" role="menu">
+                                          <div class="menu_c acc_menu">
+                                             <div class="menu_title clearfix">
+                                                <h4>My Account</h4>
+                                             </div>
+                                             <div class="login_frm">
+                                                <p class="text-center">Welcome to CookTime!</p>
+                                                <div class="remember">
+                                                   <a href="https://cooktime.myshopify.com/account/login" class="signin_btn btn_c">Login</a>
+                                                   <a href="https://cooktime.myshopify.com/account/register" class="signin_btn btn_c">Create Account</a>
+                                                </div>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </li>
+                                 <li class="dropdown-grid no-open-arrow">
+                                    <a data-toggle="dropdown" href="javascript:;" class="dropdown-toggle" aria-expanded="false"><span class="icons"><i class="fa fa-search"></i></span></a>
+                                    <div class="dropdown-grid-wrapper" role="menu">
+                                       <div class="dropdown-menu fixed_menu col-sm-4 col-lg-3 animated fadeInDown pl-pr-15 animation-done">
+                                          <form action="https://cooktime.myshopify.com/search" method="get" role="search">
+                                             <div class="menu_c search_menu">
+                                                <div class="search_box">
+                                                   <input type="hidden" name="type" value="product">
+                                                   <input type="search" name="q" value="" class="txtbox" placeholder="Search" aria-label="Search">
+                                                   <button class="btn btn-link" type="submit" value="Search"><span class="fa fa-search"></span></button>
+                                                </div>
+                                             </div>
+                                          </form>
+                                       </div>
+                                    </div>
+                                 </li>
+                              </ul>
+                           </nav>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>

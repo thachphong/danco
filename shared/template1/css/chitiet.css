@@ -1,0 +1,826 @@
+.clearfix:after {
+
+	content: ".";
+
+	display: block;
+
+	clear: both;
+
+	height: 0;
+
+	visibility: hidden;
+
+}
+
+.clearfix { display: inline-block; }
+
+/* exlude MacIE5 \*/
+
+* html .clearfix { height: 1% }
+
+.clearfix {display:block;}
+
+/* end MacIE5 */
+
+.tensp
+
+{
+
+width:100%;
+
+float:left;
+
+color:#80b600;
+
+font-size:18px;
+
+text-transform:uppercase;
+
+font-weight:bold;
+
+clear:both;
+
+margin-bottom:10px;
+
+margin-left:10px;
+
+}
+
+.noidungchitiet
+
+{
+
+float:left;
+
+clear:left;
+
+margin-top:10px;
+
+}
+
+
+
+.cacanhnho
+
+{
+
+float:left;
+
+margin-top:10px;
+
+margin-left:-3px;	
+
+}
+
+.anhnho1
+
+{
+
+float:left;
+
+margin-left:3px;
+
+margin-right:3px;
+
+}
+
+.cacmangxh
+
+{
+
+float:left;
+
+margin-top:5px;	
+
+}
+
+.lineden
+
+{
+
+border-bottom:1px solid #000;
+
+float:left;
+
+width:100%;
+
+margin-top:5px;
+
+margin-bottom:5px;	
+
+}
+
+.giaban
+{
+    color:#ff6f00;
+    font-weight:bold;	
+    font-size: 16px;
+}
+
+.khungsl
+
+{
+
+border:1px solid #cccccc;
+
+width:270px;	
+
+height:50px;
+
+margin-top:5px;
+
+float:left;
+
+clear:left;
+
+}
+
+.soluong
+
+{
+
+float:left;
+margin-left:10px;
+margin-top:15px;	
+width: 100px;
+
+}
+
+.giammot
+
+{
+
+float:left;
+
+background-color:#80b600;
+
+color:#fff;
+
+padding-top:1px;
+
+padding-bottom:3px;
+
+padding-left:9px;
+
+padding-right:9px;	
+
+font-size:18px;
+
+cursor:pointer;
+
+margin-top:10px;
+
+margin-left:0px;
+
+}
+
+.tangmot
+
+{
+
+float:left;
+
+background-color:#80b600;
+
+color:#fff;
+
+padding-top:1px;
+
+padding-bottom:3px;
+
+padding-left:7px;
+
+padding-right:7px;	
+
+font-size:18px;
+
+cursor:pointer;
+
+margin-top:10px;
+
+}
+
+.sl
+
+{
+
+border:1px solid #cccccc;
+
+padding:5px 20px;
+
+float:left;
+
+margin-top:10px;	
+
+}
+
+.dathang
+
+{
+
+float:left;
+
+margin-top:10px;
+
+clear:left;	
+
+}
+
+.damin
+
+{
+
+color:#666;
+
+font-size:13px;
+
+font-style:italic;
+
+font-weight:bold;
+
+margin-left:10px;	
+
+float:left;
+
+clear:left;
+
+}
+
+
+
+.donvi,
+
+.dungtich,
+
+.giaban
+
+{
+
+clear:left;
+
+float:left;	
+
+}
+
+.btn_muahangnhanh
+
+{
+
+width:100%;
+
+height:82px;	
+
+}
+
+.btn_xemhangtainha
+
+{
+
+margin-top:10px;	
+
+}
+
+.btn_datmuahang
+
+{
+
+margin-top:10px;	
+
+}
+
+.btn_delaisodienthoai
+
+{
+
+margin-top:10px;	
+
+float:left;
+
+background:url(../img/btn_delaisodienthoai.jpg) no-repeat;
+
+width:100%;
+
+height:82px;
+
+}
+
+.nhapsodienthoai
+
+{
+
+float:left;
+
+position:relative;
+
+z-index:9;
+
+margin-left:15px;	
+
+margin-top:45px;
+
+}
+
+.nhapsodienthoai input
+
+{
+
+border:none;
+
+padding-left:5px;
+
+font-size:12px;
+
+color:#cecece;
+
+height:22px;	
+
+float:left;
+
+}
+
+.nhap
+
+{
+
+float:left;
+
+margin-left:5px;
+
+position:relative;
+
+z-index:9999;
+
+color:#FFF;
+
+background-color:#ffa900;	
+
+padding-left:20px;
+
+padding-right:20px;
+
+height:22px;
+
+
+
+}
+
+.line2gach
+
+{
+
+border-bottom:2px solid #dddddd;
+
+float:left;
+
+width:100%;
+
+margin-top:30px;	
+
+}
+
+.thongtinsanpham
+
+{
+
+text-align:left;
+
+background:#80b600;
+
+float:left;
+
+color:#fff;	
+
+padding:5px 20px;
+
+font-size:20px;
+
+
+}
+
+.t_noidung_chitiet
+
+{
+
+float:left;
+
+width:100%;	
+
+}
+
+.noidungchitietsp
+
+{
+
+float:left;
+
+clear:left;
+
+position:relative;
+
+z-index:9999;
+
+}
+
+.heading-section::after {
+
+    border-bottom: 0px solid rgba(255, 255, 255, 0.75);
+
+    border-top: 0px solid #cccccc;
+
+    content: "";
+
+    display: inline-block;
+
+    margin-right: -100%;
+
+    position: relative;
+
+    right: -5px;
+
+    vertical-align: middle;
+
+    width: 100%;
+
+}
+
+.mangxh2
+
+{
+
+float:left;
+
+margin-top:10px;	
+clear:left;
+
+}
+
+.bangdonvi
+
+{
+
+float:left;
+
+clear:left;
+
+width:100%;
+
+font-size:12px !important;	
+
+}
+
+.hang1
+
+{
+
+font-weight:bold;
+
+font-size:12px !important;
+
+}
+
+.sogiam
+
+{
+
+background-color:#80b600;
+
+color:#fff;
+
+padding-top:1px;
+
+padding-bottom:1px;
+
+font-size:14px;
+
+font-weight:bold;
+
+padding-left:3px;
+
+padding-right:3px;	
+
+cursor:pointer;
+
+}
+
+.sotang
+
+{
+
+background-color:#80b600;
+
+color:#fff;
+
+padding-top:1px;
+
+padding-bottom:1px;
+
+font-size:14px;
+
+font-weight:bold;
+
+padding-left:3px;
+
+padding-right:3px;
+
+cursor:pointer;	
+
+}
+
+.sochinh
+
+{
+
+border:1px solid #999;
+
+padding-top:2px;
+
+padding-bottom:1px;
+
+padding-left:5px;
+
+padding-right:5px;	
+
+}
+
+.hang2
+
+{
+
+border-bottom:1px solid #ededed;
+
+height:30px;
+
+font-size:12px !important;
+
+}
+.soluong_dathang{
+    width: 100px;
+    float: left;
+    margin-top: 7px;
+    text-align: center;
+}
+.pro_img_item{
+    height: 70px;
+    width: 100px;
+    border: 1px solid #cccccc;
+    margin-top:5px; 
+}
+/*check out*/
+.check-out {
+
+  margin-bottom: 70px;
+
+  color: #888;
+
+}
+
+.check-out .heading {
+
+  font-size: 18px;
+
+  font-weight: 700;
+
+  text-transform: uppercase;
+
+  margin-bottom: 12px;
+
+  color: #e98348;
+  border-bottom:dashed 1px #e98348;
+  padding-bottom:5px
+
+}
+
+.check-out .form-checkout .heading {
+
+  font-size: 14px;
+
+  color: #555555;
+
+  padding-left: 35px;
+
+  background-repeat: no-repeat;
+
+  background-position: center left;
+
+  line-height: 35px;
+
+  border-bottom: 1px solid #d0e5f4;
+
+}
+
+.check-out .form-checkout .step1 .heading {
+
+  background-image: url(../images/check-out1.png);
+
+}
+
+.check-out .form-checkout .step2 .heading {
+
+  background-image: url(../images/check-out2.png);
+
+}
+
+.check-out .form-checkout .step3 .heading {
+
+  background-image: url(../images/check-out3.png);
+
+}
+
+.check-out .form-checkout .form-control {
+
+  background-color: #f8f8f8;
+
+  box-shadow: none;
+
+  border: 1px solid #ddd;
+
+  height: 25px;
+
+  padding: 0 5px;
+
+}
+
+.check-out .form-checkout textarea.form-control {
+
+  height: 97px;
+
+}
+
+.check-out .form-checkout label {
+
+  font-weight: 400;
+
+}
+
+.check-out .form-checkout sup {
+
+  color: red;
+
+}
+
+.check-out .form-checkout .form-group {
+
+  margin-bottom: 5px;
+
+}
+
+.check-out .form-checkout .form-group label {
+
+  width: 84px;
+
+  text-align: left;
+
+  display: inline-block;
+
+  vertical-align: middle;
+
+}
+
+.check-out .form-checkout .form-group .form-control {
+
+  display: inline-block;
+
+  width: calc(100% -  90px);
+
+  width: -moz-calc(100% -  90px);
+
+  width: -webkit-calc(100% -  90px);
+
+  width: -o-calc(100% -  90px);
+
+  vertical-align: middle;
+
+}
+
+.check-out .form-checkout .radio .title {
+
+  width: 84px;
+
+  display: inline-block;
+
+  vertical-align: middle;
+
+}
+
+.check-out .form-checkout .radio label {
+
+  padding-right: 10px;
+
+}
+
+.check-out .form-checkout .step3 .table {
+
+  border: 1px solid #ddd;
+
+  font-size: 13px;
+
+}
+
+.check-out .form-checkout .step3 .table th {
+
+  background-color: #f8f8f8;
+
+  font-weight: 700;
+
+  border: none;
+
+  color: #4d4d4d;
+
+}
+
+.check-out .form-checkout .step3 .table .qty {
+
+  width: 64px;
+
+  text-align: center;
+
+}
+
+.check-out .form-checkout .step3 .table .total .text-right {
+
+  font-weight: 700;
+
+}
+
+.check-out .form-checkout .step3 .table .name {
+
+  color: #000;
+
+}
+
+.check-out .form-checkout .step3 .table .coupon label {
+
+  padding-right: 4px;
+
+}
+
+.check-out .form-checkout .step3 .table .coupon input {
+
+  width: 105px;
+
+  display: inline-block;
+
+}
+
+.check-out .form-checkout .step3 .table button {
+
+  background-color: #e6e7e9;
+
+  border-radius: 3px;
+
+  border: none;
+
+  color: #da5638;
+
+  height: 26px;
+
+  text-transform: uppercase;
+
+  font-size: 11px;
+
+  font-family: "Arial";
+
+}
+
+.check-out .form-checkout .step3 .btn-dat-hang {
+  background-color: #e98348;
+  font-size: 15px;
+  font-weight: 700;
+  font-family: "Arial";
+  box-shadow: 0 -1px 0px #e36806 inset;
+  color: #fff;
+  border-radius:5px
+}
+.woocommerce form .form-row input.input-text{
+    background-color: #f0f0f0;
+    box-shadow: none;
+    border: 1px solid #bcbcbc;
+    height: 34px;
+    padding: 0 5px;
+    border-radius:5px
+}
+.woocommerce form .form-row textarea{
+    background-color: #f0f0f0;
+    box-shadow: none;
+    border: 1px solid #bcbcbc;
+    padding: 0 5px;
+    border-radius:5px
+}
+.woocommerce form .form-row-first, .woocommerce form .form-row-last, .woocommerce-page form .form-row-first, .woocommerce-page form .form-row-last {
+    float: left;
+    width: 47%;
+    overflow: visible;
+}
+.spline td a {
+    background: #969696;
+    color: #fff!important;
+    padding: 3px 6px;
+    border-radius: 50%;
+    font-weight: bold;
+    font-size: 10px;
+    margin: 5px 5px 0 0;
+    display: inline-block;
+}
+.spline .amount {
+    color: #c62121;
+}

@@ -1,0 +1,77 @@
+
+<div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+               <!--<div class="x_panel">
+                   <div class="x_title">
+                    <h2>Danh mục</h2>
+                    <ul class="nav navbar-right panel_toolbox">-->
+                      <!--<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                      </li>
+                      <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                        <ul class="dropdown-menu" role="menu">
+                          <li><a href="#">Settings 1</a>
+                          </li>
+                          <li><a href="#">Settings 2</a>
+                          </li>
+                        </ul>
+                      </li>-->
+                      <!--<li style="float: right"><a class="dialog_close" ><i class="fa fa-close"></i></a>
+                      </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                  </div>-->
+                  <div class="x_content">
+                    <br />
+                    <form id="form_ctg" action="" class="form-horizontal form-label-left" enctype="multipart/form-data">
+                      <%if $ctg_level > 1%>
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Menu cấp 1<span class="required">*</span></label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <select class="form-control select2" name="parent_id_1" id="parent_id_1">
+                          	 <option value=""></option>
+                          	 <%foreach $parent_list1 as $item%>
+                          	 	<option value="<%$item.ctg_id%>" <%if $parent_id_1 == $item.ctg_id%>selected="selected"<%/if%>><%$item.ctg_name%></option>
+                          	 <%/foreach%>                          	 
+                          </select>                          
+                        </div>
+                      </div>
+                      <%/if%>
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="ctg_name">Tên Danh mục<span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="text" id="ctg_name" required="required" name="ctg_name" class="form-control col-md-7 col-xs-12" value="<%$ctg_name%>">
+                          <input type="hidden"  name="ctg_id" value="<%$ctg_id%>">
+                          <input type="hidden"  name="ctg_level" value="<%$ctg_level%>">
+                        </div>
+                      </div>
+                      
+                      <div class="form-group">
+                        <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Thứ tự hiển thị</label>
+                        <div class="col-md-3 col-sm-3 col-xs-12">
+                          <input id="ctg_sort" class="form-control col-md-7 col-xs-12" type="number" name="ctg_sort" value="<%$sort%>" >
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Hiện/Ẩn</label>
+                        <div class="col-md-3 col-sm-3 col-xs-12">
+                          <select class="form-control" name="del_flg">
+                          	 <option value="0" <%if $del_flg == 0%>selected="selected"<%/if%>>Hiện</option>
+                          	 <option value="1" <%if $del_flg == 1%>selected="selected"<%/if%>>Ẩn</option>
+                          </select>                          
+                        </div>
+                      </div>                      
+                      <div class="ln_solid"></div>
+                      <div class="form-group">
+                        <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                          <button class="dialog_close btn btn-primary" type="button">Thoát</button>
+                          <button class="btn btn-success" id="btn_save" type="button">Cập nhật</button>
+                        </div>
+                      </div>
+
+                    </form>
+                  </div>
+                </div>
+              <!--</div>-->
+            </div>

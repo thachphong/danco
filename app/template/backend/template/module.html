@@ -1,0 +1,33 @@
+<!--module -->
+<div class="x_title title_small">
+   <h4><%$module_name%></h4>
+</div>
+<div class="clearfix"></div>
+<%assign var='chk_line' value=-1%> 
+<%foreach $data_list as $key=>$item%>
+	<%assign var='chk_line' value=$chk_line+1%>	
+	<%if $chk_line == 0 %>
+		<div class="form-group">
+		   <%else if $chk_line%3 == 0 %>
+		</div>
+		<div class="form-group">
+		   <%else if $item.new_line == 1 %>
+		</div>
+		<div class="form-group">
+	    <%assign var='chk_line' value=0%>
+	<%/if%>
+	    <label class="control-label col-md-2 col-sm-2 col-xs-12"><%$item.struct_name%></label>
+	    <div class="col-md-2 col-sm-2 col-xs-12">
+	       <%if $item.type =='select'%>	
+	       		<select class="form-control col-md-2 col-xs-12" name="struct[<%$item.struct_id%>_<%$item.template_detail_id%>]">
+	       			<option value=""></option>
+	       			<%foreach $options[$item.option_key] as $row%>
+	       				 <option value="<%$row.option_val%>" <%if $item.struct_val == $row.option_val%>selected="selected"<%/if%>><%$row.option_name%></option>
+	       			<%/foreach%>
+	       		</select>
+	       <%else%>
+	       		<input type="<%$item.type%>" class="form-control col-md-2 col-xs-12" name="struct[<%$item.struct_id%>_<%$item.template_detail_id%>]" value="<%$item.struct_val%>">
+	       <%/if%>
+	    </div>
+<%/foreach%>
+</div>
