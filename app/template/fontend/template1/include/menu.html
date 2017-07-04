@@ -10,8 +10,9 @@
             <div class="row"  > 
                <div class="link-cart">
                   <a href="<%$smarty.const.ACW_BASE_URL%>cart">
+                    <%assign var='carts' value=count(ACWSession::get("cart_info"))%>
                      <span class="icon"></span>
-                     <span class="count">(0)</span><br/>
+                     <span class="count">(<%$carts%>)</span><br/>
                      <span class="text">Giỏ Hàng</span>
                   </a>
                </div>

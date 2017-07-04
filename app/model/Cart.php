@@ -117,8 +117,14 @@ class Cart_model extends ACWModel
 			  'bill_address' ,
 			  'order_comments',
 			  'payment_method' ,
+			  'pro_qty',
+			  'pro_price_id'
 		));
-		$cart = ACWSession::get("cart_info");
+		//ACWLog::debug_var('----test--',$param);
+		$cart = array();//ACWSession::get("cart_info");
+		foreach($param['pro_price_id'] as $key=>$val){
+			$cart[$val] = $param['pro_qty'][$key];
+		}		
 		$db = new Cart_model();
 		$products = $db->get_products($cart);
 		$total_amount = 0;

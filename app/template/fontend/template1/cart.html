@@ -139,16 +139,17 @@
                                           <th width="50" style="text-align:center" align="center">Xóa</th>
                                        </tr>
                                        <%foreach $carts as $item%>
-                                       <tr class="spline">                                       
+                                       <tr class="spline tr_product">                                       
                                           <td width="50%">
                                              <%$item.pro_name%>                    
                                           </td>
                                           <td><%$item.size%></td>
-                                          <td width="20%" style="text-align:center">
-                                             <input value="× <%$item.qty%>" name="quantity" readonly="true" type="text" style="width:30px;text-align: center;">                                            
+                                          <td width="20%" style="text-align:center">× 
+                                             <input value="<%$item.qty%>" name="pro_qty[]" id="pro_qty_<%$item.pro_price_id%>" type="text" style="width:33px;text-align: center;" class="pro_qty" >
+                                             <input type="hidden" name="pro_price_id[]" value="<%$item.pro_price_id%>">                                           
                                           </td>
                                           <td width="25%" align="right">
-                                             <span class="woocommerce-Price-amount amount"><%Sanpham_model::currency_format($item.price_new)%><span class="woocommerce-Price-currencySymbol">₫</span></span>                    
+                                             <span class="woocommerce-Price-amount amount pro_price" data="<%$item.price_new%>"><%Sanpham_model::currency_format($item.price_new)%><span class="woocommerce-Price-currencySymbol">₫</span></span>                    
                                           </td>
                                           <td style="text-align:center"><a style="color: red" href="<%$smarty.const.ACW_BASE_URL%>cart/delete/<%$item.pro_price_id%>">X</a>
                                           </td>
@@ -156,19 +157,20 @@
                                        <%/foreach%>
                                        <tr class="spline">
                                           <td width="50%" class="sanpham" colspan="3">Tổng cộng (giá chưa bao gồm VAT)</td>
-                                          <td width="25%" align="right"><span class="woocommerce-Price-amount amount"><%Sanpham_model::currency_format($total_amount)%><span class="woocommerce-Price-currencySymbol">₫</span></span></td>
+                                          <td width="25%" align="right"><span class="woocommerce-Price-amount amount" id="total_amount_1"><%Sanpham_model::currency_format($total_amount)%><span class="woocommerce-Price-currencySymbol">₫</span></span></td>
                                           <td></td>
                                        </tr>
                                        <tr class="order-total">
                                        </tr>
                                        <tr class="spline">
                                           <td width="50%" class="sanpham" colspan="3">Thanh toán</td>
-                                          <td width="25%" align="right"><strong><span class="woocommerce-Price-amount amount"><%Sanpham_model::currency_format($total_amount)%><span class="woocommerce-Price-currencySymbol">₫</span></span></strong> </td>
+                                          <td width="25%" align="right"><strong><span class="woocommerce-Price-amount amount" id="total_amount_2"><%Sanpham_model::currency_format($total_amount)%><span class="woocommerce-Price-currencySymbol">₫</span></span></strong> </td>
                                           <td></td>
                                        </tr>
                                     </tbody>
                                  </table>
                                  <p class="text-right">
+                                    <a class="btn btn-default btn-dat-hang" href="<%$smarty.const.ACW_BASE_URL%>">Tiếp tục mua hàng</a>
                                     <input type="submit" <%if $total_amount == 0%>disabled="true"<%/if%>class="btn btn-default btn-dat-hang" name="woocommerce_checkout_place_order" id="place_order" value="Hoàn thành" data-value="Hoàn thành">                        
                                  </p>
                               </div>
@@ -181,6 +183,28 @@
          </div>
       </div>
       <%include 'include/footer.html'%>
+   <script>
       
+      function currency_format(n) {
+          return n.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+      }
+      $(document).ready(function() {
+         $(document).off('input','.pro_qty'); 
+         $(document).on('input','.pro_qty',function(event){
+            console.log('1');
+            var tot_amount = 0;
+            $('.tr_product').each(function(){
+               var qty_obj = $(this).find('.pro_qty')[0];
+               var price_obj = $(this).find('.pro_price')[0];
+               var qty = $(qty_obj).val();
+               var price = $(price_obj).attr('data');
+               tot_amount += qty*price;
+               console.log(tot_amount);
+            });
+            $('#total_amount_1').text(currency_format(tot_amount));
+            $('#total_amount_2').text(currency_format(tot_amount));
+         });         
+      });
+   </script>
    </body>
 </html>
