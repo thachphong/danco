@@ -54,7 +54,7 @@ class Danhmuc_model extends ACWModel
 	}
 	public function get_sanpham_byctgno($ctg_no,$start_row=0){
 		$limit = PAGE_LIMIT_RECORD;
-		$sql="select p.pro_no,p.pro_name,im.img_thumb,t.price_new,p.price_old
+		$sql="select p.pro_no,p.pro_name,im.img_thumb,t.price_new,t.price_old,IFNULL(round(( 1 - t.price_new/t.price_old)*100),0) as giamgia
 				from product p
 				INNER JOIN product_price t
 					on t.pro_id = p.pro_id and t.avata_flg = 1 

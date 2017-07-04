@@ -284,6 +284,7 @@ class Product_model extends ACWModel
 				}
 				$sql_par['size'] = $item;
 				$sql_par['price_new'] = $param['price_new'][$key];
+				$sql_par['price_old'] = $param['price_old'][$key];
 				$this->insert_price($sql_par);
 			}
 		}
@@ -296,6 +297,7 @@ class Product_model extends ACWModel
 					  pro_id,
 					  size ,					  
 					  price_new,
+					  price_old,
 					  avata_flg
 					)
 				VALUES
@@ -303,10 +305,13 @@ class Product_model extends ACWModel
 					  :pro_id,					
 					  :size,					 
 					  :price_new,
+					  :price_old,
 					  :avata_flg
 					)
 				";	
- 
+ 		if(strlen($param['price_old'])==0){
+ 			$param['price_old'] = 0;
+ 		}
 		$this->execute($sql,$param);
 	}
 	protected function update($param){
@@ -353,6 +358,7 @@ class Product_model extends ACWModel
 				}
 				$price_par['size'] = $item;
 				$price_par['price_new'] = $param['price_new'][$key];
+				$price_par['price_old'] = $param['price_old'][$key];
 				$this->insert_price($price_par);
 			}
 		}

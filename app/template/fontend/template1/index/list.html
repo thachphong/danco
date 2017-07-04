@@ -11,13 +11,24 @@
                <div class="item-product">
                   <div class="img-product" style="height: 183px;">
                      <a href="<%$smarty.const.ACW_BASE_URL%>sanpham/v/<%$pro.pro_no%>">
-                     <img width="600"  src="<%$smarty.const.ACW_BASE_URL_DATA%><%$pro.img_thumb%>" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="<%$pro.pro_name%>"  sizes="(max-width: 600px) 100vw, 600px"></a>
+                     <img width="600"  src="<%$smarty.const.ACW_BASE_URL_DATA%><%$pro.img_thumb%>" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="<%$pro.pro_name%>"  sizes="(max-width: 600px) 100vw, 600px">
+                        <%if $pro.giamgia > 0%>
+                           <div class="lable_sale">
+                              <img src="<%$smarty.const.ACW_BASE_URL_TEMPLATE%>/images/salegoods.png">
+                              <p>Giảm giá <%$pro.giamgia%>%</p>
+                           </div>
+                        <%/if%>
+                     </a>
                   </div>
                   <div class="caption">
                      <a href="<%$smarty.const.ACW_BASE_URL%>sanpham/v/<%$pro.pro_no%>" class="name-product"><%$pro.pro_name%><span class="label-product"></span></a>
                      <div class="clearfix">
                         <div class="price">
                            <span class="amount"><%Sanpham_model::currency_format($pro.price_new)%>₫</span>
+                           <%if $pro.price_old > 0%> 
+                              &nbsp;&nbsp;&nbsp;
+                              <span class="amount_old"><%Sanpham_model::currency_format($pro.price_old)%>₫</span>
+                           <%/if%>
                         </div>
                         <a href="/checkout?add-to-cart=188" class="btn-cart"></a>
                      </div>

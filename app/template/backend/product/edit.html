@@ -28,8 +28,10 @@
 		margin-bottom: 10px;
 	}
 	
-	
-		
+	/*.number_format{
+    width: 70%;
+  }
+		*/
 	
 	
 	</style>
@@ -139,22 +141,34 @@
                         <div class="col-md-2 col-sm-2 col-xs-12">
                           <a class="btn btn-primary" type="button" id="btn_add_size" style="float: right">Thêm kích thước</a>
                         </div>
-                        <div class="col-md-8 col-sm-8 col-xs-12">
+                        <div class="col-md-10 col-sm-10 col-xs-12">
                           <table class="list_file" id="list_size">
+                            <colgroup>
+                                <col width="10%">
+                                <col width="30%">
+                                <col width="10%">
+                                <col width="20%">
+                                <col width="10%">
+                                <col width="20%">
+                            </colgroup>
                             <%if $new_flg ==1%> 
                             <tr>
                               <td>Kích thước</td>
                               <td><input type="text" name="pro_size[]" class="form-control size_format"></td>
-                              <td>Giá</td>
-                              <td><input type="text" name="price_new[]" class="form-control number_format" value=""></td>
+                              <td>Giá mới</td>
+                              <td><input type="text" name="price_new[]" class="col-md-3 form-control number_format" value=""></td>
+                              <td>Giá cũ</td>
+                              <td><input type="text" name="price_old[]" class="col-md-3 form-control number_format" value=""></td>
                             </tr>
                             <%/if%>
                             <%foreach $price_list as $pri%>                           
                             <tr>
                               <td>Kích thước</td>
                               <td><input type="text" name="pro_size[]" class="form-control size_format" value="<%$pri.size%>"></td>
-                              <td>Giá</td>
+                              <td>Giá mới</td>
                               <td><input type="text" name="price_new[]" class="form-control number_format" value="<%Sanpham_model::currency_format($pri.price_new)%>"></td>
+                              <td>Giá cũ</td>
+                              <td><input type="text" name="price_old[]" class="form-control number_format" value="<%Sanpham_model::currency_format($pri.price_old)%>"></td>
                             </tr>
                             <%/foreach%>
                           </table>
@@ -261,7 +275,7 @@
         	arr.push({name:'avata_id',value:get_avata_id()});
         	//arr.append('avata_id',get_avata_id());
         	console.log(arr);
-			Pho_json_ajax('POST',"<%$smarty.const.ACW_BASE_URL%>product/update" ,arr,function(datas){
+			    Pho_json_ajax('POST',"<%$smarty.const.ACW_BASE_URL%>product/update" ,arr,function(datas){
 				if(datas.status =="OK"){
 					//Pho_modal_close("modal1");
 					//Pho_message_box("Thông báo",datas.msg);
@@ -370,7 +384,7 @@
     });
     $(document).off('click','#btn_add_size'); 
     $(document).on('click','#btn_add_size',function(event){
-          var html='<tr><td>Kích thước</td><td><input type="text" name="pro_size[]" class="form-control size_format" value=""></td><td>Giá</td><td><input type="text" name="price_new[]" class="form-control number_format" value="" ></td></tr>';
+          var html='<tr><td>Kích thước</td><td><input type="text" name="pro_size[]" class="form-control size_format" value=""></td><td>Giá mới</td><td><input type="text" name="price_new[]" class="form-control number_format" value="" ></td><td>Giá cũ</td><td><input type="text" name="price_old[]" class="form-control number_format" value="" ></td></tr>';
           $('#list_size').append(html);
     });    
 		var get_avata_id =  function(){

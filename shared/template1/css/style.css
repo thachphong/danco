@@ -879,10 +879,11 @@ transition: all 500ms ease-out 0s;
 }
 
 .item-product .price {
-  width: calc(100% -  105px);
-  width: -moz-calc(100% -  105px);
+  /*width: calc(100% -  105px)!important;*/
+  width:80% !important;
+  /*width: -moz-calc(100% -  105px);
   width: -webkit-calc(100% -  105px);
-  width: -o-calc(100% -  105px);
+  width: -o-calc(100% -  105px);*/
   float: left;
   color: #FF8400;
   font-family: "Arial";
@@ -892,6 +893,12 @@ transition: all 500ms ease-out 0s;
 .item-product .price .amount {
   line-height: 26px;
   font-size: 14px;
+}
+.item-product .price .amount_old {
+  line-height: 26px;
+  font-size: 14px;
+  color: #8e8e8e;
+  text-decoration: line-through;
 }
 
 .item-product .price-style {
@@ -1351,4 +1358,19 @@ transition: all 500ms ease-out 0s;
 }
 .lable_footer{
     padding-left: 20px;
+}
+.lable_sale {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 90px;
+}
+.lable_sale p {
+    position: absolute;
+    transform: rotate(45deg);
+    transform-origin: 22px 40px;
+    color: #fff;
+    font-family: Tahoma;
+    font-size: 14px;
+     top: 0;
 }
