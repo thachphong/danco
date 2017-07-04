@@ -1342,3 +1342,13 @@ transition: all 500ms ease-out 0s;
 .chinh-sach .title{font-size:16px}
 .cot2{margin-top:20px}
 }
+.fa-heart-o {
+  content: "\f08a";
+  font-family: 'FontAwesome';
+  position: absolute;
+  color: #e98348;  
+  font-weight: bold;
+}
+.lable_footer{
+    padding-left: 20px;
+}

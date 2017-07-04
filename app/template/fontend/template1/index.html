@@ -22,14 +22,14 @@
                      <%/foreach%> 				    
                   </div>
                   <!-- Left and right controls --> 				    <a class="left carousel-control" href="#myCarousel" data-slide="prev"> 				      <span class="glyphicon glyphicon-chevron-left"></span> 				      <span class="sr-only">Previous</span> 				    </a> 				    <a class="right carousel-control" href="#myCarousel" data-slide="next"> 				      <span class="glyphicon glyphicon-chevron-right"></span> 				      <span class="sr-only">Next</span> 				    </a> 				  
-               </div>
-               <%assign var="list_sanpham" value=Sanpham_model::get_sanpham_home(38)%> 
-               <%assign var="ctg_no" value='divan---diem'%>
-               <%assign var="ctg_name" value='ĐIỆM VÀ KỆ ĐIỆM'%>  
-               <%include 'index/list.html'%>
+               </div>               
                <%assign var="list_sanpham" value=Sanpham_model::get_sanpham_home(39)%> 
                <%assign var="ctg_no" value='chan-ga-goi'%>
                <%assign var="ctg_name" value='CHĂN GA GỐI'%>  
+               <%include 'index/list.html'%>
+               <%assign var="list_sanpham" value=Sanpham_model::get_sanpham_home(38)%> 
+               <%assign var="ctg_no" value='diem-va-ke-diem'%>
+               <%assign var="ctg_name" value='ĐIỆM VÀ KỆ ĐIỆM'%>  
                <%include 'index/list.html'%>               
             </div>
             <%include 'include/left.html'%>

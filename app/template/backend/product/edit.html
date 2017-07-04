@@ -238,7 +238,7 @@
         
         $(document).off('blur','.number_format'); 
         $(document).on('blur','.number_format',function(event){
-        	var val = $(this).val().replace(',','');
+        	var val = $(this).val().replace(/,/g,'');
         	if($.isNumeric( val) == false){
         		$(this).val("");
         		return;

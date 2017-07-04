@@ -26,9 +26,10 @@ class Sanpham_model extends ACWModel
 		return $this->query($sql);
 	}	
 	public function get_sanpham_byhome($ctg_id,$limit = 1){
-		$sql="select p.pro_no,p.pro_name,im.img_thumb,p.price_new,p.price_old
+		$sql="select p.pro_no,p.pro_name,im.img_thumb,t.price_new,p.price_old
 				from product p
 				INNER JOIN product_img im on im.pro_id = p.pro_id and im.avata_flg = 1
+				INNER JOIN product_price t on t.pro_id = p.pro_id and t.avata_flg = 1
 				where ctg_id = $ctg_id
 				limit $limit
 				";
