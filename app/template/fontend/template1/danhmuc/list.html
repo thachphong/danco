@@ -4,11 +4,11 @@
    </div>
    <div class="row">
          <%foreach $sanphams as $key=>$pro%>
-            <div class="col-md-4 col-sm-4">
+            <div class="col-md-4 col-sm-4 col-xs-12">
                <div class="item-product">
                   <div class="img-product" style="height: 183px">
                      <a href="<%$smarty.const.ACW_BASE_URL%>sanpham/v/<%$pro.pro_no%>">
-                     <img width="600" src="<%$smarty.const.ACW_BASE_URL_DATA%><%$pro.img_thumb%>" alt="<%$pro.pro_name%>"  sizes="(max-width: 600px) 100vw, 600px">
+                     <img width="600" src="<%$smarty.const.ACW_BASE_URL_DATA%><%$pro.img_thumb%>" alt="<%$pro.pro_name%>" >
                         <%if $pro.giamgia > 0%>
                            <div class="lable_sale">
                               <img src="<%$smarty.const.ACW_BASE_URL_TEMPLATE%>/images/salegoods.png">

@@ -1,7 +1,7 @@
 <?php
 
-define('IMG_THUMB_SIZE_WIDTH', 272);
-define('IMG_THUMB_SIZE_HEIGHT', 210);
+define('IMG_THUMB_SIZE_WIDTH', 391); //261
+define('IMG_THUMB_SIZE_HEIGHT', 271); //181
 define('DATA_TMP_PATH', ACW_ROOT_DIR . '/tmp/product');
 define('DATA_MAIN_PATH', ACW_ROOT_DIR . '/data/product');	
 define('PUBLIC_TEMPLATE_PATH', ACW_ROOT_DIR . '/shared/'.PHO_TEMPLATE_NAME);	

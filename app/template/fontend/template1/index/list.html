@@ -5,13 +5,13 @@
    </div>
    <div class="owl-sp-hot owl-carousel owl-theme" style="opacity: 1; display: block;">
       <div class="owl-wrapper-outer">
-         <div class="owl-wrapper col-sm-12" style="left: 0px; display: block; padding: 0px"> <!-- width: 5600px;  -->
+         <div class="owl-wrapper col-sm-12 col-sx-12" style="left: 0px; display: block; padding: 0px"> <!-- width: 5600px;  -->
          <%foreach $list_sanpham as $key=>$pro%> 
-            <div class="owl-item col-sm-4 col-sx-6" style="padding-left: 0px" > <!-- style="width: 280px;"> -->
+            <div class="owl-item col-sm-4 col-xs-12" style="padding-left: 0px" > <!-- style="width: 280px;"> -->
                <div class="item-product">
                   <div class="img-product" > <!-- style="height: 183px;" -->
                      <a href="<%$smarty.const.ACW_BASE_URL%>sanpham/v/<%$pro.pro_no%>">
-                     <img width="600"  src="<%$smarty.const.ACW_BASE_URL_DATA%><%$pro.img_thumb%>" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="<%$pro.pro_name%>"  sizes="(max-width: 600px) 100vw, 600px">
+                     <img src="<%$smarty.const.ACW_BASE_URL_DATA%><%$pro.img_thumb%>" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="<%$pro.pro_name%>"  >
                         <%if $pro.giamgia > 0%>
                            <div class="lable_sale">
                               <img src="<%$smarty.const.ACW_BASE_URL_TEMPLATE%>/images/salegoods.png">

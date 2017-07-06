@@ -31,12 +31,12 @@
    <%assign var="sanphams" value=Sanpham_model::get_sanpham_moi()%>   
    <div class="owl-sp-ban-chay owl-carousel owl-theme" style="opacity: 1; display: block;">
       <div class="owl-wrapper-outer">
-         <div class="owl-wrapper col-sm-12" style="left: 0px; display: block;padding: 0px">
+         <div class="owl-wrapper col-sm-12 col-xs-12" style="left: 0px; display: block;padding: 0px">
           <%foreach $sanphams as $key=>$pro%>
-            <div class="owl-item col-md-3 col-sm-4 col-sx-6" style="padding-left: 0px">
+            <div class="owl-item col-md-3 col-sm-4 col-xs-12" style="padding-left: 0px">
                <div class="item-product" >
                   <div class="img-product" >
-                     <a href="<%$smarty.const.ACW_BASE_URL%>sanpham/v/<%$pro.pro_no%>"><img  src="<%$smarty.const.ACW_BASE_URL_DATA%><%$pro.img_thumb%>" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="<%$pro.pro_name%>"  sizes="(max-width: 600px) 100vw, 600px">
+                     <a href="<%$smarty.const.ACW_BASE_URL%>sanpham/v/<%$pro.pro_no%>"><img  src="<%$smarty.const.ACW_BASE_URL_DATA%><%$pro.img_thumb%>" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="<%$pro.pro_name%>"  >
                         <%if $pro.giamgia > 0%>
                            <div class="lable_sale">
                               <img src="<%$smarty.const.ACW_BASE_URL_TEMPLATE%>/images/salegoods.png">
