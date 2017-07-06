@@ -1405,7 +1405,7 @@ transition: all 500ms ease-out 0s;
      top: 0;
 }
 .carousel-inner .item img{
-   height:  calc((width * 358/854)px);
+   height:  358px !important;
 }
 .list-inline > li
 {
