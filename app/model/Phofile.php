@@ -43,7 +43,7 @@ class Phofile_model extends ACWModel
 			$file_tmp = $item['tmp_name'];			
 			$folder_name = date('Ym');
 			if(is_dir(DATA_TMP_PATH.'/'.$folder_name)==false){
-				 @mkdir($folder_name, 0777, true);
+				 @mkdir(DATA_TMP_PATH.'/'.$folder_name, 0777, true);
 			}
 			$folder_name .='/'. date('d');
 			if(is_dir(DATA_TMP_PATH.'/'.$folder_name)==false){

@@ -118,7 +118,8 @@ class Cart_model extends ACWModel
 			  'order_comments',
 			  'payment_method' ,
 			  'pro_qty',
-			  'pro_price_id'
+			  'pro_price_id',
+			  'address_ship'
 		));
 		//ACWLog::debug_var('----test--',$param);
 		$cart = array();//ACWSession::get("cart_info");
@@ -133,7 +134,8 @@ class Cart_model extends ACWModel
 			$item['amount'] = $item['qty']*$item['price_new'];
 			$total_amount += $item['amount'];
 		}
-		$param['total_amount']=$total_amount;
+		$param['total_amount']=($total_amount + $total_amount*0.1);
+		$param['total_vat'] = $total_amount*0.1;
 		$param['full_name'] = $param['bill_first_name'].' '.$param['bill_last_name'];
 		$ord_id = $db->insert_order($param);
 		$db->insert_order_detail($ord_id,$products);
@@ -182,6 +184,8 @@ class Cart_model extends ACWModel
 					,note
 					,total_amount
 					,payment_method
+					,address_ship
+					,total_vat
 					)
 				values(
 					now()
@@ -193,6 +197,8 @@ class Cart_model extends ACWModel
 					,:order_comments
 					,:total_amount
 					,:payment_method
+					,:address_ship
+					,:total_vat
 				)";
 		$sql_pa = ACWArray::filter($param, array(
 					'full_name'
@@ -201,7 +207,9 @@ class Cart_model extends ACWModel
 					,'bill_phone'
 					,'bill_address'
 					,'order_comments'
-					,'total_amount'));
+					,'total_amount'
+					,'address_ship'
+					,'total_vat'));
 		if($param['payment_method']=='ck'){
 			$sql_pa['payment_method']='Chuyển khoản';
 		}else if($param['payment_method']=='tm'){

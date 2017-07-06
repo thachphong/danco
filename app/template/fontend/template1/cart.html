@@ -72,9 +72,9 @@
                                     <p class="form-row form-row form-row-last validate-required validate-phone" id="billing_phone_field"><label >Điện thoại <abbr class="required" title="bắt buộc">*</abbr></label><input type="tel" class="input-text " name="bill_phone" id="bill_phone" placeholder="Điện thoại" required="required" value=""></p>
                                     <div class="clear"></div>
                                     <p class="form-row form-row form-row-wide address-field validate-required" id="billing_address_1_field"><label>Địa chỉ <abbr class="required" title="bắt buộc">*</abbr></label><input type="text" class="input-text " name="bill_address" id="bill_address" placeholder="Địa chỉ" required="required" value=""></p>
-                                    <!-- <p class="form-row form-row form-row-wide address-field" id="billing_address_2_field">
-                                    <label for="billing_address_2" class="">Địa chỉ 2</label>
-                                    <input type="text" class="input-text " name="billing_address_2" id="billing_address_2" placeholder="Địa chỉ 2" autocomplete="address-line2" value=""></p> -->
+                                    <p class="form-row form-row form-row-wide address-field" id="billing_address_2_field">
+                                    <label for="billing_address_2" class="">Địa chỉ nhận hàng</label>
+                                    <input type="text" class="input-text " name="address_ship" id="address_ship" placeholder="Địa chỉ nhận hàng" value=""></p> 
                                     <p class="form-row form-row form-row-first address-field validate-state" id="billing_state_field" style="display: none"><label for="billing_state" class="">Bang / Hạt</label><input type="hidden" class="hidden" name="billing_state" id="billing_state" value="" placeholder=""></p>
                                     <!-- <p class="form-row form-row-wide create-account woocommerce-validated">
                                        <input class="input-checkbox" id="createaccount" type="checkbox" name="createaccount" value="1"> <label for="createaccount" class="checkbox">Tạo tài khoản mới?</label>
@@ -156,15 +156,20 @@
                                        </tr>
                                        <%/foreach%>
                                        <tr class="spline">
-                                          <td width="40%" class="sanpham" >Tổng cộng (giá chưa bao gồm VAT)</td>
+                                          <td width="40%" class="sanpham" >Tổng cộng</td>
                                           <td width="40%" align="right" colspan="3"><span class="woocommerce-Price-amount amount" id="total_amount_1"><%Sanpham_model::currency_format($total_amount)%><span class="woocommerce-Price-currencySymbol">₫</span></span></td>
+                                          <td></td>
+                                       </tr>
+                                       <tr class="spline">
+                                          <td width="40%" class="sanpham" >Thuế VAT</td>
+                                          <td width="40%" align="right" colspan="3"><span class="woocommerce-Price-amount amount" id="total_amount_vat"><%Sanpham_model::currency_format($total_amount*0.1)%><span class="woocommerce-Price-currencySymbol">₫</span></span></td>
                                           <td></td>
                                        </tr>
                                        <tr class="order-total">
                                        </tr>
                                        <tr class="spline">
                                           <td width="40%" class="sanpham" >Thanh toán</td>
-                                          <td width="40%" align="right" colspan="3"><strong><span class="woocommerce-Price-amount amount" id="total_amount_2"><%Sanpham_model::currency_format($total_amount)%><span class="woocommerce-Price-currencySymbol">₫</span></span></strong> </td>
+                                          <td width="40%" align="right" colspan="3"><strong><span class="woocommerce-Price-amount amount" id="total_amount_2"><%Sanpham_model::currency_format($total_amount+$total_amount*0.1)%><span class="woocommerce-Price-currencySymbol">₫</span></span></strong> </td>
                                           <td></td>
                                        </tr>
                                     </tbody>
@@ -202,7 +207,8 @@
                console.log(tot_amount);
             });
             $('#total_amount_1').text(currency_format(tot_amount));
-            $('#total_amount_2').text(currency_format(tot_amount));
+            $('#total_amount_vat').text(currency_format(tot_amount*0.1));
+            $('#total_amount_2').text(currency_format(tot_amount + tot_amount*0.1));
          });         
       });
    </script>
