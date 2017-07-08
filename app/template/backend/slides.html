@@ -51,9 +51,11 @@
 			  <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Danh sách slide<!--<small>Users</small>--></h2>
+                    <h2>Danh sách <%$title%><!--<small>Users</small>--></h2>
                     <ul class="nav navbar-rigth panel_toolbox" style="min-width: auto;">
+                      <%if $banner_flg==0%>
                       <li><button class="btn btn-primary" id="btn_new">Thêm mới</button></li>
+                      <%/if%>
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                       </li>
                       <!--<li class="dropdown">
@@ -89,10 +91,13 @@
                       <thead>
                         <tr>
                           <th>STT</th>                         
-                          <th>Ảnh</th>                       
+                          <th>Ảnh</th> 
+                          <th>Link đến trang</th>                       
                           <th>Hiện</th>
-                          <th>Sửa</th>   
-                          <th>Xóa</th>                         
+                          <th>Sửa</th> 
+                          <%if $banner_flg==0%>  
+                          <th>Xóa</th> 
+                          <%/if%>                        
                         </tr>
                       </thead>
                       <tbody id="fbody">
@@ -103,7 +108,8 @@
                            
                           <td>
                           	<img id="img_disp" class="img-rounded" src="<%$smarty.const.ACW_BASE_URL%><%$item.img_path%>" width="420" height="180"/>
-                          </td>                         
+                          </td> 
+                          <td><%$item.link_page%></td>                        
                           <td>
                           	
                           	<span class="fa <%if $item.del_flg == 1%>fa-square-o<%else%>fa-check-square<%/if%>" style="font-size: 16px;"></span>
@@ -112,9 +118,11 @@
                           <td>
                           	<button class="btn btn-warning btn-xs btn_edit" id="edit_<%$item.slide_id%>">Sửa</button>
                           </td>
+                          <%if $banner_flg==0%>
                           <td>
                           	<button class="btn btn btn-danger btn-xs btn_delete" id="del_<%$item.slide_id%>">Xóa</button>
                           </td>
+                          <%/if%>
                         </tr>
                       <%/foreach%>                        
                       </tbody>
@@ -143,7 +151,7 @@
 	$(document).ready(function() {
 		$(document).off('click','#btn_new'); 
         $(document).on('click','#btn_new',function(event){
-        	Pho_html_ajax('POST',"<%$smarty.const.ACW_BASE_URL%>slides/new" ,{'silde_id':''},function(html){
+        	Pho_html_ajax('POST',"<%$smarty.const.ACW_BASE_URL%>slides/new" ,{'banner_flg':'<%$banner_flg%>'},function(html){
                 /*Pho_modal({
 		        		template:html,
 				        closeClick: false,
@@ -152,7 +160,7 @@
 				        size:'large'
 		        	
             	});*/
-            	Pho_modal(html,"Thêm Silse",700);
+            	Pho_modal(html,"Thêm <%$title%>",700);
             });
         	
         });
@@ -168,11 +176,12 @@
         		return;
         	}
         	var arr = $('#form_ctg').serializeArray();	
-			Pho_json_ajax('POST',"<%$smarty.const.ACW_BASE_URL%>slides/update" ,arr,function(datas){
+         
+			   Pho_json_ajax('POST',"<%$smarty.const.ACW_BASE_URL%>slides/update" ,arr,function(datas){
 				if(datas.status =="OK"){
 					Pho_modal_close("modal1");
-					//Pho_message_box("Thông báo",datas.msg);
-					Pho_direct("<%$smarty.const.ACW_BASE_URL%>slides");
+					
+					Pho_direct("<%$smarty.const.ACW_BASE_URL%>slides/list/<%$banner_flg%>");
 				}else{
 					Pho_message_box_error("Lỗi",datas.msg);
 				}
@@ -197,7 +206,7 @@
 						//Pho_modal_close("modal1");
 						//Pho_message_box("Thông báo",datas.msg);
 						//location.href="<%$smarty.const.ACW_BASE_URL%>menu";
-						Pho_direct("<%$smarty.const.ACW_BASE_URL%>slides");
+						Pho_direct("<%$smarty.const.ACW_BASE_URL%>slides/list/<%$banner_flg%>");
 					}else{
 						Pho_message_box_error("Lỗi",datas.msg);
 					}
@@ -219,7 +228,7 @@
 				        size:'large'
 		        	
             	});*/
-            	Pho_modal(html,"Sửa Menu",700);
+            	Pho_modal(html,"Sửa <%$title%>",700);
             });
         });
         $(document).off('click','.add_child'); 

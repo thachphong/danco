@@ -67,15 +67,22 @@ function get_define_all(){
 	$res = $model->get_define_all();
 	$param= array();
 	foreach($res as $row){
-		if($row['define_key']==DEFINE_KEY_EMAIL){
-			//$email_send = $row['define_val'];
-			$param['email_send'] = $row['define_val'];
-		}else if($row['define_key']==DEFINE_KEY_FACEBOOK_PAGE){
-			$param['facebook_page'] = $row['define_val'];			
-		}else if($row['define_key']==DEFINE_KEY_LOGO_PATH){
-			//$logo_main = $row['define_val'];
-			$param['logo_main'] = $row['define_val'];
-		}
+		$param[$row['define_key']] = $row['define_val'];
+		// if($row['define_key']==DEFINE_KEY_EMAIL){
+		// 	//$email_send = $row['define_val'];
+		// 	$param['email_send'] = $row['define_val'];
+		// }else if($row['define_key']==DEFINE_KEY_FACEBOOK_PAGE){
+		// 	$param['facebook_page'] = $row['define_val'];			
+		// }else if($row['define_key']==DEFINE_KEY_LOGO_PATH){
+		// 	//$logo_main = $row['define_val'];
+		// 	$param['logo_main'] = $row['define_val'];
+		// }
+	}
+	$bn = new Slides_model();
+	$banner_list = $bn->get_slides_head(1);
+	foreach($banner_list as $row){
+		$param['banner_'.$row['slide_id']]['img_path'] = $row['img_path'];
+		$param['banner_'.$row['slide_id']]['link_page'] = $row['link_page'];
 	}
 	return $param;
 }

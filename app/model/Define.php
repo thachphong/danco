@@ -26,6 +26,13 @@ class Define_model extends ACWModel
 		}	
 		return ACWView::template_admin('define.html',$data);
 	}
+	public static function action_list()
+	{	
+		$param = self::get_param(array('acw_url'));
+		$db = new Define_model();		
+		$data['list'] = $db->get_define_by_group($param['acw_url'][0]);		
+		return ACWView::template_admin('define_list.html',$data);
+	}
 	public static function action_fanpage()
 	{	
 		$db = new Define_model();
@@ -57,6 +64,33 @@ class Define_model extends ACWModel
 			}else{
 				$db->update($param);
 			}
+		}else{
+			$result['status'] = 'ER';	
+			$result['msg'] = $msg;
+		}
+		return ACWView::json($result);
+	}
+	public static function action_updatelist(){
+		$param = self::get_param(array(
+			  'define_val'
+			));
+		
+		$result = array('status' => 'OK');
+		$result['status'] = 'OK';	
+		$result['msg'] = 'Cập nhật thành công!';		
+		$db = new Define_model();
+		$msg = "";//$db->check_validate_update($param);
+		if($msg == ""){
+			// if(strlen($param['define_id'])==0){
+			// 	$db->insert($param);
+			// }else{
+			foreach ($param['define_val'] as $key => $value) {
+				$sql_par['define_id'] = $key;
+				$sql_par['define_val'] = $value;
+				$db->update($sql_par);
+			}
+				
+			//}
 		}else{
 			$result['status'] = 'ER';	
 			$result['msg'] = $msg;
@@ -119,12 +153,20 @@ class Define_model extends ACWModel
 		return TRUE;	
 	}
 	public function get_define($def_key){
-		$sql ="select * from define where define_key = :define_key";
+		
+		$sql ="select * from define where define_key = :define_key  order by sort";
 		$res = $this->query($sql,array('define_key'=>$def_key));
-		if(count($res) > 0){
+		if(count($res) == 0){
 			return $res[0];
 		}
 		return NULL;
+	}
+	public function get_define_by_group($group_flg){
+		
+		$sql ="select * from define where group_flg = :group_flg  order by sort";
+		$res = $this->query($sql,array('group_flg'=>$group_flg));
+		
+		return $res;
 	}
 	public function get_define_all(){
 		$sql ="select define_key,define_val from define ";

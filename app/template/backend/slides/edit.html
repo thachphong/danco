@@ -28,7 +28,8 @@
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
                           <input type="text" id="img_path" required="required" name="img_path" class="form-control col-md-7 col-xs-12" value="<%$img_path%>">
-                          <input type="hidden"  name="slide_id" value="<%$slide_id%>" >                          
+                          <input type="hidden"  name="slide_id" value="<%$slide_id%>" >  
+                          <input type="hidden"  name="banner_flg" value="<%$banner_flg%>" >                        
                         </div>
                         <div class="col-md-1 col-sm-1 col-xs-12">
                         	<button class="btn btn-primary" type="button" id="btn_upload">Upload</button>
@@ -42,6 +43,12 @@
                           <img id="img_disp" class="img-rounded" width="500" height="200" <%if isset($img_path)%>src="<%$smarty.const.ACW_BASE_URL%><%$img_path%>"<%/if%>/>                         
                         </div>
                       </div>
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Link đến trang</label>
+                        <div class="col-md-8 col-sm-8 col-xs-12">
+                          <input type="text"  class="form-control" name="link_page" value="<%$link_page%>">
+                        </div>
+                      </div> 
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Hiện/Ẩn</label>
                         <div class="col-md-3 col-sm-3 col-xs-12">
