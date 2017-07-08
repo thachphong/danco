@@ -31,7 +31,11 @@ class Sanpham_model extends ACWModel
 				from product p
 				INNER JOIN product_img im on im.pro_id = p.pro_id and im.avata_flg = 1
 				INNER JOIN product_price t on t.pro_id = p.pro_id and t.avata_flg = 1
-				where ctg_id = $ctg_id
+				where ctg_id in (select ctg_id from category 
+								where ctg_id = $ctg_id
+								union all
+								select ctg_id from category 
+								where parent_id =$ctg_id						)
 				and p.del_flg = 0
 				ORDER BY p.pro_id desc
 				limit $limit

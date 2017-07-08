@@ -61,8 +61,16 @@ class Danhmuc_model extends ACWModel
 					on t.pro_id = p.pro_id and t.avata_flg = 1 
 				INNER JOIN product_img im on im.pro_id = p.pro_id and im.avata_flg = 1
 				INNER JOIN category c on c.ctg_id = p.ctg_id and c.del_flg = 0
-				where c.ctg_no =:ctg_no
+				where c.ctg_id in (
+					select ctg_id from category 
+					where ctg_no = :ctg_no
+					union all
+					select ctg_id from category 
+					where parent_id =(select ctg_id from category where ctg_no = :ctg_no)
+					)
 				and p.del_flg = 0 
+
+
 				limit $limit
 				OFFSET $start_row
 				";
@@ -91,7 +99,7 @@ class Danhmuc_model extends ACWModel
 		return $this->query($sql);
 	}
 	public function get_danhmuc_info($ctg_no){
-		$sql ="select ctg_no,upper(ctg_name) ctg_name from category 
+		$sql ="select ctg_no,ctg_name from category 
 				where del_flg = 0 and ctg_no =:ctg_no
 				";
 		$res = $this->query($sql,array('ctg_no'=>$ctg_no));

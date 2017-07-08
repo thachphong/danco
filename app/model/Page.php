@@ -190,7 +190,7 @@ class Page_model extends ACWModel
 	}
 	public function get_page_byno($page_no){
 		$sql=" select page_no,
-					  upper(page_name) page_name,
+					  page_name,
 					  content
 			  from page where page_no = :page_no";
 		$res = $this->query($sql ,array('page_no'=>$page_no));

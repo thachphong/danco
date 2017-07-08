@@ -10,7 +10,7 @@
                         <ul class="list-group">
                         <%foreach $menusleft as $item%>
                            <li class="list-group-item menu-lv1">
-                              <a href="<%if $item.cnt_child==0%><%$smarty.const.ACW_BASE_URL%>danhmuc/ds/<%$item.ctg_no%><%else%>#<%/if%>" title="<%$item.ctg_name%>" ><%$item.ctg_name%></a>
+                              <a href="<%$smarty.const.ACW_BASE_URL%>danhmuc/ds/<%$item.ctg_no%>" title="<%$item.ctg_name%>" ><%$item.ctg_name%></a>
                               <%if $item.cnt_child > 0%>
                               <div class="mega-menu">
                               <ul class="list-unstyled list-sup-lv2">
@@ -37,7 +37,7 @@
     </div>
     <div class="panel banner-sidebar">
             <div class="panel-body">
-                <a href="http://tentenwordpress2.top/danh-muc/sofa-va-ghe-phong-khach"><img alt="QC1" src="http://tentenwordpress2.top/wp-content/uploads/2016/12/quang-cao-10.jpg"></a>
+                <a href="<%$smarty.const.ACW_BASE_URL%>"><img alt="QC1" src="<%$smarty.const.ACW_BASE_URL_TEMPLATE%>/images/quang-cao-10.jpg"></a>
             </div>
     </div>
     <div class="panel panel-icon lien-he-nhanh">

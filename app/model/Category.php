@@ -492,6 +492,11 @@ class Category_model extends ACWModel
 		$db->set_child($menu,$data,0);
 		return $menu;
 	}
+	public static function get_ctg_level1(){
+		$db = new Category_model();
+		$data = $db->get_ctg_list(1);
+		return $data;
+	}
 	public function set_child(&$menu,&$list,$parent_id){
 		foreach($list as $key=>$item){
 			if($item['parent_id'] == $parent_id){
