@@ -76,7 +76,7 @@ class Sanpham_model extends ACWModel
 		),FALSE);
 	}
 	public function get_sanpham_info($pro_no){
-		$sql=" select p.pro_no,p.pro_name,t.price_new,p.price_old,c.ctg_name,p.pro_id,c.ctg_no,p.content
+		$sql=" select p.pro_no,p.pro_name,t.price_new,t.price_old,c.ctg_name,p.pro_id,c.ctg_no,p.content
 				from product p
 				INNER JOIN product_price t
 					on t.pro_id = p.pro_id and t.avata_flg = 1 			

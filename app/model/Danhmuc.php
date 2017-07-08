@@ -50,6 +50,7 @@ class Danhmuc_model extends ACWModel
 		$param['sanphams']=$db->search_sanpham($param['txt'],$start_row);
 		$param['total_page']= round($db->search_sanpham_total($param['txt'])/PAGE_LIMIT_RECORD);
 		$param['ctg_no'] = "tim";
+		Acwlog::debug_var('test---',$param);
 		return ACWView::template('danhmuc.html', $param);
 	}
 	public function get_sanpham_byctgno($ctg_no,$start_row=0){
@@ -104,9 +105,10 @@ class Danhmuc_model extends ACWModel
 		$txt =str_replace('  ',' ', $txt);
 		$txt ='%'. str_replace(' ','-', ACWModel::convert_vi_to_en($txt)). '%';
 		$limit = PAGE_LIMIT_RECORD;
-		$sql="select p.pro_no,p.pro_name,im.img_thumb,p.price_new,p.price_old
+		$sql="select p.pro_no,p.pro_name,im.img_thumb,t.price_new,t.price_old,IFNULL(round(( 1 - t.price_new/t.price_old)*100),0) as giamgia
 				from product p
-				INNER JOIN product_img im on im.pro_id = p.pro_id and im.avata_flg = 1				
+				INNER JOIN product_img im on im.pro_id = p.pro_id and im.avata_flg = 1	
+				INNER JOIN product_price t on t.pro_id = p.pro_id and t.avata_flg = 1			
 				where p.pro_no like :txt
 				and p.del_flg = 0 
 				limit $limit

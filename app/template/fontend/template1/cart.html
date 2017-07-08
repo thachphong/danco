@@ -37,7 +37,7 @@
                         <div class="row form-checkout">
                            <div class="col-md-3 col-sm-12 step1">
                               <div class="heading">
-                                 <span class="icon"></span>
+                                 <span class="img-circle icon">1</span>
                                  <span class="text">Thông tin khách hàng</span>
                               </div>
                               <div class="body">
@@ -92,7 +92,7 @@
                            </div>
                            <div class="col-md-3 col-sm-12 step2">
                               <div class="heading">
-                                 <span class="icon"></span>
+                                 <span class="img-circle icon">2</span>
                                  <span class="text">Thanh toán</span>
                               </div>
                               <div class="boby">
@@ -125,7 +125,7 @@
                            </div>
                            <div class="col-md-6 col-sm-12 step3">
                               <div class="heading">
-                                 <span class="icon"></span>
+                                 <span class="icon img-circle">&radic;</span>
                                  <span class="text">Đơn hàng</span>
                               </div>
                               <div class="body">
@@ -145,7 +145,7 @@
                                           </td>
                                           <td><%$item.size%></td>
                                           <td width="20%" style="text-align:center">× 
-                                             <input value="<%$item.qty%>" name="pro_qty[]" id="pro_qty_<%$item.pro_price_id%>" type="text" style="width:33px;text-align: center;" class="pro_qty" >
+                                             <input value="<%$item.qty%>" name="pro_qty[]" id="pro_qty_<%$item.pro_price_id%>" type="number" style="width:43px;text-align: center;" class="pro_qty" >
                                              <input type="hidden" name="pro_price_id[]" value="<%$item.pro_price_id%>">                                           
                                           </td>
                                           <td width="25%" align="right">

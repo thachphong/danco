@@ -6,52 +6,59 @@
               <img class="logo" src="<%$smarty.const.ACW_BASE_URL_TEMPLATE%>/images/logo.png" >  
                  
           </div>
-          <div class="col-md-4 col-sm-9 col-xs-5 hide_for_phone">
-              <div class="row">                     
-                  <div class="hotline-top">
-                      <span class="icon"></span>
-                      <span>Hotline: <span>0868 191 666 - 0868 565 181</span></span>
-                  </div>          
-              </div>
-          </div>
-          <div class="col-md-5 col-sm-9 col-xs-5">
+          <div class="col-md-9 col-sm-9 col-xs-5">
             <div class="row"  > 
-               <div class="link-cart">
-                  <a href="<%$smarty.const.ACW_BASE_URL%>cart">
-                    <%assign var='carts' value=count(ACWSession::get("cart_info"))%>
-                     <span class="icon"></span>
-                     <span class="count">(<%$carts%>)</span><br/>
-                     <span class="text">Giỏ Hàng</span>
-                  </a>
-               </div>
-               <ul class="nav_top">
-                  <li>
-                     <a href="<%$smarty.const.ACW_BASE_URL%>trang-chu"> TRANG CHỦ</a>
-                  </li>
-                  <li>
-                     <a href="<%$smarty.const.ACW_BASE_URL%>giơi-thieu"> GIỚI THIỆU</a>
-                  </li>
-                  <li>
-                     <a href="<%$smarty.const.ACW_BASE_URL%>lien-he">LIÊN HỆ</a>
-                  </li>
-               </ul>
-                   		  
-              </div>
-              <div class="row">
-                 
-                 <div  style="padding-right: 0px;float: right;">
-                    <div class="row">
-                    <form class="search" >
-                      <input type="" name="" placeholder="Tìm sản phẩm .." class="search_input">  
-                      <input type="submit" value="" style="width: 1px;height: 1px;opacity: 0;padding: 0px;border: none">
-                    </form>
-                    </div>                    
+                 <div class="link-cart">
+                    <a href="<%$smarty.const.ACW_BASE_URL%>cart">
+                      <%assign var='carts' value=count(ACWSession::get("cart_info"))%>
+                       <span class="icon"></span>
+                       <span class="count">(<%$carts%>)</span><br/>
+                       <span class="text">Giỏ Hàng</span>
+                    </a>
                  </div>
+                 <ul class="nav_top">
+                    <li>
+                       <a href="<%$smarty.const.ACW_BASE_URL%>trang-chu"> Trang chủ</a>
+                    </li>
+                    <li>
+                       <a href="<%$smarty.const.ACW_BASE_URL%>page/v/gioi-thieu">Giới thiệu</a>
+                    </li>
+                    <li>
+                       <a href="<%$smarty.const.ACW_BASE_URL%>page/v/lien-he">Liên hệ</a>
+                    </li>
+                    <li>
+                       <a href="<%$smarty.const.ACW_BASE_URL%>page/v/tuyen-dung">Tuyển dụng</a>
+                    </li>
+                 </ul>
+                          
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 col-sm-12 col-xs-12  hide_for_phone">                                     
+                    <div class="hotline-top">
+                        <span class="fa-phone-square"></span>
+                        <span style="margin-left: 20px">Hotline: <span>0868 191 666 - 0868 565 181</span></span>
+                    </div>          
+                </div>          
+              <div class="col-md-6 col-sm-9 col-xs-5">                
+                  <div class="row">                     
+                     <div  style="padding-right: 0px;float: right;">
+                        <div class="row">
+                        <form class="search" id="frm_search" action="<%$smarty.const.ACW_BASE_URL%>danhmuc/tim" method="POST">    
+                          <div class="search-icon" onclick="$('#frm_search').submit()"><span class="fa-search"></span></div>                      
+                          <input type="search" name="txt" placeholder="Tìm sản phẩm .." class="search_input">  
+
+                          <input type="submit" id="" value="" style="display: none;">
+                        </form>
+                        </div>                    
+                     </div>
+                  </div>
+                </div>
               </div>
             </div>
          </div>
       </div>
-      <div class="row" style="background: #e98348; margin-bottom: 20px">
+      <div class="row" style="background: #046743; margin-bottom: 20px">
          <div class="container" >
             <%assign var="menus" value=Menu_model::get_menus()%> 			
             <div id="menu_top">

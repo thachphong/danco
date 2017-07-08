@@ -478,7 +478,7 @@ class Menu_model extends ACWModel
 		return "";
 	}
 	public function get_menu_head(){
-		$sql = "select t.menu_id,menu_level,parent_id,link,page_flg,upper(menu_name) menu_name
+		$sql = "select t.menu_id,menu_level,parent_id,link,page_flg,menu_name menu_name
 				,(select count(*) from menu where  parent_id = t.menu_id) child_flg
 				from menu t
 				where del_flg = 0

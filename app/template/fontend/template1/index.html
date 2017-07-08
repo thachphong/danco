@@ -8,7 +8,7 @@
          <div class="container" id="content">
             
             <div class="col-md-9 col-sm-12 col-xs-12 content-main">
-               <div id="myCarousel" class="carousel <!--slide-->" data-ride="carousel" data-interval="2500">
+               <div id="myCarousel" class="carousel <!--slide-->" data-ride="carousel" data-interval="5000">
                   <%assign var="slides" value=Slides_model::get_slides()%> 				    <!-- Indicators --> 				    
                   <ol class="carousel-indicators">
                      <%foreach $slides as $key=>$item%> 				      	  
@@ -26,11 +26,11 @@
                </div>               
                <%assign var="list_sanpham" value=Sanpham_model::get_sanpham_home(39)%> 
                <%assign var="ctg_no" value='chan-ga-goi'%>
-               <%assign var="ctg_name" value='CHĂN GA GỐI'%>  
+               <%assign var="ctg_name" value='Chăn ga gối'%>  
                <%include 'index/list.html'%>
                <%assign var="list_sanpham" value=Sanpham_model::get_sanpham_home(38)%> 
                <%assign var="ctg_no" value='diem-va-ke-diem'%>
-               <%assign var="ctg_name" value='ĐIỆM VÀ KỆ ĐIỆM'%>  
+               <%assign var="ctg_name" value='Điệm và kệ điệm'%>  
                <%include 'index/list.html'%>               
             </div>
             <%include 'include/left.html'%>

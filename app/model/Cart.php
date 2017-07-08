@@ -284,6 +284,9 @@ class Cart_model extends ACWModel
 		if(strlen($param['bill_address']) > 0){
 			$html .= "<tr><td><strong>Địa chỉ: </strong></td><td>".$param['bill_address']."</td></tr>"."\r\n";
 		}
+		if(strlen($param['address_ship']) > 0){
+			$html .= "<tr><td><strong>Địa chỉ nhận hàng: </strong></td><td>".$param['address_ship']."</td></tr>"."\r\n";
+		}
 		if(strlen($param['order_comments']) > 0){
 			$html .= "<tr><td><strong>Ghi chú: </strong></td><td>".$param['order_comments']."</td></tr>"."\r\n";
 		}
@@ -312,6 +315,10 @@ class Cart_model extends ACWModel
 			<td style=\"border: 1px solid #d7dbdb;padding:10px;\">".self::currency_format($item['amount'])." VNĐ</td></tr>";
 		}
 		$html .='<tr><td colspan="5" style="border: 1px solid #d7dbdb;padding:10px;">Tổng tiền</td>
+		<td style="border: 1px solid #d7dbdb;padding:10px;">'.self::currency_format($param['total_amount']-$param['total_vat']).' VNĐ</td></tr>';
+		$html .='<tr><td colspan="5" style="border: 1px solid #d7dbdb;padding:10px;">Tổng VAT</td>
+		<td style="border: 1px solid #d7dbdb;padding:10px;">'.self::currency_format($param['total_vat']).' VNĐ</td></tr>';
+		$html .='<tr><td colspan="5" style="border: 1px solid #d7dbdb;padding:10px;">Tổng tiền thanh toán</td>
 		<td style="border: 1px solid #d7dbdb;padding:10px;">'.self::currency_format($param['total_amount']).' VNĐ</td></tr>';
 		$html .="</table>";
 		return $html;
