@@ -40,15 +40,15 @@
                         <span style="margin-left: 20px">Hotline: <span>0868 191 666 - 0868 565 181</span></span>
                     </div>          
                 </div>  -->         
-              <div class="col-md-12 col-sm-12 col-xs-5">                
+              <div class="col-md-12 col-sm-12 col-xs-12">                
                   <div class="row">                     
                      <div  style="padding-right: 0px;float: right;">
                         <div class="row">
                         <form class="search" id="frm_search" action="<%$smarty.const.ACW_BASE_URL%>danhmuc/tim" method="POST">    
-                          <div class="search-icon" onclick="$('#frm_search').submit()"><span class="fa-search"></span></div>                      
-                          <input type="search" name="txt" placeholder="Tìm sản phẩm .." class="search_input">  
-
-                          <input type="submit" id="" value="" style="display: none;">
+                          <div style="display: block;width: 350px">
+                            <span class="search-icon" onclick="$('#frm_search').submit()"><span class="fa-search"></span></span>
+                            <input type="search" name="txt" placeholder="Tìm sản phẩm .." class="search_input">
+                          </div>
                         </form>
                         </div>                    
                      </div>

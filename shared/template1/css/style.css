@@ -88,13 +88,14 @@ img.logo{
     box-shadow: none;
     background-color: #fff;
     font-style: italic;
+    float: right;   
 }
 .search-icon{
     width: 20;
     height: 36px;
     background: #fff;    
     float: right;
-    padding-top: 6px;
+    padding-top: 6px;    
 }
 .fa-search{
   content: "\f002";
@@ -215,7 +216,7 @@ ul.vertical_bar{
     list-style-type: none;
     margin: 0;
     padding: 0;   
-    background: #e98348;
+    background: #046743;
     border-top: 1px solid #fff;
 }
 ul.vertical_bar li ul {
@@ -230,13 +231,13 @@ ul.vertical_bar li a, ul.vertical_bar li ul li a {
 
 }
 ul.vertical_bar li a:hover {
-    background: #d46d32;
+    background: rgba(85, 204, 103, 0.49);;
 }
 
 .text_top{
     margin-top: 15px;
     margin-bottom: 15px;
-    text-align: center;
+    /*text-align: center;*/
 }
 .text_top .col-md-3:first-child {
     border-top-left-radius: 5px;
