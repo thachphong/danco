@@ -5,6 +5,11 @@ body {
     font-family: Tahoma, Times New Roman, Arial;
     margin: auto;
     overflow-x: hidden;
+    overflow-y: scroll;
+    position: absolute;
+    -webkit-overflow-scrolling:touch;
+    height: 100%;
+    width: 100%
 }
 img{
   max-width: 100%;
