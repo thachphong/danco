@@ -158,8 +158,10 @@ class Product_model extends ACWModel
 			$img_src_thumb =DATA_TMP_PATH.'/'.$param['img_thumb'];
 			$file_lb->CopyFile($img_src,$img_des);
 			$file_lb->CopyFile($img_src_thumb,$img_des_thumb);
-			$file_lb->DeleteFile($img_src);
-			$file_lb->DeleteFile($img_src_thumb);
+			if(is_file($img_src)){
+				$file_lb->DeleteFile($img_src);
+				$file_lb->DeleteFile($img_src_thumb);
+			}			
 		}
 	}
 	public function delete_pro_img($img_list){
@@ -168,7 +170,7 @@ class Product_model extends ACWModel
 		foreach($img_list as $item){
 			$img_path = str_replace(ACW_BASE_URL_DATA,"",$item);		
 			$this->execute($sql,array('img_thumb'=>$img_path));
-			if(strlen($img_path) > 0){
+			if(is_file(DATA_MAIN_PATH.'/'.$img_path)){
 				$file_lb->DeleteFile(DATA_MAIN_PATH.'/'.$img_path);
 				$file_lb->DeleteFile(DATA_MAIN_PATH.'/'.str_replace("_thumb","",$img_path));
 			}			
@@ -414,10 +416,10 @@ class Product_model extends ACWModel
 			$model->delete($param['acw_url'][0]);			
 			$file_lb = new FilePHPDebug_lib();
 			foreach($img_list as $item){
-				if(strlen($item['img_path']) > 0){
+				if(is_file(DATA_MAIN_PATH.'/'.$item['img_path'])){
 					$file_lb->DeleteFile(DATA_MAIN_PATH.'/'.$item['img_path']);
 				}
-				if(strlen($item['img_thumb']) > 0){
+				if(is_file(DATA_MAIN_PATH.'/'.$item['img_thumb'])){
 					$file_lb->DeleteFile(DATA_MAIN_PATH.'/'.$item['img_thumb']);
 				}
 			}			
