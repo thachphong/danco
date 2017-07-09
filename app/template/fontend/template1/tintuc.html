@@ -2,6 +2,10 @@
    <head>      
       <%include 'include/header.html'%>
       <link rel="stylesheet" href="<%$smarty.const.ACW_BASE_URL%>/froala/css/froala_style.css">
+      <meta property="og:image" content="<%$smarty.const.ACW_BASE_URL_DATA%><%$post.img_path%>">
+      <meta property="og:site_name" content="<%$post.news_name%>">
+      <meta property="og:title" content="dancovietnam.vn">
+      <meta property="og:description" content="<%$post.des%>">    
    </head>
    <body>
       <%include 'include/menu.html'%>

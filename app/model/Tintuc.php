@@ -49,17 +49,17 @@ class Tintuc_model extends ACWModel
 	{
 		$param = self::get_param(array(
 			'acw_url'
-		));
+		)); 
 		$model = new Tintuc_model();
 		$pro_no = $param['acw_url'][0];
 		$rows = $model->get_tintuc_info($pro_no);		
 		return ACWView::template('tintuc.html', array(
 			'post' => $rows	
 			//,'relates'=>$model->get_sanpham_lienquan($pro_no)	
-		));
+		),false);
 	}
 	public function get_tintuc_info($news_no){
-		$sql=" select news_no,news_name,des,content from news  where del_flg =0
+		$sql=" select news_no,news_name,des,content,img_path from news  where del_flg =0
 				and news_no = :news_no";
 		$res = $this->query($sql ,array('news_no'=>$news_no));
 		if(count($res)> 0){
