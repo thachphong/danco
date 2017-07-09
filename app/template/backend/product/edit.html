@@ -136,6 +136,13 @@
                              <option value="1" <%if $del_flg == 1%>selected="selected"<%/if%>>Ẩn</option>
                           </select>                          
                         </div>
+                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Hiện thị trang chủ</label>
+                        <div class="col-md-2 col-sm-2 col-xs-12">
+                          <select class="form-control" name="disp_home">
+                             <option value="0" <%if $disp_home == 0%>selected="selected"<%/if%>>Ẩn</option>
+                             <option value="1" <%if $disp_home == 1%>selected="selected"<%/if%>>Hiện</option>
+                          </select>                          
+                        </div>
                       </div>
                       <div class="form-group">
                         <div class="col-md-2 col-sm-2 col-xs-12">

@@ -84,7 +84,7 @@
                           <!-- <th>Giá cũ</th>                       
                           <th>Giá mới</th> -->
                           <th>Tình trạng</th>   
-                          <!-- <th>Hiển thị trang chủ</th> -->
+                          <th>Hiển thị trang chủ</th>
                           <th>Hiện</th>
                           <th>Sửa</th>
                           <th>Xóa</th>                        
@@ -99,7 +99,9 @@
                           <!-- <td><%Product_model::currency_format($item.price_old)%></td>
                           <td><%Product_model::currency_format($item.price_new)%></td> -->
                           <td><%$item.status%></td>
-                          <!-- <td><%$item.disp_home%></td> -->                         
+                          <td>
+                              <span class="fa <%if $item.disp_home == 0%>fa-square-o<%else%>fa-check-square<%/if%>" style="font-size: 16px;"></span>
+                          </td>                         
                           <td>                          	
                           	<span class="fa <%if $item.del_flg == 1%>fa-square-o<%else%>fa-check-square<%/if%>" style="font-size: 16px;"></span>                          	
                           </td>

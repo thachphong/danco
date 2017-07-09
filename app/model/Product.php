@@ -24,7 +24,8 @@ class Product_model extends ACWModel
 				p.price_new,
 				p.price_old,
 				(case when p.status = 0 then 'còn hàng' else 'hết hàng' end) status,
-				(case when p.disp_home= 1 then 'hiện' else 'không' end) disp_home,
+				--(case when p.disp_home= 1 then 'hiện' else 'không' end) disp_home,
+				p.disp_home,
 				c.ctg_name,
 				p.del_flg
 				FROM
@@ -244,7 +245,7 @@ class Product_model extends ACWModel
 					  :ctg_id ,
 					  0,
 					  0,
-					  0 ,
+					  :disp_home ,
 					  0 ,
 					  :status,				 
 					
@@ -264,7 +265,7 @@ class Product_model extends ACWModel
 					  'ctg_id' ,
 					  //'price_old' ,
 					  //'price_new',
-					  //'disp_home' ,
+					  'disp_home' ,
 					  //'good_sell' ,
 					  'status',					 
 					
@@ -328,7 +329,8 @@ class Product_model extends ACWModel
 					  upd_date =now(),
 					  upd_user =:user_id,
 					  del_flg =:del_flg,
-					  content =:content
+					  content =:content,
+					  disp_home =:disp_home
 					where pro_id = :pro_id
 				";
 		
@@ -339,7 +341,7 @@ class Product_model extends ACWModel
 					  'ctg_id' ,
 					 // 'price_old' ,
 					 // 'price_new',
-					//  'disp_home' ,
+					 'disp_home' ,
 					//  'good_sell' ,
 					  'status',	
 					  'del_flg',

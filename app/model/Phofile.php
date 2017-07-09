@@ -47,7 +47,7 @@ class Phofile_model extends ACWModel
 			}
 			$folder_name .='/'. date('d');
 			if(is_dir(DATA_TMP_PATH.'/'.$folder_name)==false){
-				 @mkdir($folder_name, 0777, true);
+				 @mkdir(DATA_TMP_PATH.'/'.$folder_name, 0777, true);
 			}
 			$img_name = uniqid().'.'.$file_lb->GetExtensionName($name);
 			$file_name =$folder_name.'/'. $img_name;
