@@ -6,7 +6,7 @@ define('DATA_TMP_PATH', ACW_ROOT_DIR . '/tmp/product');
 define('DATA_MAIN_PATH', ACW_ROOT_DIR . '/data/product');	
 define('PUBLIC_TEMPLATE_PATH', ACW_ROOT_DIR . '/shared/'.PHO_TEMPLATE_NAME);	
 
-define('PAGE_LIMIT_RECORD', 18);
+define('PAGE_LIMIT_RECORD', 21);
 define('GOODSELL_LIMIT_RECORD', 4);
 define('PAGE_NEWS_LIMIT_RECORD', 12);
 
