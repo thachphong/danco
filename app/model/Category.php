@@ -20,23 +20,25 @@ class Category_model extends ACWModel
 	{
 		$param = self::get_param(array('acw_url'));
 		$level_id  = $param['acw_url'][0];	
+		$news_flg  = $param['acw_url'][1];
 		$db = new Category_model();
-		$param['category']=$db->get_ctg_list($level_id);
-		$param['news_flg']=0;
+		$param['category']=$db->get_ctg_list($level_id,$news_flg);
+		$param['news_flg']=$news_flg;
 		$param['level_flg']=$level_id;
 		if($level_id > 1){
-			$param['parent_list1']= $db->get_ctg_list(1);
+			$param['parent_list1']= $db->get_ctg_list(1,$news_flg);
 		}
 		return ACWView::template_admin('category_list.html', $param);
 	}
 	
 	public static function action_new()
 	{		
-		$param = self::get_param(array('ctg_level'));
+		$param = self::get_param(array('ctg_level','news_flg'));
 		$param['ctg_id'] = null;
 		$param['ctg_name'] = null;
 		$param['del_flg'] = 0;	
 		$param['sort'] = 1;	
+
 		if(strlen($param['ctg_level'])==0){
 			$param['ctg_level'] = 1;
 		}
@@ -44,7 +46,7 @@ class Category_model extends ACWModel
 		$param['parent_id_1']= NULL;
 		$db = new Category_model();
 		if($level_id > 1){			
-			$param['parent_list1']= $db->get_ctg_list(1);
+			$param['parent_list1']= $db->get_ctg_list(1,$param['news_flg']);
 		}
 		
 		return ACWView::template_admin('category/edit.html', $param);
@@ -67,7 +69,7 @@ class Category_model extends ACWModel
 		$db = new Category_model();
 		$result = $db->get_ctg_info($param['my_id']);
 		if($result['ctg_level'] > 1){			
-			$result['parent_list1']= $db->get_ctg_list(1);
+			$result['parent_list1']= $db->get_ctg_list(1,$result['news_flg'] );
 		}
 		return ACWView::template_admin('category/edit.html', $result);
 	}
@@ -102,8 +104,9 @@ class Category_model extends ACWModel
 			, 'del_flg'		
 			, 'ctg_level'			
 			, 'parent_id_1'
+			,'news_flg'
 			));
-		$param['news_flg'] =0;
+		//$param['news_flg'] =0;
 		$result = array('status' => 'OK');
 		$result['status'] = 'OK';	
 		$result['msg'] = 'Cập nhật thành công!';		
@@ -476,13 +479,13 @@ class Category_model extends ACWModel
 		
 		return $this->query($sql);
 	}
-	public function get_ctg_list($level)
+	public function get_ctg_list($level,$news_flg=0)
 	{
 		return $this->query("select m.ctg_id,m.parent_id, m.ctg_no,m.ctg_name,m.ctg_level,m.del_flg,m.sort,m1.ctg_name ctg_name_1
 				from category m
 				LEFT JOIN category m1 on m1.ctg_id = m.parent_id 
 				where m.ctg_level = $level
-				and  m.news_flg = 0
+				and  m.news_flg = $news_flg
 				ORDER BY m.sort" );
 	}
 	public static function get_ctg_menu(){
@@ -494,7 +497,7 @@ class Category_model extends ACWModel
 	}
 	public static function get_ctg_level1(){
 		$db = new Category_model();
-		$data = $db->get_ctg_list(1);
+		$data = $db->get_ctg_list(1,0);
 		return $data;
 	}
 	public function set_child(&$menu,&$list,$parent_id){

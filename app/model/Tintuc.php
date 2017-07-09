@@ -56,7 +56,7 @@ class Tintuc_model extends ACWModel
 		return ACWView::template('tintuc.html', array(
 			'post' => $rows	
 			//,'relates'=>$model->get_sanpham_lienquan($pro_no)	
-		),FALSE);
+		));
 	}
 	public function get_tintuc_info($news_no){
 		$sql=" select news_no,news_name,des,content from news  where del_flg =0

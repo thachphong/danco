@@ -158,7 +158,7 @@
 		}
 		$(document).off('click','#btn_new'); 
         $(document).on('click','#btn_new',function(event){
-        	Pho_html_ajax('POST',"<%$smarty.const.ACW_BASE_URL%>category/new" ,{'ctg_level':'<%$level_flg%>'},function(html){
+        	Pho_html_ajax('POST',"<%$smarty.const.ACW_BASE_URL%>category/new" ,{'ctg_level':'<%$level_flg%>','news_flg':'<%$news_flg%>'},function(html){
                 /*Pho_modal({
 		        		template:html,
 				        closeClick: false,
@@ -182,7 +182,7 @@
 				if(datas.status =="OK"){
 					Pho_modal_close("modal1");
 					//Pho_message_box("Thông báo",datas.msg);
-					Pho_direct("<%$smarty.const.ACW_BASE_URL%>category/list/<%$level_flg%>" +action);
+					Pho_direct("<%$smarty.const.ACW_BASE_URL%>category/list/<%$level_flg%>/<%$news_flg%>" );
 				}else{
 					Pho_message_box_error("Lỗi",datas.msg);
 				}
@@ -199,7 +199,7 @@
 					if(datas.status == "OK"){
 						//Pho_modal_close("modal1");
 						//Pho_message_box("Thông báo",datas.msg);
-						location.href="<%$smarty.const.ACW_BASE_URL%>category/list/<%$level_flg%>"+action;
+						location.href="<%$smarty.const.ACW_BASE_URL%>category/list/<%$level_flg%>/<%$news_flg%>";
 					}else{
 						Pho_message_box_error("Lỗi",datas.msg);
 					}

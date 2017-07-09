@@ -107,6 +107,9 @@ class Product_model extends ACWModel
 						$db->reset_img_bypro($pro_id);
 						$db->update_pro_img($param['avata_id'],1);						
 					}
+				}else{
+					$db->reset_img_bypro($pro_id);
+					$db->update_pro_img($param['avata_id'],1);
 				}
 			}
 			
@@ -184,7 +187,7 @@ class Product_model extends ACWModel
 			return "Bạn chưa nhập tên sản phẩm !";
 		}
 		$pro_no = ACWModel::convert_vi_to_en($param['pro_name']);
-		$arr_rep = array(' - ',';',',',':','!','&','%',"'",'"','(',')','/',"\\" );
+		$arr_rep = array(' - ',';',',',':','!','&','%',"'",'"','(',')','/',"\\",'?' );
 		$pro_no =str_replace($arr_rep,'', $pro_no);		
 		$param['pro_no'] =str_replace(' ','-', $pro_no);
 

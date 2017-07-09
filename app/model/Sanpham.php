@@ -37,6 +37,7 @@ class Sanpham_model extends ACWModel
 								select ctg_id from category 
 								where parent_id =$ctg_id						)
 				and p.del_flg = 0
+				and disp_home =1
 				ORDER BY p.pro_id desc
 				limit $limit
 				";

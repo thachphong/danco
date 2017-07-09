@@ -89,7 +89,10 @@ class News_model extends ACWModel
 		if(strlen($param['news_name'])== 0){
 			return "Bạn chưa nhập tên trang !";
 		}
-		$param['news_no'] =str_replace(' ','-', ACWModel::convert_vi_to_en($param['news_name']));
+		$news_no = ACWModel::convert_vi_to_en($param['news_name']);
+		$arr_rep = array(' - ',';',',',':','!','&','%',"'",'"','(',')','/',"\\",'?' );
+		$news_no =str_replace($arr_rep,'', $news_no);
+		$param['news_no'] =str_replace(' ','-', $news_no);
 		
 		$news_no = $param['news_no'];
 		if(strlen($param['news_id']) == 0){
