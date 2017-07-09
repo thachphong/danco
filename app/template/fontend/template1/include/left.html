@@ -10,15 +10,18 @@
                         <ul class="list-group">
                         <%foreach $menusleft as $item%>
                            <li class="list-group-item menu-lv1">
+                              
+                                    <button class="<%if $item.cnt_child > 0%>fa-plus-circle<%else%>fa-minus-circle<%/if%> item_parent_menu" style="background: transparent; border: none; margin-top: 5px"></button>
+                              
                               <a href="<%$smarty.const.ACW_BASE_URL%>danhmuc/ds/<%$item.ctg_no%>" title="<%$item.ctg_name%>" ><%$item.ctg_name%></a>
                               <%if $item.cnt_child > 0%>
-                              <div class="mega-menu">
-                              <ul class="list-unstyled list-sup-lv2">
+                              <!-- <div class="mega-menu"> -->
+                              <ul class="list-unstyled list-sup-lv2" style="display: none">
                                 <%foreach $item.child as $sub1%>
                                   <li class="laptop list-group-item menu-lv2"><a href="<%$smarty.const.ACW_BASE_URL%>danhmuc/ds/<%$sub1.ctg_no%>"><%$sub1.ctg_name%></a></li>
                                 <%/foreach%>
                               </ul>
-                              </div>
+                              <!-- </div> -->
                               <%/if%>
                            </li>                           
       <%/foreach%>
@@ -27,8 +30,7 @@
     <div class="panel panel-hotline">
             <div class="panel-body">
                 <div class="mua-nhanh">HOTLINE</div>
-                <div class="phone"><%$comp_phone%></div>
-                <!-- <a href="#"><div class="mua-nhanh2">Chuyên cung cấp sỉ</div></a> -->
+                <div class="phone"><%$comp_phone%></div>               
                 <div class="phone2"><%$comp_phone%> </div>
             </div>
     </div>
@@ -71,3 +73,20 @@
             </div>
     </div>
 </div>
+<script>
+  jQuery(document).ready(function () {
+    $('.item_parent_menu').click(function(){     
+      var child = $(this).parent().find('ul')[0]; 
+      var icon = this;  
+      if($(child).is(':hidden')){
+        $(child).show();
+        $(icon).removeClass('fa-plus-circle');
+        $(icon).addClass('fa-minus-circle');
+      }else{
+        $(child).hide();
+        $(icon).addClass('fa-plus-circle');
+        $(icon).removeClass('fa-minus-circle');
+      }
+    });
+  });
+</script>
