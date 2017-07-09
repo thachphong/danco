@@ -664,6 +664,9 @@ min-width: 200px;
 .chinh-sach hr {
   margin-top: 0;
 }
+.cong-dong-google hr{
+   margin:0px;
+}
 .cong-dong-google {
   margin-bottom: 20px;
 }
