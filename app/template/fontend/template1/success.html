@@ -83,3 +83,11 @@
       
    </body>
 </html>
+<script type="text/javascript">
+   $(document).ready(function () {  
+      setInterval(reload_home, 10000);
+      function reload_home(){
+         location.href = '<%$smarty.const.ACW_BASE_URL%>';
+      }
+  });
+</script>

@@ -228,9 +228,7 @@ class Page_model extends ACWModel
 		$param = self::get_param(array('acw_url'));	
 		$db = new Page_model();
 		$result = $db->get_page_info($param['acw_url'][0]);	
-
-		var_dump($result );die;
-		ACWLog::debug_var('--test--',$result);
+		
 		if($result == null){
 			$result['page_no']='';
 			$result['page_name']='Trang không tồn tại';

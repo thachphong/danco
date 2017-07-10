@@ -156,7 +156,7 @@ class Define_model extends ACWModel
 		
 		$sql ="select * from define where define_key = :define_key  order by sort";
 		$res = $this->query($sql,array('define_key'=>$def_key));
-		if(count($res) == 0){
+		if(count($res) > 0){
 			return $res[0];
 		}
 		return NULL;

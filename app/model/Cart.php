@@ -257,8 +257,10 @@ class Cart_model extends ACWModel
 		$replacements['BODY'] = $body_tmp;
 		$db = new Define_model();
 		$data = $db->get_define(DEFINE_KEY_EMAIL);
-		$mail_to[]['mail_address']= $data['define_val'];	
-			
+		$mail_to[]['mail_address']= $data['define_val'];
+		$mail_to[]['mail_address']=$param['bill_email'];	
+		ACWLog::debug_var('--mail',$mail_to);	
+		ACWLog::debug_var('--mail',$data);
 		$email->AddListAddress($mail_to);
                 
 		$email->Subject = 'Thông tin đặt hàng - '.date('d/m/Y H:i:s');                
