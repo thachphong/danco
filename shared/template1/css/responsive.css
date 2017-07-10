@@ -112,6 +112,12 @@ display:none;
     padding-left: 5px;
     padding-right: 5px;
   }
+  .panel-danh-muc a {
+      margin-left: 30px;
+  }
+  .list-sup-lv2 > .menu-lv2 > a{
+   margin-left: 35px;
+}
 }
 
 #header .container {

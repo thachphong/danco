@@ -11,8 +11,8 @@
                         <%foreach $menusleft as $item%>
                            <li class="list-group-item menu-lv1">
                               
-                                    <button class="<%if $item.cnt_child > 0%>fa-plus-circle<%else%>fa-minus-circle<%/if%> item_parent_menu" style="background: transparent; border: none; margin-top: 5px"></button>
-                              
+                                  <button  class="item_parent_menu" style="background: transparent; border: none; margin-top: 5px;margin-right: 10px" ><span class="<%if $item.cnt_child > 0%>fa-plus-circle<%else%>fa-minus-circle<%/if%> " ></span>
+                                  </button>
                               <a href="<%$smarty.const.ACW_BASE_URL%>danhmuc/ds/<%$item.ctg_no%>" title="<%$item.ctg_name%>" ><%$item.ctg_name%></a>
                               <%if $item.cnt_child > 0%>
                               <!-- <div class="mega-menu"> -->

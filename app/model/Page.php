@@ -227,7 +227,15 @@ class Page_model extends ACWModel
 	{
 		$param = self::get_param(array('acw_url'));	
 		$db = new Page_model();
-		$result = $db->get_page_info($param['acw_url'][0]);		
+		$result = $db->get_page_info($param['acw_url'][0]);	
+
+		var_dump($result );die;
+		ACWLog::debug_var('--test--',$result);
+		if($result == null){
+			$result['page_no']='';
+			$result['page_name']='Trang không tồn tại';
+			$result['content']= 'Trang này không tồn tại';					  
+		}	
 		return ACWView::template_admin('page/edit.html', $result);
 	}
 	public function get_page_info($page_id){
@@ -250,7 +258,7 @@ class Page_model extends ACWModel
 		return null;
 	}
 	public function get_page_list(){
-		$sql="select page_no,page_name from page where del_flg= 0";
+		$sql="select page_id,page_no,page_name from page where del_flg= 0";
 		return $this->query($sql);
 	}
 	public static function action_v()
@@ -259,7 +267,12 @@ class Page_model extends ACWModel
 			'acw_url'
 		));
 		$model = new Page_model();
-		$rows = $model->get_page_byno($param['acw_url'][0]);		
+		$rows = $model->get_page_byno($param['acw_url'][0]);	
+		if($rows == null){
+			$rows['page_no']='';
+			$rows['page_name']='Trang không tồn tại';
+			$rows['content']= 'Trang này không tồn tại';					  
+		}	
 		return ACWView::template('page.html',  $rows,FALSE);
 	}
 	public static function get_page_home(){
@@ -269,6 +282,5 @@ class Page_model extends ACWModel
 	public function get_page_list_home($limit){
 		$sql="select page_no,page_name,img_path from page where del_flg= 0 and disp_home = 1 limit $limit";
 		return $this->query($sql);
-	}
-	
+	}	
 }

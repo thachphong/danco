@@ -84,6 +84,12 @@ function get_define_all(){
 		$param['banner_'.$row['slide_id']]['img_path'] = $row['img_path'];
 		$param['banner_'.$row['slide_id']]['link_page'] = $row['link_page'];
 	}
+	$p = new Page_model();
+	$page_list = $p->get_page_list();
+	foreach($page_list as $row){
+		$param['page_'.$row['page_id']] = $row['page_no'];
+	}
+
 	return $param;
 }
 
