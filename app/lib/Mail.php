@@ -50,11 +50,16 @@ class Mail_lib extends Phpmailer_lib
 		$this->Password ='thietkeweb2s.com';
 		//$this->mail->Password  = "221292682";          
 
-        $this->From = PHPMAIL_EMAIL_REPLYTO;
+        // $this->From = PHPMAIL_EMAIL_REPLYTO;
 
-        $this->FromName = PHPMAIL_NAME_REPLYTO;                 
+        // $this->FromName = PHPMAIL_NAME_REPLYTO;                 
 
-        $this->AddReplyTo(PHPMAIL_EMAIL_REPLYTO,PHPMAIL_NAME_REPLYTO); 
+        // $this->AddReplyTo(PHPMAIL_EMAIL_REPLYTO,PHPMAIL_NAME_REPLYTO); 
+	}
+	public function add_replyto($email_replyto,$name_replyto){
+		$this->From = $email_replyto;
+        $this->FromName = $name_replyto;
+        $this->AddReplyTo($email_replyto,$name_replyto);
 	}
 
 	public function loadBody($file) {

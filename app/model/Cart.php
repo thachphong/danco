@@ -259,9 +259,10 @@ class Cart_model extends ACWModel
 		$data = $db->get_define(DEFINE_KEY_EMAIL);
 		$mail_to[]['mail_address']= $data['define_val'];
 		$mail_to[]['mail_address']=$param['bill_email'];	
-		ACWLog::debug_var('--mail',$mail_to);	
-		ACWLog::debug_var('--mail',$data);
+		//ACWLog::debug_var('--mail',$mail_to);	
+		//ACWLog::debug_var('--mail',$data);
 		$email->AddListAddress($mail_to);
+		$email->add_replyto($data['define_val'],'dancovietnam.vn');
                 
 		$email->Subject = 'Thông tin đặt hàng - '.date('d/m/Y H:i:s');                
 		$email->loadbody('template_mail.html');
