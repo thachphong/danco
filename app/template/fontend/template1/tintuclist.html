@@ -1,0 +1,62 @@
+<html>
+   <head>      
+      <%include 'include/header.html'%>
+      <meta property="og:site_name" content="dancovietnam.vn">
+      <meta property="og:title" content="<%$web_title%>">
+      <meta property="og:description" content="<%$web_des%>">  
+      <meta property="og:image" content="<%$smarty.const.ACW_BASE_URL_TEMPLATE%>/images/logo.png"> 
+      <style type="text/css">
+         .post_list a{
+             color: #000; 
+         }
+         .post_list a:hover{
+             color:#046743;  
+         }
+         .post_list .post_des{
+            font-size: 14px;
+         }
+      </style>
+   </head>
+   <body>
+      <%include 'include/menu.html'%>
+      <div class="row">
+         <div class="container" id="content">            
+            <div class="col-sm-9 content-main">
+               <div class="heading heading-section">
+                  <span class="title"><%$ctg_name%></span>      
+               </div>
+               <%foreach $tintucs as $item%>                               
+               <div class="row post_list">
+                  <div class="col-md-3 col-sm-5 col-xs-12">
+                     <a href="<%$smarty.const.ACW_BASE_URL%>tintuc/v/<%$item.news_no%>" class="">
+                        <img src="<%$smarty.const.ACW_BASE_URL_DATA%><%$item.img_path%>">
+                     </a>
+                  </div>
+                  <div class="col-md-9 col-sm-7 col-xs-12">
+                     <h4 class=""><a href="<%$smarty.const.ACW_BASE_URL%>tintuc/v/<%$item.news_no%>"><%$item.news_name%></a></h4>
+                     <div class="post_des">
+                        <%$item.des%>                               
+                     </div>
+                  </div>
+               </div> 
+               <hr>
+               <%/foreach%>
+               <%if $total_page > 1%>
+                  <div class="row">
+                     <div class="col-md-12 col-sm-12 col-xs-12" style="display: flex;justify-content: center;">
+                        <ul class="pagination">
+                        <%for $i=1; $i<= $total_page;$i++ %> 
+                          <li <%if $page==$i%>class="active"<%/if%>><a href="<%$smarty.const.ACW_BASE_URL%>tintuc/ds/<%$ctg_no%>?page=<%$i%>"><%$i%></a></li>
+                        <%/for%>       
+                        </ul>
+                     </div>
+                  </div>
+               <%/if%>              
+            </div>
+            <%include 'include/left.html'%>
+         </div>
+      </div>
+      <%include 'include/footer.html'%>
+      
+   </body>
+</html>

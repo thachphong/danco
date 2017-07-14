@@ -21,7 +21,7 @@ class Danhmuc_model extends ACWModel
 		$db = new Danhmuc_model();
 		$start_row = 0;
 		if(isset($param['page']) && $param['page'] > 1){
-			$start_row = $param['page']*PAGE_LIMIT_RECORD;
+			$start_row = ( $param['page']-1)*PAGE_LIMIT_RECORD ;
 		}else{
 			$param['page'] = 1;
 		}

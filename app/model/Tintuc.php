@@ -16,30 +16,41 @@ class Tintuc_model extends ACWModel
 		$model = new Tintuc_model();
 		$info = $model->get_danhmuc_info($param['acw_url'][0]);
 		//$param['ctg_name'] = $info['ctg_name'];
-		$rows = $model->get_tintuc_byctgno($param['acw_url'][0],10);
-		
-		$db = new Danhmuc_model();
+				
 		$start_row = 0;
 		if(isset($param['page']) && $param['page'] > 1){
-			$start_row = $param['page']*PAGE_NEWS_LIMIT_RECORD;
+			$start_row = ($param['page']-1)*PAGE_NEWS_LIMIT_RECORD ;
 		}else{
 			$param['page'] = 1;
 		}
-								
+		$rows = $model->get_tintuc_byctgno($param['acw_url'][0],$start_row);						
 		return ACWView::template('tintuclist.html', array(
 			'tintucs' => $rows
 			,'ctg_name' =>$info['ctg_name']
 			,'ctg_no' =>$info['ctg_no']		
-			,'total_page'=>3//round($db->get_total_rows($param['acw_url'][0])/PAGE_NEWS_LIMIT_RECORD)	
+			,'total_page'=>round($model->get_total_rows($param['acw_url'][0])/PAGE_NEWS_LIMIT_RECORD)	
 			,'page'=>$param['page']
 		));
 	}
-	public function get_tintuc_byctgno($ctg_no,$limit = 1){
+	public function get_tintuc_byctgno($ctg_no,$start_row = 0){
+		$limit =PAGE_NEWS_LIMIT_RECORD;
 		$sql="select news_no,news_name,des,img_path from news  where del_flg =0
 				and ctg_id in (select ctg_id from category where ctg_no = :ctg_no and del_flg = 0)
+				order by news_id desc
 				limit $limit
+				OFFSET $start_row
 				";
 		return $this->query($sql,array('ctg_no'=>$ctg_no));
+	}
+	public function get_total_rows($ctg_no){
+		$sql="select count(news_no) cnt from news  where del_flg =0
+				and ctg_id in (select ctg_id from category where ctg_no = :ctg_no and del_flg = 0)				
+				";	
+		$res = $this->query($sql,array('ctg_no'=>$ctg_no));
+		if(count($res) > 0){
+			return $res[0]['cnt'];
+		}
+		return 0;
 	}
 	public static function get_sanpham_byctg($ctg_no){
 		$db= new Sanpham_model();
