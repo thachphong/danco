@@ -73,8 +73,14 @@
             </div>
     </div>
 </div>
-<script>
+<script>  
   jQuery(document).ready(function () {
+    var w = screen.width ;
+    //console.log(w);
+    if(w==414){
+       //console.log('aaa');
+       $('.fb-page').attr('data-width',372);
+    }
     $('.item_parent_menu').click(function(){     
       var child = $(this).parent().find('ul')[0]; 
       var icon = this;  
