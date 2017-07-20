@@ -38,97 +38,9 @@
                         </p>
                         <div class="clear"></div>
                      </form>
-                     <form name="checkout" method="post" class="checkout woocommerce-checkout" action="<%$smarty.const.ACW_BASE_URL%>cart/update" enctype="multipart/form-data">
-                        <div class="row form-checkout">
-                           <div class="col-md-3 col-sm-12 col-xs-12 step1">
-                              <div class="heading">
-                                 <span class="img-circle icon">1</span>
-                                 <span class="text">Thông tin khách hàng</span>
-                              </div>
-                              <div class="body">
-                                 <!-- <div class="chuacotaikhoan">                             
-                                 <input name="state_login" type="radio" value="1" class="showlogin" onclick="$('.login').show();">Bạn đã có tài khoản?
-                                 </div>
-                                 <div class="chuacotaikhoan">
-                                    <input name="state_login" type="radio" onclick="$('.login').hide();" value="0" checked="">&nbsp;Bạn chưa có khoản?
-                                 </div> -->
-                                 <style>
-                                    .detailkh textarea {
-                                    //display: none !important;
-                                    border: 1px solid#007382;
-                                    border-radius: 10px;
-                                    width: 80%;
-                                    margin-top: 10px;                                   
-                                    padding: 10px;
-                                    }
-                                    #createaccount{
-                                    height: 15px !important;
-                                    width: 15px !important;
-                                    }
-                                 </style>
-                                 <div class="hovaten detailkh" style="float: left;margin-top: 10px; width:100%">
-                                    <p class="form-row form-row form-row-first validate-required" id="billing_first_name_field"><label >Họ <abbr class="required" title="bắt buộc">*</abbr></label>
-                                    <input type="text" class="input-text" name="bill_first_name" id="bill_first_name" placeholder="Họ" required="required" value=""></p>
-                                    <p class="form-row form-row form-row-last validate-required" id="billing_last_name_field"><label for="billing_last_name" class="">Tên <abbr class="required" title="bắt buộc">*</abbr></label><input type="text" class="input-text " name="bill_last_name" id="bill_last_name" placeholder="Tên" required="required" value=""></p>
-                                    <div class="clear"></div>
-                                    <p class="form-row form-row form-row-wide" id="billing_company_field"><label>Công ty</label><input type="text" class="input-text " name="bill_company" id="bill_company" placeholder="Công ty" autocomplete="organization" value=""></p>
-                                    <p class="form-row form-row form-row-first validate-required validate-email" id="billing_email_field"><label>Địa chỉ Email <abbr class="required" title="bắt buộc">*</abbr></label>
-                                    <input type="email" class="input-text " name="bill_email" id="bill_email" placeholder="Địa chỉ Email" required="required" value=""></p>
-                                    <p class="form-row form-row form-row-last validate-required validate-phone" id="billing_phone_field"><label >Điện thoại <abbr class="required" title="bắt buộc">*</abbr></label><input type="tel" class="input-text " name="bill_phone" id="bill_phone" placeholder="Điện thoại" required="required" value=""></p>
-                                    <div class="clear"></div>
-                                    <p class="form-row form-row form-row-wide address-field validate-required" id="billing_address_1_field"><label>Địa chỉ <abbr class="required" title="bắt buộc">*</abbr></label><input type="text" class="input-text " name="bill_address" id="bill_address" placeholder="Địa chỉ" required="required" value=""></p>
-                                    <p class="form-row form-row form-row-wide address-field" id="billing_address_2_field">
-                                    <label for="billing_address_2" class="">Địa chỉ nhận hàng</label>
-                                    <input type="text" class="input-text " name="address_ship" id="address_ship" placeholder="Địa chỉ nhận hàng" value=""></p> 
-                                    <p class="form-row form-row form-row-first address-field validate-state" id="billing_state_field" style="display: none"><label for="billing_state" class="">Bang / Hạt</label><input type="hidden" class="hidden" name="billing_state" id="billing_state" value="" placeholder=""></p>
-                                    <!-- <p class="form-row form-row-wide create-account woocommerce-validated">
-                                       <input class="input-checkbox" id="createaccount" type="checkbox" name="createaccount" value="1"> <label for="createaccount" class="checkbox">Tạo tài khoản mới?</label>
-                                    </p>
-                                    <div class="create-account" style="display: none;">
-                                       <p></p>
-                                       <p class="form-row form-row validate-required" id="account_password_field"><label for="account_password" class="">Mật khẩu <abbr class="required" title="bắt buộc">*</abbr></label><input type="password" class="input-text " name="account_password" id="account_password" placeholder="Nhập mật khẩu" value=""></p>
-                                       <div class="clear"></div>
-                                    </div> -->
-                                 </div>
-                                 <div class="hovaten detailkh" style="float: left;margin-top: 0px;width: 100%">
-                                    <p class="form-row form-row notes" id="order_comments_field"><label for="order_comments" class="">Ghi chú</label><textarea name="order_comments" class="input-text " id="order_comments" placeholder="Nhập nội dung cần ghi chú" rows="2" cols="5"></textarea></p>
-                                 </div>
-                              </div>
-                           </div>
-                           <div class="col-md-3 col-sm-12 col-xs-12 step2">
-                              <div class="heading">
-                                 <span class="img-circle icon">2</span>
-                                 <span class="text">Thanh toán</span>
-                              </div>
-                              <div class="boby">
-                                 <div id="payment" class="woocommerce-checkout-payment" style="background: none;">
-                                    <ul class="wc_payment_methods payment_methods methods">
-                                       <li class="wc_payment_method payment_method_cheque">
-                                          <input id="payment_method_cheque" type="radio" class="input-radio" name="payment_method" value="ck" checked="checked" data-order_button_text="">
-                                          <label for="payment_method_cheque">
-                                          Thanh toán chuyển khoản    </label>
-                                         <!--  <div class="payment_box payment_method_cheque">
-                                             <p>Quý khách vui lòng chuyển khoản đến tk: 01234556455232. Xin cảm ơn</p>
-                                          </div> -->
-                                       </li>
-                                       <li class="wc_payment_method payment_method_cod">
-                                          <input id="payment_method_cod" type="radio" class="input-radio" name="payment_method" value="tm" data-order_button_text="">
-                                          <label for="payment_method_cod">
-                                          Thanh toán khi giao hàng   </label>
-                                          <div class="payment_box payment_method_cod" style="display:none;">
-                                             <p>Thanh toán bằng tiền mặt khi giao hàng.</p>
-                                          </div>
-                                       </li>
-                                    </ul>
-                                    <div class="form-row place-order">
-                                       <noscript>
-                                          Trình duyệt của bạn không hỗ trợ JavaScript, hoặc nó bị vô hiệu hóa, hãy đảm bảo bạn nhấp vào &lt;em&gt; Cập nhật giỏ hàng &lt;/ em&gt; trước khi bạn thanh toán. Bạn có thể phải trả nhiều hơn số tiền đã nói ở trên, nếu bạn không làm như vậy.        &lt;br/&gt;&lt;input type="submit" class="button alt" name="woocommerce_checkout_update_totals" value="Cập nhật tổng" /&gt;
-                                       </noscript>                                       
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                           <div class="col-md-6 col-sm-12 col-xs-12 step3">
+                     <form name="checkout" method="post" class="checkout woocommerce-checkout" action="<%$smarty.const.ACW_BASE_URL%>cart/pay" enctype="multipart/form-data">
+                        <div class="row form-checkout">                           
+                           <div class="col-md-12 col-sm-12 col-xs-12 step3">
                               <div class="heading">
                                  <span class="icon img-circle">&radic;</span>
                                  <span class="text">Đơn hàng</span>
@@ -181,7 +93,7 @@
                                  </table>
                                  <p class="text-right">
                                     <a class="btn btn-default btn-dat-hang" href="<%$smarty.const.ACW_BASE_URL%>">Tiếp tục mua hàng</a>
-                                    <input type="submit" <%if $total_amount == 0%>disabled="true"<%/if%>class="btn btn-default btn-dat-hang" name="woocommerce_checkout_place_order" id="place_order" value="Hoàn thành" data-value="Hoàn thành">                        
+                                    <input type="submit" <%if $total_amount == 0%>disabled="true"<%/if%>class="btn btn-default btn-dat-hang" name="woocommerce_checkout_place_order" id="place_order" value="Đặt hàng" data-value="Hoàn thành">                        
                                  </p>
                               </div>
                            </div>

@@ -77,34 +77,33 @@ class Cart_model extends ACWModel
 		return ACWView::redirect(ACW_BASE_URL . 'cart');
 	}
 	public static function action_pay(){
-		$param = self::get_param(array(
-			'pro_id',
-			'quantity'
-		));
-		$db = new Cart_model();
+		$param = self::get_param(array(			  
+			  'pro_qty',
+			  'pro_price_id',
+			  'address_ship'
+		));	
 		$cart = array();//ACWSession::get("cart_info");
-		foreach($param['pro_id'] as $key=>$val){
-			$cart[$val] = $param['quantity'][$key];
-		}
-		/*if($cart != NULL){
-			if(isset($cart[$param['pro_id']])){
-				$cart[$param['pro_id']] = $cart[$param['pro_id']] + $param['quantity'];
-			}
-		}*/
-		//$cart[$param['pro_id']] =  $param['quantity'];
-		ACWSession::set("cart_info",$cart);
-		ACWLog::debug_var('cart',$cart);
-		$products = $db->get_products($cart);
-		$total_amount = 0;
-		foreach($products as &$item){
-			$item['qty'] = $cart[$item['pro_id']];
-			$item['amount'] = $item['qty']*$item['price_new'];
-			$total_amount += $item['amount'];
-		}
-		return ACWView::template('payment.html',array(
-			'carts' =>$products
-			,'total_amount'=>$total_amount
-		));
+		foreach($param['pro_price_id'] as $key=>$val){
+			$cart[$val] = $param['pro_qty'][$key];
+		}	
+		ACWSession::set("cart_info",$cart);	
+		$db = new Cart_model();
+		// $products = $db->get_products($cart);
+		// $total_amount = 0;
+		// foreach($products as &$item){
+		// 	$item['qty'] = $cart[$item['pro_price_id']];
+		// 	$item['amount'] = $item['qty']*$item['price_new'];
+		// 	$total_amount += $item['amount'];
+		// }
+		//$param['total_amount']=($total_amount + $total_amount*0.1);
+		//$param['total_vat'] = $total_amount*0.1;
+		//$param['full_name'] = $param['bill_first_name'].' '.$param['bill_last_name'];
+		//$ord_id = $db->insert_order($param);
+		//$db->insert_order_detail($ord_id,$products);
+		//$db->sendmail($param,$products);			
+	
+		return ACWView::template('pay.html');
+
 	}
 	public static function action_update(){
 		//ACWLog::debug_var('---cart---',$_POST);
@@ -117,15 +116,15 @@ class Cart_model extends ACWModel
 			  'bill_address' ,
 			  'order_comments',
 			  'payment_method' ,
-			  'pro_qty',
-			  'pro_price_id',
+			//  'pro_qty',
+			//  'pro_price_id',
 			  'address_ship'
-		));
-		//ACWLog::debug_var('----test--',$param);
-		$cart = array();//ACWSession::get("cart_info");
-		foreach($param['pro_price_id'] as $key=>$val){
-			$cart[$val] = $param['pro_qty'][$key];
-		}		
+		));	
+		$cart = ACWSession::get("cart_info");
+		// $cart = array();//
+		// foreach($param['pro_price_id'] as $key=>$val){
+		// 	$cart[$val] = $param['pro_qty'][$key];
+		// }		
 		$db = new Cart_model();
 		$products = $db->get_products($cart);
 		$total_amount = 0;
