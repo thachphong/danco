@@ -137,6 +137,7 @@ class Cart_model extends ACWModel
 		$param['total_vat'] = $total_amount*0.1;
 		$param['full_name'] = $param['bill_first_name'].' '.$param['bill_last_name'];
 		$ord_id = $db->insert_order($param);
+		$param['ord_id']= $ord_id;
 		$db->insert_order_detail($ord_id,$products);
 		$db->sendmail($param,$products);
 			
@@ -263,7 +264,7 @@ class Cart_model extends ACWModel
 		$email->AddListAddress($mail_to);
 		$email->add_replyto($data['define_val'],'dancovietnam.vn');
                 
-		$email->Subject = 'Thông tin đặt hàng - '.date('d/m/Y H:i:s');                
+		$email->Subject =$param['ord_id'].': Thông tin đặt hàng - '.date('d/m/Y H:i:s');                
 		$email->loadbody('template_mail.html');
 		$email->replaceBody($replacements);
 		$result = $email->send();
@@ -300,7 +301,7 @@ class Cart_model extends ACWModel
 			$html .="<p>Tiền mặt</p>";
 		}
 		
-		$html .="<h3>Thông tin đơn hàng</h3><table style=\"border-collapse: collapse;\">";
+		$html .="<h3>Thông tin đơn hàng</h3><p><strong>Mã đơn hàng: ".$param['ord_id']."</strong></p><table style=\"border-collapse: collapse;\">";
 		$html .= "<tr><td style=\"border: 1px solid #d7dbdb;padding:10px;\">STT</td>
 				  <td style=\"border: 1px solid #d7dbdb;padding:10px;\">Tên hàng</td>
 				  <td style=\"border: 1px solid #d7dbdb;padding:10px;\">Kích thước</td>
