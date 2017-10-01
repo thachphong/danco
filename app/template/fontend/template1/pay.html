@@ -1,7 +1,7 @@
 <html>
    <head>      
       <%include 'include/header.html'%>
-      <link href="<%$smarty.const.ACW_BASE_URL_TEMPLATE%>/css/chitiet.css" rel="stylesheet" type="text/css">
+      <link href="<%$smarty.const.ACW_BASE_URL_TEMPLATE%>/css/chitiet.css?ver=1.2.3" rel="stylesheet" type="text/css">
       <link href="<%$smarty.const.ACW_BASE_URL_TEMPLATE%>/css/woocommerce.css" rel="stylesheet" type="text/css">
       <meta property="og:site_name" content="dancovietnam.vn">
       <meta property="og:title" content="<%$web_title%>">
@@ -107,18 +107,27 @@
                                           <input id="payment_method_cheque" type="radio" class="input-radio" name="payment_method" value="ck" checked="checked" data-order_button_text="">
                                           <label for="payment_method_cheque">
                                           Thanh toán chuyển khoản    </label>
-                                         <!--  <div class="payment_box payment_method_cheque">
-                                             <p>Quý khách vui lòng chuyển khoản đến tk: 01234556455232. Xin cảm ơn</p>
-                                          </div> -->
+                                           <div class="payment_box payment_method_cheque">
+                                           	 <p><strong>1. Đối với Khách hàng là Công ty:</strong></p>
+                                             <p>Thanh toán chuyển khoản:</p>
+                                             <p>Tên chủ tài khoản: Công ty Cổ phần Trang thiết bị Nội thất Ngọc Dần</p>
+                                             <p>Số tài khoản: 020001626206</p>
+                                             <p>Tại ngân hàng: Ngân hàng Sacombank Đống Đa</p>
+                                             <p><strong>2. Đối với Khách hàng lẻ:</strong></p>
+                                             <p>Thanh toán chuyển khoản:</p>
+                                             <p>Tên chủ tài khoản: Phạm Tiến Anh</p>
+                                             <p>Số tài khoản: 0011000512394</p>
+                                             <p>Tại ngân hàng: Vietcombank Hội sở</p>
+                                          </div> 
                                        </li>
-                                       <li class="wc_payment_method payment_method_cod">
+                                      <!--  <li class="wc_payment_method payment_method_cod">
                                           <input id="payment_method_cod" type="radio" class="input-radio" name="payment_method" value="tm" data-order_button_text="">
                                           <label for="payment_method_cod">
                                           Thanh toán khi giao hàng   </label>
                                           <div class="payment_box payment_method_cod" style="display:none;">
                                              <p>Thanh toán bằng tiền mặt khi giao hàng.</p>
                                           </div>
-                                       </li>
+                                       </li> -->
                                     </ul>
                                     <div class="form-row place-order">
                                        <noscript>

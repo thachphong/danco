@@ -137,7 +137,7 @@ class Cart_model extends ACWModel
 		$param['total_vat'] = $total_amount*0.1;
 		$param['full_name'] = $param['bill_first_name'].' '.$param['bill_last_name'];
 		$ord_id = $db->insert_order($param);
-		$param['ord_id']= $ord_id;
+		$param['ord_id']='D'. $ord_id;
 		$db->insert_order_detail($ord_id,$products);
 		$db->sendmail($param,$products);
 			
